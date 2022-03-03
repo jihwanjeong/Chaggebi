@@ -326,7 +326,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Exit
+  m_Text: Cafe Scene
 --- !u!222 &462139441
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -595,7 +595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1511878038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,10 +728,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ChaggebiSelectPanel: {fileID: 0}
   ShopPanel: {fileID: 0}
+  TeacupPanel: {fileID: 0}
   ChaggebiPanelEnable: {fileID: 0}
   ShopPanelEnable: {fileID: 0}
   ChaggebiPanelExit: {fileID: 0}
   ShopPanelExit: {fileID: 0}
+  TeacupPanelEnable: {fileID: 0}
+  TeacupPanelExit: {fileID: 0}
   MoveToCafeScene: {fileID: 0}
 --- !u!1 &2077282416
 GameObject:
