@@ -595,7 +595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1511878038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -736,6 +736,7 @@ MonoBehaviour:
   TeacupPanelEnable: {fileID: 0}
   TeacupPanelExit: {fileID: 0}
   MoveToCafeScene: {fileID: 0}
+  TotalGold: {fileID: 0}
 --- !u!1 &2077282416
 GameObject:
   m_ObjectHideFlags: 0
