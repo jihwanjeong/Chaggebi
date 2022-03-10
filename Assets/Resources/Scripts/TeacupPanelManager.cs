@@ -5,38 +5,159 @@ using UnityEngine.UI;
 
 public class TeacupPanelManager : MonoBehaviour
 {
-    public GameObject TeabagWarningPanel;
+    public GameObject TeabagWarningPopup;
+    public GameObject CGBGachaPopup;
+    GameObject CGBCard;
+    public GameObject CGBCardPFB, CGBCardPFY, CGBCardPFR, CGBCardPFG;
+    public GameObject CGBInventory;
+    public GameObject GachaCGB; //»ÌÀº Â÷±úºñ
+    public GameObject GachaCGBPlace;
+    GameObject gachaCGB;
+    public Button GachaClose;
     public Text RemainTeabags;
-    public Sprite chaggebi1;
-    public Sprite chaggebi2;
-    public Sprite chaggebi3;
+    public Text CGBInfo;
     public Button useTeabag;
-    public int Teabags = 3;
+    private int Teabags = 100;
+    private static int[] arr = new int[5];
+    
+    public void RandomCGBOutfit() 
+    {
+        int temp;
+        int i;
+  
+        for (i = 0; i < 4; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    System.Random rand1 = new System.Random();
+                    temp = rand1.Next(1, 3);
+                    arr[i] = temp;
+                    break;
+                case 1:
+                    System.Random rand2 = new System.Random();
+                    temp = rand2.Next(1, 5);
+                    arr[i] = temp;
+                    break;
+                case 2:
+                    System.Random rand3 = new System.Random();
+                    temp = rand3.Next(1, 4);
+                    arr[i] = temp;
+                    break;
+                case 3:
+                    System.Random rand4 = new System.Random();
+                    temp = rand4.Next(1, 3);
+                    arr[i] = temp;
+                    break;
+               
 
+            }
+
+        }
+        switch (arr[0])
+        {
+            case 1:
+                GachaCGB.GetComponent<CGBAppearanceManager>().skin = CGBAppearanceManager.skins.baby;
+                break;
+            case 2:
+                GachaCGB.GetComponent<CGBAppearanceManager>().skin = CGBAppearanceManager.skins.baby;
+                break;
+           
+    
+        }
+        switch (arr[1])
+        {
+            case 1:
+                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.brown;
+                CGBInfo.GetComponent<Text>().text = "Ä¿ÇÇ Â÷±úºñ";
+                CGBCard = Instantiate(CGBCardPFB) as GameObject;
+                CGBCard.transform.SetParent(CGBInventory.transform, false);
+                break;
+            case 2:
+                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.red;
+                CGBInfo.GetComponent<Text>().text = "µþ±â Â÷±úºñ";
+                CGBCard = Instantiate(CGBCardPFR) as GameObject;
+                CGBCard.transform.SetParent(CGBInventory.transform, false);
+                break;
+            case 3:
+                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.green;
+                CGBInfo.GetComponent<Text>().text = "³ìÂ÷ Â÷±úºñ";
+                CGBCard = Instantiate(CGBCardPFG) as GameObject;
+                CGBCard.transform.SetParent(CGBInventory.transform, false);
+                break;
+            case 4:
+                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.yellow;
+                CGBInfo.GetComponent<Text>().text = "È«Â÷ Â÷±úºñ";
+                CGBCard = Instantiate(CGBCardPFY) as GameObject;
+                CGBCard.transform.SetParent(CGBInventory.transform, false);
+                break;
+            
+        }
+        switch (arr[2])
+        {
+            case 1:
+                GachaCGB.GetComponent<CGBAppearanceManager>().brow = 1;
+                break;
+            case 2:
+                GachaCGB.GetComponent<CGBAppearanceManager>().brow = 2;
+                break;
+            case 3:
+                GachaCGB.GetComponent<CGBAppearanceManager>().brow = 3;
+                break;
+
+        }
+        switch (arr[3])
+        {
+            case 1:
+                GachaCGB.GetComponent<CGBAppearanceManager>().mouth = 1;
+                break;
+            case 2:
+                GachaCGB.GetComponent<CGBAppearanceManager>().mouth = 2;
+                break;
+
+        }
+        gachaCGB = Instantiate(GachaCGB) as GameObject;
+        gachaCGB.transform.SetParent(GachaCGBPlace.transform, false);
+        
+    }
     public void UseTeabags()
     {
-        if (Teabags >= 1)
-            Teabags -= 1;
-        else
+        if (CGBGachaPopup.activeSelf == false)
         {
-            TeabagWarningPanel.SetActive(true);
-            Invoke("Disablewarning", 1);
+            if (Teabags >= 1)
+            {
+                RandomCGBOutfit();
+                CGBGachaPopup.SetActive(true);
+                Teabags -= 1;
+            }
+            else
+            {
+                TeabagWarningPopup.SetActive(true);
+                Invoke("Disablewarning", 1);
+            }
+
         }
-    
     }
     public void Disablewarning()
     {
-        TeabagWarningPanel.SetActive(false);
+        TeabagWarningPopup.SetActive(false);
+    }
+    public void DisableGachaPopup()
+    {
+        Destroy(gachaCGB);
+        CGBGachaPopup.SetActive(false);
     }
     void Start()
     {
         useTeabag.onClick.AddListener(UseTeabags);
+        GachaClose.onClick.AddListener(DisableGachaPopup);
     }
 
 
     void Update()
     {
         
-        RemainTeabags.GetComponent<Text>().text = "X " + Teabags.ToString();
+        RemainTeabags.GetComponent<Text>().text = "    x " + Teabags.ToString();
+        
     }
 }
