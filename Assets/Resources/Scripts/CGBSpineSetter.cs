@@ -7,16 +7,6 @@ public class CGBSpineSetter : MonoBehaviour
 {
     public SkeletonAnimation skeletonAnimation;
 
-    //Â÷±úºñ ¿ÜÇü Á¤º¸
-    public int age; //ÁøÈ­´Ü°è
-    public enum skins { baby, strawberry }
-    public skins type; //Á¾·ù
-    public enum colors { green, yellow, red, brown }
-    public colors bodyColor; //¸ö»ö
-
-    public int mouth;
-    public int brow;
-
     #region »ö,½½·ÔÀÌ¸§ ¼³Á¤
     //Â÷±úºñ ¸ö»ö º° ´«½ç,º¼ÅÍÄ¡»ö
     Color greenBrow = new Color32(148, 193, 109, 255);
@@ -48,24 +38,24 @@ public class CGBSpineSetter : MonoBehaviour
         skeletonAnimation.Skeleton.SetAttachment(browRSlot, "face/brow_" + cgb.brow);
         skeletonAnimation.Skeleton.SetAttachment(browLSlot, "face/brow_" + cgb.brow);
         //´«½ç, º¼ »ö º¯°æ
-        switch (bodyColor)
+        switch (cgb.bodyColor)
         {
-            case colors.green:
+            case CGBData.colors.green:
                 skeletonAnimation.Skeleton.FindSlot(browRSlot).SetColor(greenBrow); skeletonAnimation.Skeleton.FindSlot(browLSlot).SetColor(greenBrow);
                 skeletonAnimation.Skeleton.FindSlot(cheekRSlot).SetColor(greenCheek); skeletonAnimation.Skeleton.FindSlot(cheekLSlot).SetColor(greenCheek);
                 break;
 
-            case colors.yellow:
+            case CGBData.colors.yellow:
                 skeletonAnimation.Skeleton.FindSlot(browRSlot).SetColor(yellowBrow); skeletonAnimation.Skeleton.FindSlot(browLSlot).SetColor(yellowBrow);
                 skeletonAnimation.Skeleton.FindSlot(cheekRSlot).SetColor(yellowCheek); skeletonAnimation.Skeleton.FindSlot(cheekLSlot).SetColor(yellowCheek);
                 break;
 
-            case colors.red:
+            case CGBData.colors.red:
                 skeletonAnimation.Skeleton.FindSlot(browRSlot).SetColor(redBrow); skeletonAnimation.Skeleton.FindSlot(browLSlot).SetColor(redBrow);
                 skeletonAnimation.Skeleton.FindSlot(cheekRSlot).SetColor(redCheek); skeletonAnimation.Skeleton.FindSlot(cheekLSlot).SetColor(redCheek);
                 break;
 
-            case colors.brown:
+            case CGBData.colors.brown:
                 skeletonAnimation.Skeleton.FindSlot(browRSlot).SetColor(brownBrow); skeletonAnimation.Skeleton.FindSlot(browLSlot).SetColor(brownBrow);
                 skeletonAnimation.Skeleton.FindSlot(cheekRSlot).SetColor(brownCheek); skeletonAnimation.Skeleton.FindSlot(cheekLSlot).SetColor(brownCheek);
                 break;

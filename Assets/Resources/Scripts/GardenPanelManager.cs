@@ -29,7 +29,10 @@ namespace Chaggebi
             if (ChaggebiSelectPanel.activeSelf == true)
                 ChaggebiSelectPanel.SetActive(false);
             else
+            {
+                UpdateInven();
                 ChaggebiSelectPanel.SetActive(true);
+            }
 
         }
         public void ShopPanelControl()

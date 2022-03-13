@@ -168,23 +168,29 @@ public class TeacupPanelManager : MonoBehaviour
     //¹è°æ »Ì±â¾Ö´Ï ³¡³µÀ»¶§ ½ÇÇà
     void EventBG(TrackEntry trackEntry, Spine.Event e)
     {
-        if (e.Data.Name == "endBG")
+        if (e.Data.Name == "cgb")
         {
             GachaCGB.SetActive(true);
             RandomCGBOutfit();
             CGBAnimation.AnimationState.SetAnimation(0, "summon", false);
+            CGBAnimation.AnimationState.AddAnimation(0, "summon_idle", true,0f);
         }
-    }
-    //Â÷±úºñ »Ì±â¾Ö´Ï ³¡³µÀ»¶§ ½ÇÇà
-    void EventCGB(TrackEntry trackEntry, Spine.Event e)
-    {
-        CGBAnimation.AnimationState.SetAnimation(0, "summon_idle", true);
-        if (e.Data.Name == "endCGB")
+        else if (e.Data.Name == "endBG")
         {
             CGBGachaPopup.SetActive(true);
             Teabags -= 1;
         }
     }
+    ////Â÷±úºñ »Ì±â¾Ö´Ï ³¡³µÀ»¶§ ½ÇÇà
+    //void EventCGB(TrackEntry trackEntry, Spine.Event e)
+    //{
+    //    CGBAnimation.AnimationState.SetAnimation(0, "summon_idle", true);
+    //    if (e.Data.Name == "endCGB")
+    //    {
+    //        CGBGachaPopup.SetActive(true);
+    //        Teabags -= 1;
+    //    }
+    //}
 
     void Start()
     {
@@ -192,7 +198,7 @@ public class TeacupPanelManager : MonoBehaviour
         GachaClose.onClick.AddListener(DisableGachaPopup);
         cgbSpineUpdater = GachaCGB.GetComponent<CGBSpineSetter>();
         bgAnimation.AnimationState.Event += EventBG;
-        CGBAnimation.AnimationState.Event += EventCGB;
+        //CGBAnimation.AnimationState.Event += EventCGB;
     }
 
     void Enabled()
