@@ -8,11 +8,11 @@ public class CGBAppearanceManager : MonoBehaviour
     public SkeletonAnimation skeletonAnimation;
 
     //차깨비 외형 정보
-    public int age;
+    public int age; //진화단계
     public enum skins { baby, strawberry }
-    public skins skin;
+    public skins type; //종류
     public enum colors { green, yellow, red, brown }
-    public colors bodyColor;
+    public colors bodyColor; //몸색
 
     public int mouth;
     public int brow;
@@ -36,9 +36,9 @@ public class CGBAppearanceManager : MonoBehaviour
     string leg1Slot = "leg_F1"; string leg2Slot = "leg_F2"; string leg3Slot = "leg_B1"; string leg4Slot = "leg_B2";
     #endregion
 
-    public void SetAppearance() //차깨비 외형 설정
+    public void SetAppearance() //차깨비스파인에 외형 설정하기
     {
-        skeletonAnimation.Skeleton.SetSkin(age+"_"+skin.ToString());
+        skeletonAnimation.Skeleton.SetSkin(age+"_"+type.ToString());
         skeletonAnimation.Skeleton.SetAttachment(bodySlot, "1/body_" + bodyColor.ToString());
         skeletonAnimation.Skeleton.SetAttachment(leg1Slot, "1/leg_" + bodyColor.ToString());
         skeletonAnimation.Skeleton.SetAttachment(leg2Slot, "1/leg_" + bodyColor.ToString());
