@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
 
-public class CGBAppearanceManager : MonoBehaviour
+public class CGBSpineSetter : MonoBehaviour
 {
     public SkeletonAnimation skeletonAnimation;
 
@@ -36,17 +36,17 @@ public class CGBAppearanceManager : MonoBehaviour
     string leg1Slot = "leg_F1"; string leg2Slot = "leg_F2"; string leg3Slot = "leg_B1"; string leg4Slot = "leg_B2";
     #endregion
 
-    public void SetAppearance() //차깨비스파인에 외형 설정하기
+    public void SetAppearance(CGBData cgb) //차깨비스파인에 외형 설정하기
     {
-        skeletonAnimation.Skeleton.SetSkin(age+"_"+type.ToString());
-        skeletonAnimation.Skeleton.SetAttachment(bodySlot, "1/body_" + bodyColor.ToString());
-        skeletonAnimation.Skeleton.SetAttachment(leg1Slot, "1/leg_" + bodyColor.ToString());
-        skeletonAnimation.Skeleton.SetAttachment(leg2Slot, "1/leg_" + bodyColor.ToString());
-        skeletonAnimation.Skeleton.SetAttachment(leg3Slot, "1/leg_" + bodyColor.ToString());
-        skeletonAnimation.Skeleton.SetAttachment(leg4Slot, "1/leg_" + bodyColor.ToString());
-        skeletonAnimation.Skeleton.SetAttachment(mouthSlot, "face/mouth_" + mouth);
-        skeletonAnimation.Skeleton.SetAttachment(browRSlot, "face/brow_" + brow);
-        skeletonAnimation.Skeleton.SetAttachment(browLSlot, "face/brow_" + brow);
+        skeletonAnimation.Skeleton.SetSkin(cgb.age + "_" + cgb.skin.ToString());
+        skeletonAnimation.Skeleton.SetAttachment(bodySlot, "1/body_" + cgb.bodyColor.ToString());
+        skeletonAnimation.Skeleton.SetAttachment(leg1Slot, "1/leg_" + cgb.bodyColor.ToString());
+        skeletonAnimation.Skeleton.SetAttachment(leg2Slot, "1/leg_" + cgb.bodyColor.ToString());
+        skeletonAnimation.Skeleton.SetAttachment(leg3Slot, "1/leg_" + cgb.bodyColor.ToString());
+        skeletonAnimation.Skeleton.SetAttachment(leg4Slot, "1/leg_" + cgb.bodyColor.ToString());
+        skeletonAnimation.Skeleton.SetAttachment(mouthSlot, "face/mouth_" + cgb.mouth);
+        skeletonAnimation.Skeleton.SetAttachment(browRSlot, "face/brow_" + cgb.brow);
+        skeletonAnimation.Skeleton.SetAttachment(browLSlot, "face/brow_" + cgb.brow);
         //눈썹, 볼 색 변경
         switch (bodyColor)
         {
@@ -72,8 +72,4 @@ public class CGBAppearanceManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        SetAppearance();
-    }
 }

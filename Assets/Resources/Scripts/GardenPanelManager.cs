@@ -20,6 +20,9 @@ namespace Chaggebi
         public Button MoveToCafeScene;
         public Text TotalGold;
         GoldManager Gmanager;
+        public GameObject ButtonUIPanel;
+        public Transform slotsParent;
+        CGBSlot[] slots;
 
         public void ChaggebiPanelControl()
         {
@@ -40,12 +43,33 @@ namespace Chaggebi
         public void TeacupPanelControl()
         {
             if (TeacupPanel.activeSelf == true)
+            {
                 TeacupPanel.SetActive(false);
+                ButtonUIPanel.SetActive(true);
+            }
             else
+            {
                 TeacupPanel.SetActive(true);
+                ButtonUIPanel.SetActive(false);
+            }
 
         }
-
+        void UpdateInven()
+        {
+            int cgbCount = PlayerData.instance.playerCGBs.Count;
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (i < cgbCount)
+                {
+                    slots[i].AddCGB(PlayerData.instance.playerCGBs[i]);
+                    slots[i].slotNum = i;
+                }
+                else
+                {
+                    slots[i].RemoveCGB();
+                }
+            }
+        }
         public void MoveToCafe()
         {
             SceneManager.LoadScene("Cafe");
@@ -64,6 +88,7 @@ namespace Chaggebi
             TeacupPanelExit.onClick.AddListener(TeacupPanelControl);
             MoveToCafeScene.onClick.AddListener(MoveToCafe);
             Gmanager = GameObject.Find("Gold Manager").GetComponent<GoldManager>();
+            slots = slotsParent.GetComponentsInChildren<CGBSlot>();
         }
 
 
