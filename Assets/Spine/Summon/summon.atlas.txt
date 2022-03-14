@@ -12,14 +12,11 @@ rotate:90
 GC
 bounds:151,1707,70,70
 offsets:3,4,77,78
-bag
-bounds:1812,1537,240,211
-offsets:2,2,245,216
-rotate:90
 bg
 bounds:2,2,720,1280
-offsets:1,1,722,1282
 rotate:90
+can
+bounds:1812,1576,208,201
 flower1
 bounds:349,1680,97,249
 rotate:90
