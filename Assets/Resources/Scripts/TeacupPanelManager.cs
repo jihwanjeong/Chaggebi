@@ -8,7 +8,8 @@ public class TeacupPanelManager : MonoBehaviour
     public GameObject TeabagWarningPopup;
     public GameObject CGBGachaPopup;
     GameObject CGBCard;
-    public GameObject CGBCardPFB, CGBCardPFY, CGBCardPFR, CGBCardPFG;
+    public GameObject CGBCardPF;
+    GameObject TempCGB;
     public GameObject CGBInventory;
     public GameObject GachaCGB; //»ÌÀº Â÷±úºñ
     public GameObject GachaCGBPlace;
@@ -36,17 +37,17 @@ public class TeacupPanelManager : MonoBehaviour
                     break;
                 case 1:
                     System.Random rand2 = new System.Random();
-                    temp = rand2.Next(1, 5);
+                    temp = rand2.Next(1, 4);
                     arr[i] = temp;
                     break;
                 case 2:
                     System.Random rand3 = new System.Random();
-                    temp = rand3.Next(1, 4);
+                    temp = rand3.Next(1, 3);
                     arr[i] = temp;
                     break;
                 case 3:
                     System.Random rand4 = new System.Random();
-                    temp = rand4.Next(1, 3);
+                    temp = rand4.Next(1, 5);
                     arr[i] = temp;
                     break;
                
@@ -65,35 +66,8 @@ public class TeacupPanelManager : MonoBehaviour
            
     
         }
+    
         switch (arr[1])
-        {
-            case 1:
-                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.brown;
-                CGBInfo.GetComponent<Text>().text = "Ä¿ÇÇ Â÷±úºñ";
-                CGBCard = Instantiate(CGBCardPFB) as GameObject;
-                CGBCard.transform.SetParent(CGBInventory.transform, false);
-                break;
-            case 2:
-                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.red;
-                CGBInfo.GetComponent<Text>().text = "µþ±â Â÷±úºñ";
-                CGBCard = Instantiate(CGBCardPFR) as GameObject;
-                CGBCard.transform.SetParent(CGBInventory.transform, false);
-                break;
-            case 3:
-                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.green;
-                CGBInfo.GetComponent<Text>().text = "³ìÂ÷ Â÷±úºñ";
-                CGBCard = Instantiate(CGBCardPFG) as GameObject;
-                CGBCard.transform.SetParent(CGBInventory.transform, false);
-                break;
-            case 4:
-                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.yellow;
-                CGBInfo.GetComponent<Text>().text = "È«Â÷ Â÷±úºñ";
-                CGBCard = Instantiate(CGBCardPFY) as GameObject;
-                CGBCard.transform.SetParent(CGBInventory.transform, false);
-                break;
-            
-        }
-        switch (arr[2])
         {
             case 1:
                 GachaCGB.GetComponent<CGBAppearanceManager>().brow = 1;
@@ -106,13 +80,57 @@ public class TeacupPanelManager : MonoBehaviour
                 break;
 
         }
-        switch (arr[3])
+        switch (arr[2])
         {
             case 1:
                 GachaCGB.GetComponent<CGBAppearanceManager>().mouth = 1;
                 break;
             case 2:
                 GachaCGB.GetComponent<CGBAppearanceManager>().mouth = 2;
+                break;
+
+        }
+        
+        switch (arr[3])
+        { 
+        
+
+            case 1:
+                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.brown;
+                CGBCard.transform.SetParent(CGBInventory.transform, false);
+                CGBInfo.GetComponent<Text>().text = "Ä¿ÇÇ Â÷±úºñ";
+                CGBCard = Instantiate(CGBCardPF) as GameObject;
+                TempCGB = Instantiate(GachaCGB, new Vector3(1f, 1f, 1f), Quaternion.identity);
+                TempCGB.transform.localScale = new Vector3(50f, 50f, 50f);
+                CGBCard.transform.SetParent(CGBInventory.transform, false);
+                TempCGB.transform.SetParent(CGBCard.transform, false);
+                break;
+            case 2:
+                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.red;
+                CGBInfo.GetComponent<Text>().text = "µþ±â Â÷±úºñ";
+                CGBCard = Instantiate(CGBCardPF) as GameObject;
+                TempCGB = Instantiate(GachaCGB, new Vector3(1f, 1f, 1f), Quaternion.identity);
+                TempCGB.transform.localScale = new Vector3(50f, 50f, 50f);
+                CGBCard.transform.SetParent(CGBInventory.transform, false);
+                TempCGB.transform.SetParent(CGBCard.transform, false);
+                break;
+            case 3:
+                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.green;
+                CGBInfo.GetComponent<Text>().text = "³ìÂ÷ Â÷±úºñ";
+                CGBCard = Instantiate(CGBCardPF) as GameObject;
+                TempCGB = Instantiate(GachaCGB, new Vector3(1f, 1f, 1f), Quaternion.identity);
+                TempCGB.transform.localScale = new Vector3(50f, 50f, 50f);
+                CGBCard.transform.SetParent(CGBInventory.transform, false);
+                TempCGB.transform.SetParent(CGBCard.transform, false);
+                break;
+            case 4:
+                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.yellow;
+                CGBInfo.GetComponent<Text>().text = "È«Â÷ Â÷±úºñ";
+                CGBCard = Instantiate(CGBCardPF) as GameObject;
+                TempCGB = Instantiate(GachaCGB,new Vector3(1f, 1f, 1f), Quaternion.identity);
+                TempCGB.transform.localScale = new Vector3(50f, 50f, 50f);
+                CGBCard.transform.SetParent(CGBInventory.transform, false);
+                TempCGB.transform.SetParent(CGBCard.transform, false);
                 break;
 
         }
