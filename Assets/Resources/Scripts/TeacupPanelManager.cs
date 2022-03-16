@@ -57,10 +57,10 @@ public class TeacupPanelManager : MonoBehaviour
         switch (arr[0])
         {
             case 1:
-                GachaCGB.GetComponent<CGBAppearanceManager>().skin = CGBAppearanceManager.skins.baby;
+                GachaCGB.GetComponent<CGBAppearanceManager>().type = CGBAppearanceManager.skins.baby;
                 break;
             case 2:
-                GachaCGB.GetComponent<CGBAppearanceManager>().skin = CGBAppearanceManager.skins.baby;
+                GachaCGB.GetComponent<CGBAppearanceManager>().type = CGBAppearanceManager.skins.baby;
                 break;
            
     
