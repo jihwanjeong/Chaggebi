@@ -7319,7 +7319,6 @@ GameObject:
   - component: {fileID: 1034773220}
   - component: {fileID: 1034773219}
   - component: {fileID: 1034773221}
-  - component: {fileID: 1034773222}
   m_Layer: 5
   m_Name: Chaggebi Selection Panel
   m_TagString: Untagged
@@ -7415,17 +7414,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!210 &1034773222
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1034773217}
-  m_Enabled: 1
-  m_SortingLayerID: 1303802737
-  m_SortingLayer: 2
-  m_SortingOrder: 0
 --- !u!1 &1042204808
 GameObject:
   m_ObjectHideFlags: 0
@@ -8128,7 +8116,6 @@ RectTransform:
   - {fileID: 662812276}
   - {fileID: 2005641220}
   - {fileID: 1293362285}
-  - {fileID: 1131324357}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8137,114 +8124,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1131324356
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1131324357}
-  - component: {fileID: 1131324360}
-  - component: {fileID: 1131324358}
-  - component: {fileID: 1131324359}
-  m_Layer: 1
-  m_Name: Teabag
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1131324357
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1131324356}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -11705.852}
-  m_LocalScale: {x: 100.012276, y: 100.012276, z: 100.012276}
-  m_Children: []
-  m_Father: {fileID: 1075481362}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 360, y: -912.26855}
-  m_SizeDelta: {x: 1, y: 1}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!210 &1131324358
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1131324356}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 10
---- !u!212 &1131324359
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1131324356}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 16a95bda878a3d04b835525cfc74efca, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.6, y: 1.6}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!222 &1131324360
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1131324356}
-  m_CullTransparentMesh: 1
 --- !u!1 &1144832928
 GameObject:
   m_ObjectHideFlags: 0
@@ -9164,7 +9043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1293362285
 Transform:
   m_ObjectHideFlags: 0
@@ -12519,7 +12398,10 @@ MonoBehaviour:
   TeabagWarningPopup: {fileID: 824256658}
   CGBGachaPopup: {fileID: 1935248060}
   GardenMainPanel: {fileID: 1588525581}
-  TeabagResources: {fileID: 0}
+  TeaBagRed: {fileID: 2652646964527133997, guid: af8f463672729414fa677a3344b13763, type: 3}
+  TeaBagGreen: {fileID: 672856899184913045, guid: 1d7d5197b1bb87e4db0b0b44c5bad5eb, type: 3}
+  TeaBagYellow: {fileID: 3505574729050287514, guid: b3e9f887e92b2bb40bc68fe65a9599b2, type: 3}
+  TeaBagBrown: {fileID: 1213876807524600208, guid: 1101f452d8925e24fa279b9b558c42d1, type: 3}
   CGBCardPF: {fileID: 1291051124175266337, guid: 53b0fbe33289b544a989c35476cf44a6, type: 3}
   CGBInventory: {fileID: 2042415853}
   GachaCGB: {fileID: 3932101661581272115, guid: 65a999f10c4b21e46afccdeb60d650f3, type: 3}
@@ -12532,6 +12414,10 @@ MonoBehaviour:
   green: 0
   brown: 0
   yellow: 0
+  enableRedTea: 0
+  enableGreenTea: 0
+  enableBrownTea: 0
+  enableYellowTea: 1
 --- !u!1 &1763355153
 GameObject:
   m_ObjectHideFlags: 0
@@ -14529,7 +14415,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2005641220}
-  - component: {fileID: 2005641221}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -14556,17 +14441,6 @@ Transform:
   m_Father: {fileID: 1075481362}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &2005641221
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2005641219}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &2035658335
 GameObject:
   m_ObjectHideFlags: 0

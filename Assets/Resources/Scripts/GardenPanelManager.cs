@@ -51,10 +51,12 @@ namespace Chaggebi
             {
                 TeacupPanel.SetActive(false);
                 ButtonUIPanel.SetActive(true);
+                GardenMainPanel.SetActive(true);
             }
             else
             {
                 TeacupPanel.SetActive(true);
+                GardenMainPanel.SetActive(false);
                 ButtonUIPanel.SetActive(false);
             }
 

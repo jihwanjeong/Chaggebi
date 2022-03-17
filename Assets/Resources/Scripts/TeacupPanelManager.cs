@@ -9,7 +9,7 @@ public class TeacupPanelManager : MonoBehaviour
     public GameObject TeabagWarningPopup;
     public GameObject CGBGachaPopup;
     public GameObject GardenMainPanel;
-    public GameObject TeabagResources;
+    public GameObject TeaBagRed, TeaBagGreen, TeaBagYellow, TeaBagBrown;
     GameObject CGBCard;
     public GameObject CGBCardPF;
     public GameObject CGBInventory;
@@ -24,7 +24,8 @@ public class TeacupPanelManager : MonoBehaviour
     private int Teabags = 100;
     private static int[] arr = new int[5];
     public bool red, green, brown, yellow = false;
-    
+    public bool enableRedTea, enableGreenTea, enableBrownTea, enableYellowTea = true;
+
     public void RandomCGBOutfit() 
     {
         GameObject TempCGB;
@@ -43,11 +44,11 @@ public class TeacupPanelManager : MonoBehaviour
                 CGBenable = true;
                 if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "µþ±â Â÷±úºñ")
                     red = true;
-                if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "³ìÂ÷ Â÷±úºñ")
+                else if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "³ìÂ÷ Â÷±úºñ")
                     green = true;
-                if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "Ä¿ÇÇ Â÷±úºñ")
+                else if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "Ä¿ÇÇ Â÷±úºñ")
                     brown = true;
-                if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "È«Â÷ Â÷±úºñ")
+                else if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "È«Â÷ Â÷±úºñ")
                     yellow = true;
             }
             else if (CGBenable == true)
@@ -204,11 +205,35 @@ public class TeacupPanelManager : MonoBehaviour
     {
         TeabagWarningPopup.SetActive(false);
     }
-    public void EnableTeabags()
+    public void EnableTeabagsRed()
     {
         GameObject teabag;
-        teabag = Instantiate(TeabagResources) as GameObject;
+        teabag = Instantiate(TeaBagRed) as GameObject;
         teabag.transform.SetParent(GardenMainPanel.transform, false);
+
+
+    }
+    public void EnableTeabagsYellow()
+    {
+        GameObject teabag2;
+        teabag2 = Instantiate(TeaBagYellow) as GameObject;
+        teabag2.transform.SetParent(GardenMainPanel.transform, false);
+
+
+    }
+    public void EnableTeabagsGreen()
+    {
+        GameObject teabag3;
+        teabag3 = Instantiate(TeaBagGreen) as GameObject;
+        teabag3.transform.SetParent(GardenMainPanel.transform, false);
+
+
+    }
+    public void EnableTeabagsBrown()
+    {
+        GameObject teabag4;
+        teabag4 = Instantiate(TeaBagBrown) as GameObject;
+        teabag4.transform.SetParent(GardenMainPanel.transform, false);
 
 
     }
@@ -216,6 +241,63 @@ public class TeacupPanelManager : MonoBehaviour
     {
         Destroy(gachaCGB);
         CGBGachaPopup.SetActive(false);
+    }
+
+    public void RedTeabag()
+    {
+        if (red == true && enableRedTea == true)
+        {
+            InvokeRepeating("EnableTeabagsRed", 1, 3);
+            enableRedTea = false;
+        }
+        else if (red == false && enableRedTea == false)
+        {
+            CancelInvoke("EnableTeabagsRed");
+            enableRedTea = true;
+        }
+
+    }
+    public void GreenTeabag()
+    {
+        if (green == true && enableGreenTea == true)
+        {
+            InvokeRepeating("EnableTeabagsGreen", 1, 3);
+            enableGreenTea = false;
+        }
+        else if (green == false && enableGreenTea == false)
+        {
+            CancelInvoke("EnableTeabagsGreen");
+            enableGreenTea = true;
+        }
+
+    }
+    public void YellowTeabag()
+    {
+        if (yellow == true && enableYellowTea == true)
+        {
+            InvokeRepeating("EnableTeabagsYellow", 1, 3);
+            enableYellowTea = false;
+        }
+        else if (yellow == false && enableYellowTea == false)
+        {
+            CancelInvoke("EnableTeabagsYellow");
+            enableYellowTea = true;
+        }
+
+    }
+    public void BrownTeabag()
+    {
+        if (brown == true && enableBrownTea == true)
+        {
+            InvokeRepeating("EnableTeabagsBrown", 1, 3);
+            enableBrownTea = false;
+        }
+        else if (brown == false && enableBrownTea == false)
+        {
+            CancelInvoke("EnableTeabagsBrown");
+            enableBrownTea = true;
+        }
+
     }
     void Start()
     {
@@ -225,11 +307,14 @@ public class TeacupPanelManager : MonoBehaviour
     }
 
 
+
+
     void Update()
     {
-        if(red == true)
-        InvokeRepeating("EnableTeabags", 1, 3);
-
+        RedTeabag();
+        GreenTeabag();
+        BrownTeabag();
+        YellowTeabag();
         RemainTeabags.GetComponent<Text>().text = "    x " + Teabags.ToString();
         
     }
