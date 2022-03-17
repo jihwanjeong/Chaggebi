@@ -12,6 +12,7 @@ namespace Chaggebi
         public GameObject ShopPanel;
         public GameObject TeacupPanel;
         public GameObject ButtonUIPanel;
+        public GameObject GardenMainPanel;
         public Button ChaggebiPanelEnable;
         public Button ShopPanelEnable;
         public Button ChaggebiPanelExit;
@@ -25,9 +26,15 @@ namespace Chaggebi
         public void ChaggebiPanelControl()
         {
             if (ChaggebiSelectPanel.activeSelf == true)
+            {
                 ChaggebiSelectPanel.SetActive(false);
+                GardenMainPanel.SetActive(true);
+            }
             else
+            {
                 ChaggebiSelectPanel.SetActive(true);
+                GardenMainPanel.SetActive(false);
+            }
 
         }
         public void ShopPanelControl()

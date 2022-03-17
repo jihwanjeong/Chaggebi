@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class TeacupPanelManager : MonoBehaviour
 {
     public GameObject TeabagWarningPopup;
     public GameObject CGBGachaPopup;
+    public GameObject GardenMainPanel;
+    public GameObject TeabagResources;
     GameObject CGBCard;
     public GameObject CGBCardPF;
-    GameObject TempCGB;
     public GameObject CGBInventory;
     public GameObject GachaCGB; //»ÌÀº Â÷±úºñ
+    GameObject GardenCGB;
     public GameObject GachaCGBPlace;
     GameObject gachaCGB;
     public Button GachaClose;
@@ -20,9 +23,41 @@ public class TeacupPanelManager : MonoBehaviour
     public Button useTeabag;
     private int Teabags = 100;
     private static int[] arr = new int[5];
+    public bool red, green, brown, yellow = false;
     
     public void RandomCGBOutfit() 
     {
+        GameObject TempCGB;
+        bool CGBenable = false;
+        float posx = Random.Range(-4.0f, 4.0f);
+        float posy = Random.Range(-3.0f, 1.0f);
+        float posz = Random.Range(-3.5f, 2.5f);
+
+
+        void SummmonCGBGarden()
+        {   if (CGBenable == false)
+            {
+                GardenCGB = Instantiate(TempCGB) as GameObject;
+                GardenCGB.transform.SetParent(GardenMainPanel.transform, false);
+                GardenCGB.transform.GetChild(0).position = new Vector3(posx, posy, posz);
+                CGBenable = true;
+                if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "µþ±â Â÷±úºñ")
+                    red = true;
+                if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "³ìÂ÷ Â÷±úºñ")
+                    green = true;
+                if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "Ä¿ÇÇ Â÷±úºñ")
+                    brown = true;
+                if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "È«Â÷ Â÷±úºñ")
+                    yellow = true;
+            }
+            else if (CGBenable == true)
+            {
+                Destroy(GardenCGB);
+                CGBenable = false;
+            }
+
+
+        }
         int temp;
         int i;
   
@@ -103,6 +138,8 @@ public class TeacupPanelManager : MonoBehaviour
                 TempCGB = Instantiate(GachaCGB, new Vector3(1f, 1f, 1f), Quaternion.identity);
                 TempCGB.transform.localScale = new Vector3(50f, 50f, 50f);
                 CGBCard.transform.SetParent(CGBInventory.transform, false);
+                CGBCard.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(SummmonCGBGarden);
+                CGBCard.transform.GetChild(1).GetComponent<Text>().text = "Ä¿ÇÇ Â÷±úºñ";
                 TempCGB.transform.SetParent(CGBCard.transform, false);
                 break;
             case 2:
@@ -112,6 +149,8 @@ public class TeacupPanelManager : MonoBehaviour
                 TempCGB = Instantiate(GachaCGB, new Vector3(1f, 1f, 1f), Quaternion.identity);
                 TempCGB.transform.localScale = new Vector3(50f, 50f, 50f);
                 CGBCard.transform.SetParent(CGBInventory.transform, false);
+                CGBCard.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(SummmonCGBGarden);
+                CGBCard.transform.GetChild(1).GetComponent<Text>().text = "µþ±â Â÷±úºñ";
                 TempCGB.transform.SetParent(CGBCard.transform, false);
                 break;
             case 3:
@@ -121,6 +160,8 @@ public class TeacupPanelManager : MonoBehaviour
                 TempCGB = Instantiate(GachaCGB, new Vector3(1f, 1f, 1f), Quaternion.identity);
                 TempCGB.transform.localScale = new Vector3(50f, 50f, 50f);
                 CGBCard.transform.SetParent(CGBInventory.transform, false);
+                CGBCard.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(SummmonCGBGarden);
+                CGBCard.transform.GetChild(1).GetComponent<Text>().text = "³ìÂ÷ Â÷±úºñ";
                 TempCGB.transform.SetParent(CGBCard.transform, false);
                 break;
             case 4:
@@ -130,6 +171,8 @@ public class TeacupPanelManager : MonoBehaviour
                 TempCGB = Instantiate(GachaCGB,new Vector3(1f, 1f, 1f), Quaternion.identity);
                 TempCGB.transform.localScale = new Vector3(50f, 50f, 50f);
                 CGBCard.transform.SetParent(CGBInventory.transform, false);
+                CGBCard.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(SummmonCGBGarden);
+                CGBCard.transform.GetChild(1).GetComponent<Text>().text = "È«Â÷ Â÷±úºñ";
                 TempCGB.transform.SetParent(CGBCard.transform, false);
                 break;
 
@@ -156,9 +199,18 @@ public class TeacupPanelManager : MonoBehaviour
 
         }
     }
+   
     public void Disablewarning()
     {
         TeabagWarningPopup.SetActive(false);
+    }
+    public void EnableTeabags()
+    {
+        GameObject teabag;
+        teabag = Instantiate(TeabagResources) as GameObject;
+        teabag.transform.SetParent(GardenMainPanel.transform, false);
+
+
     }
     public void DisableGachaPopup()
     {
@@ -169,12 +221,15 @@ public class TeacupPanelManager : MonoBehaviour
     {
         useTeabag.onClick.AddListener(UseTeabags);
         GachaClose.onClick.AddListener(DisableGachaPopup);
+        
     }
 
 
     void Update()
     {
-        
+        if(red == true)
+        InvokeRepeating("EnableTeabags", 1, 3);
+
         RemainTeabags.GetComponent<Text>().text = "    x " + Teabags.ToString();
         
     }

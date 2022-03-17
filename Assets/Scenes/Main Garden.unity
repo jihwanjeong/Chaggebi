@@ -3687,7 +3687,6 @@ GameObject:
   - component: {fileID: 548276911}
   - component: {fileID: 548276913}
   - component: {fileID: 548276912}
-  - component: {fileID: 548276914}
   m_Layer: 5
   m_Name: Shop Panel
   m_TagString: Untagged
@@ -3753,17 +3752,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548276910}
   m_CullTransparentMesh: 1
---- !u!210 &548276914
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548276910}
-  m_Enabled: 1
-  m_SortingLayerID: 1303802737
-  m_SortingLayer: 2
-  m_SortingOrder: 0
 --- !u!1 &555780378
 GameObject:
   m_ObjectHideFlags: 0
@@ -4909,7 +4897,8 @@ MonoBehaviour:
   ChaggebiSelectPanel: {fileID: 1034773217}
   ShopPanel: {fileID: 548276910}
   TeacupPanel: {fileID: 662812275}
-  ButtonUIPanel: {fileID: 0}
+  ButtonUIPanel: {fileID: 815015568}
+  GardenMainPanel: {fileID: 1588525581}
   ChaggebiPanelEnable: {fileID: 980852760}
   ShopPanelEnable: {fileID: 193905948}
   ChaggebiPanelExit: {fileID: 495518654}
@@ -5210,7 +5199,6 @@ GameObject:
   m_Component:
   - component: {fileID: 662812276}
   - component: {fileID: 662812278}
-  - component: {fileID: 662812277}
   m_Layer: 5
   m_Name: Teacup Panel
   m_TagString: Untagged
@@ -5244,17 +5232,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!210 &662812277
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 662812275}
-  m_Enabled: 1
-  m_SortingLayerID: 1303802737
-  m_SortingLayer: 2
-  m_SortingOrder: 0
 --- !u!222 &662812278
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6034,7 +6011,6 @@ GameObject:
   - component: {fileID: 815015571}
   - component: {fileID: 815015570}
   - component: {fileID: 815015572}
-  - component: {fileID: 815015573}
   m_Layer: 5
   m_Name: Button UI Panel
   m_TagString: Untagged
@@ -6130,17 +6106,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!210 &815015573
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 815015568}
-  m_Enabled: 1
-  m_SortingLayerID: 2058339557
-  m_SortingLayer: 1
-  m_SortingOrder: 0
 --- !u!1 &821724589
 GameObject:
   m_ObjectHideFlags: 0
@@ -8163,6 +8128,7 @@ RectTransform:
   - {fileID: 662812276}
   - {fileID: 2005641220}
   - {fileID: 1293362285}
+  - {fileID: 1131324357}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8171,6 +8137,114 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1131324356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1131324357}
+  - component: {fileID: 1131324360}
+  - component: {fileID: 1131324358}
+  - component: {fileID: 1131324359}
+  m_Layer: 1
+  m_Name: Teabag
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1131324357
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131324356}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -11705.852}
+  m_LocalScale: {x: 100.012276, y: 100.012276, z: 100.012276}
+  m_Children: []
+  m_Father: {fileID: 1075481362}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 360, y: -912.26855}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!210 &1131324358
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131324356}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10
+--- !u!212 &1131324359
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131324356}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 16a95bda878a3d04b835525cfc74efca, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.6, y: 1.6}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!222 &1131324360
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131324356}
+  m_CullTransparentMesh: 1
 --- !u!1 &1144832928
 GameObject:
   m_ObjectHideFlags: 0
@@ -9083,6 +9157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1293362285}
+  - component: {fileID: 1293362286}
   m_Layer: 0
   m_Name: Chaggebis
   m_TagString: Untagged
@@ -9106,6 +9181,17 @@ Transform:
   m_Father: {fileID: 1075481362}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &1293362286
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293362284}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &1295204315
 GameObject:
   m_ObjectHideFlags: 0
@@ -11618,13 +11704,14 @@ GameObject:
   - component: {fileID: 1588525582}
   - component: {fileID: 1588525584}
   - component: {fileID: 1588525583}
+  - component: {fileID: 1588525585}
   m_Layer: 5
   m_Name: Garden Main Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1588525582
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11641,8 +11728,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 79.33502}
-  m_SizeDelta: {x: 0, y: -158.67}
+  m_AnchoredPosition: {x: 0, y: -272.19}
+  m_SizeDelta: {x: 0, y: -861.72}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1588525583
 MonoBehaviour:
@@ -11657,7 +11744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11682,6 +11769,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588525581}
   m_CullTransparentMesh: 1
+--- !u!114 &1588525585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588525581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1594180038
 GameObject:
   m_ObjectHideFlags: 0
@@ -12405,10 +12518,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeabagWarningPopup: {fileID: 824256658}
   CGBGachaPopup: {fileID: 1935248060}
-  CGBCardPFB: {fileID: 1524467051782210133, guid: 3ced5e3434387c44382f578dfcb8e7e3, type: 3}
-  CGBCardPFY: {fileID: 4880659245527815565, guid: 9cdc8dcfe5753bd45ba56fa9f5ba3bb0, type: 3}
-  CGBCardPFR: {fileID: 489294410196492320, guid: 04640e60f4879ee448ae3eec7b800b3f, type: 3}
-  CGBCardPFG: {fileID: 2541405059333721562, guid: cf3de3bb2d9ade148a41a861ed98f8b0, type: 3}
+  GardenMainPanel: {fileID: 1588525581}
+  TeabagResources: {fileID: 0}
+  CGBCardPF: {fileID: 1291051124175266337, guid: 53b0fbe33289b544a989c35476cf44a6, type: 3}
   CGBInventory: {fileID: 2042415853}
   GachaCGB: {fileID: 3932101661581272115, guid: 65a999f10c4b21e46afccdeb60d650f3, type: 3}
   GachaCGBPlace: {fileID: 408587642}
@@ -12416,6 +12528,10 @@ MonoBehaviour:
   RemainTeabags: {fileID: 345650605}
   CGBInfo: {fileID: 1181864820}
   useTeabag: {fileID: 516932841}
+  red: 0
+  green: 0
+  brown: 0
+  yellow: 0
 --- !u!1 &1763355153
 GameObject:
   m_ObjectHideFlags: 0
@@ -14413,6 +14529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2005641220}
+  - component: {fileID: 2005641221}
   m_Layer: 0
   m_Name: BackGround
   m_TagString: Untagged
@@ -14439,6 +14556,17 @@ Transform:
   m_Father: {fileID: 1075481362}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!210 &2005641221
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005641219}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &2035658335
 GameObject:
   m_ObjectHideFlags: 0
