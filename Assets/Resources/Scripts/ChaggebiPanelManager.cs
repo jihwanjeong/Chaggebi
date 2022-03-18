@@ -25,10 +25,5 @@ namespace Chaggebi
             ExitInventory.onClick.AddListener(InventoryPanelControl);
         }
 
-       
-        void Update()
-        {
-
-        }
     }
 }

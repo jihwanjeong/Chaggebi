@@ -181,16 +181,6 @@ public class TeacupPanelManager : MonoBehaviour
             Teabags -= 1;
         }
     }
-    ////Â÷±úºñ »Ì±â¾Ö´Ï ³¡³µÀ»¶§ ½ÇÇà
-    //void EventCGB(TrackEntry trackEntry, Spine.Event e)
-    //{
-    //    CGBAnimation.AnimationState.SetAnimation(0, "summon_idle", true);
-    //    if (e.Data.Name == "endCGB")
-    //    {
-    //        CGBGachaPopup.SetActive(true);
-    //        Teabags -= 1;
-    //    }
-    //}
 
     void Start()
     {
