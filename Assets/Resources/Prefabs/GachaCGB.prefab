@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonAnimation: {fileID: 3932101660623157156}
+  skeletonGraphic: {fileID: 0}
 --- !u!210 &7479223861608948506
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -175,5 +176,5 @@ SortingGroup:
   m_GameObject: {fileID: 3932101661581272115}
   m_Enabled: 1
   m_SortingLayerID: -1963675359
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0

@@ -21,17 +21,24 @@ namespace Chaggebi
         public Text TotalGold;
         GoldManager Gmanager;
         public GameObject ButtonUIPanel;
+        public GameObject GardenPanel;
         public Transform slotsParent;
         CGBSlot[] slots;
 
         public void ChaggebiPanelControl()
         {
             if (ChaggebiSelectPanel.activeSelf == true)
+            {
                 ChaggebiSelectPanel.SetActive(false);
+                ButtonUIPanel.SetActive(true);
+                GardenPanel.SetActive(true);
+            }
             else
             {
                 UpdateInven();
                 ChaggebiSelectPanel.SetActive(true);
+                ButtonUIPanel.SetActive(false);
+                GardenPanel.SetActive(false);
             }
 
         }
@@ -49,11 +56,13 @@ namespace Chaggebi
             {
                 TeacupPanel.SetActive(false);
                 ButtonUIPanel.SetActive(true);
+                GardenPanel.SetActive(true);
             }
             else
             {
                 TeacupPanel.SetActive(true);
                 ButtonUIPanel.SetActive(false);
+                GardenPanel.SetActive(false);
             }
 
         }
