@@ -2,19 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Spine;
+using Spine.Unity;
 
 public class TeacupPanelManager : MonoBehaviour
 {
     public GameObject TeabagWarningPopup;
     public GameObject CGBGachaPopup;
-    public GameObject GardenMainPanel;
-    public GameObject TeaBagRed, TeaBagGreen, TeaBagYellow, TeaBagBrown;
-    GameObject CGBCard;
-    public GameObject CGBCardPF;
     public GameObject CGBInventory;
     public GameObject GachaCGB; //»ÌÀº Â÷±úºñ
-    GameObject GardenCGB;
     public GameObject GachaCGBPlace;
     GameObject gachaCGB;
     public Button GachaClose;
@@ -23,45 +19,18 @@ public class TeacupPanelManager : MonoBehaviour
     public Button useTeabag;
     private int Teabags = 100;
     private static int[] arr = new int[5];
-    public bool red, green, brown, yellow = false;
-    public bool enableRedTea, enableGreenTea, enableBrownTea, enableYellowTea = true;
+    public GameObject TeabagUseButton;
+    public SkeletonAnimation bgAnimation;
+    public SkeletonAnimation CGBAnimation;
+    CGBData cgbData = new CGBData();
+    CGBSpineSetter cgbSpineUpdater;
 
     public void RandomCGBOutfit() 
     {
-        GameObject TempCGB;
-        bool CGBenable = false;
-        float posx = Random.Range(-4.0f, 4.0f);
-        float posy = Random.Range(-3.0f, 1.0f);
-        float posz = Random.Range(-3.5f, 2.5f);
-
-
-        void SummmonCGBGarden()
-        {   if (CGBenable == false)
-            {
-                GardenCGB = Instantiate(TempCGB) as GameObject;
-                GardenCGB.transform.SetParent(GardenMainPanel.transform, false);
-                GardenCGB.transform.GetChild(0).position = new Vector3(posx, posy, posz);
-                CGBenable = true;
-                if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "µþ±â Â÷±úºñ")
-                    red = true;
-                else if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "³ìÂ÷ Â÷±úºñ")
-                    green = true;
-                else if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "Ä¿ÇÇ Â÷±úºñ")
-                    brown = true;
-                else if (CGBCard.transform.GetChild(1).GetComponent<Text>().text == "È«Â÷ Â÷±úºñ")
-                    yellow = true;
-            }
-            else if (CGBenable == true)
-            {
-                Destroy(GardenCGB);
-                CGBenable = false;
-            }
-
-
-        }
+        //·£´ýÁ¤º¸¼³Á¤
         int temp;
         int i;
-  
+
         for (i = 0; i < 4; i++)
         {
             switch (i)
@@ -73,20 +42,20 @@ public class TeacupPanelManager : MonoBehaviour
                     break;
                 case 1:
                     System.Random rand2 = new System.Random();
-                    temp = rand2.Next(1, 4);
+                    temp = rand2.Next(1, 5);
                     arr[i] = temp;
                     break;
                 case 2:
                     System.Random rand3 = new System.Random();
-                    temp = rand3.Next(1, 3);
+                    temp = rand3.Next(1, 4);
                     arr[i] = temp;
                     break;
                 case 3:
                     System.Random rand4 = new System.Random();
-                    temp = rand4.Next(1, 5);
+                    temp = rand4.Next(1, 3);
                     arr[i] = temp;
                     break;
-               
+
 
             }
 
@@ -94,93 +63,77 @@ public class TeacupPanelManager : MonoBehaviour
         switch (arr[0])
         {
             case 1:
-                GachaCGB.GetComponent<CGBAppearanceManager>().type = CGBAppearanceManager.skins.baby;
+                cgbData.skin = CGBData.skins.baby;
                 break;
             case 2:
-                GachaCGB.GetComponent<CGBAppearanceManager>().type = CGBAppearanceManager.skins.baby;
+                cgbData.skin = CGBData.skins.baby;
                 break;
-           
-    
+
+
         }
-    
         switch (arr[1])
         {
             case 1:
-                GachaCGB.GetComponent<CGBAppearanceManager>().brow = 1;
+                cgbData.bodyColor = CGBData.colors.brown;
+                cgbData.name = "È«Â÷ Â÷±úºñ";
+                cgbData.description = "Çâ±ßÇÑ È«Â÷ÇâÀÌ ³ª´Â Â÷±úºñ";
+                CGBInfo.text = "È«Â÷ Â÷±úºñ";
                 break;
             case 2:
-                GachaCGB.GetComponent<CGBAppearanceManager>().brow = 2;
+                cgbData.bodyColor = CGBData.colors.red;
+                cgbData.name = "µþ±â Â÷±úºñ";
+                cgbData.description = "´ÞÄÞÇÑ µþ±âÇâÀÌ ³ª´Â Â÷±úºñ";
+                CGBInfo.text = "µþ±â Â÷±úºñ";
                 break;
             case 3:
-                GachaCGB.GetComponent<CGBAppearanceManager>().brow = 3;
+                cgbData.bodyColor = CGBData.colors.green;
+                cgbData.name = "³ìÂ÷ Â÷±úºñ";
+                cgbData.description = "°í¼ÒÇÑ ³ìÂ÷ÇâÀÌ ³ª´Â Â÷±úºñ";
+                CGBInfo.text = "³ìÂ÷ Â÷±úºñ";
+                break;
+            case 4:
+                cgbData.bodyColor = CGBData.colors.yellow;
+                cgbData.name = "·¹¸ó Â÷±úºñ";
+                cgbData.description = "»óÅ­ÇÑ È«Â÷ÇâÀÌ ³ª´Â Â÷±úºñ";
+                CGBInfo.text = "·¹¸ó Â÷±úºñ";
                 break;
 
         }
         switch (arr[2])
         {
             case 1:
-                GachaCGB.GetComponent<CGBAppearanceManager>().mouth = 1;
+                cgbData.brow = 1;
                 break;
             case 2:
-                GachaCGB.GetComponent<CGBAppearanceManager>().mouth = 2;
-                break;
-
-        }
-        
-        switch (arr[3])
-        { 
-        
-
-            case 1:
-                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.brown;
-                CGBCard.transform.SetParent(CGBInventory.transform, false);
-                CGBInfo.GetComponent<Text>().text = "Ä¿ÇÇ Â÷±úºñ";
-                CGBCard = Instantiate(CGBCardPF) as GameObject;
-                TempCGB = Instantiate(GachaCGB, new Vector3(1f, 1f, 1f), Quaternion.identity);
-                TempCGB.transform.localScale = new Vector3(50f, 50f, 50f);
-                CGBCard.transform.SetParent(CGBInventory.transform, false);
-                CGBCard.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(SummmonCGBGarden);
-                CGBCard.transform.GetChild(1).GetComponent<Text>().text = "Ä¿ÇÇ Â÷±úºñ";
-                TempCGB.transform.SetParent(CGBCard.transform, false);
-                break;
-            case 2:
-                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.red;
-                CGBInfo.GetComponent<Text>().text = "µþ±â Â÷±úºñ";
-                CGBCard = Instantiate(CGBCardPF) as GameObject;
-                TempCGB = Instantiate(GachaCGB, new Vector3(1f, 1f, 1f), Quaternion.identity);
-                TempCGB.transform.localScale = new Vector3(50f, 50f, 50f);
-                CGBCard.transform.SetParent(CGBInventory.transform, false);
-                CGBCard.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(SummmonCGBGarden);
-                CGBCard.transform.GetChild(1).GetComponent<Text>().text = "µþ±â Â÷±úºñ";
-                TempCGB.transform.SetParent(CGBCard.transform, false);
+                cgbData.brow = 2;
                 break;
             case 3:
-                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.green;
-                CGBInfo.GetComponent<Text>().text = "³ìÂ÷ Â÷±úºñ";
-                CGBCard = Instantiate(CGBCardPF) as GameObject;
-                TempCGB = Instantiate(GachaCGB, new Vector3(1f, 1f, 1f), Quaternion.identity);
-                TempCGB.transform.localScale = new Vector3(50f, 50f, 50f);
-                CGBCard.transform.SetParent(CGBInventory.transform, false);
-                CGBCard.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(SummmonCGBGarden);
-                CGBCard.transform.GetChild(1).GetComponent<Text>().text = "³ìÂ÷ Â÷±úºñ";
-                TempCGB.transform.SetParent(CGBCard.transform, false);
-                break;
-            case 4:
-                GachaCGB.GetComponent<CGBAppearanceManager>().bodyColor = CGBAppearanceManager.colors.yellow;
-                CGBInfo.GetComponent<Text>().text = "È«Â÷ Â÷±úºñ";
-                CGBCard = Instantiate(CGBCardPF) as GameObject;
-                TempCGB = Instantiate(GachaCGB,new Vector3(1f, 1f, 1f), Quaternion.identity);
-                TempCGB.transform.localScale = new Vector3(50f, 50f, 50f);
-                CGBCard.transform.SetParent(CGBInventory.transform, false);
-                CGBCard.transform.GetChild(0).GetComponent<Button>().onClick.AddListener(SummmonCGBGarden);
-                CGBCard.transform.GetChild(1).GetComponent<Text>().text = "È«Â÷ Â÷±úºñ";
-                TempCGB.transform.SetParent(CGBCard.transform, false);
+                cgbData.brow = 3;
                 break;
 
         }
-        gachaCGB = Instantiate(GachaCGB) as GameObject;
-        gachaCGB.transform.SetParent(GachaCGBPlace.transform, false);
-        
+        switch (arr[3])
+        {
+            case 1:
+                cgbData.mouth = 1;
+                break;
+            case 2:
+                cgbData.mouth = 2;
+                break;
+
+        }
+
+        //¿ÜÇüÁ¤º¸ Àû¿ë, ÀúÀå
+        cgbSpineUpdater.SetAppearance(cgbData);
+        PlayerData.instance.playerCGBs.Add(new CGBData
+        {
+            name = cgbData.name,
+            description = cgbData.description,
+            bodyColor = cgbData.bodyColor,
+            brow = cgbData.brow,
+            mouth = cgbData.mouth,
+            skin = cgbData.skin
+        });
     }
     public void UseTeabags()
     {
@@ -188,9 +141,9 @@ public class TeacupPanelManager : MonoBehaviour
         {
             if (Teabags >= 1)
             {
-                RandomCGBOutfit();
-                CGBGachaPopup.SetActive(true);
-                Teabags -= 1;
+                TeabagUseButton.SetActive(false);
+                bgAnimation.AnimationState.SetAnimation(0, "use", false);
+                bgAnimation.AnimationState.AddAnimation(0, "idle", true, 0f);
             }
             else
             {
@@ -200,121 +153,47 @@ public class TeacupPanelManager : MonoBehaviour
 
         }
     }
-   
     public void Disablewarning()
     {
         TeabagWarningPopup.SetActive(false);
     }
-    public void EnableTeabagsRed()
-    {
-        GameObject teabag;
-        teabag = Instantiate(TeaBagRed) as GameObject;
-        teabag.transform.SetParent(GardenMainPanel.transform, false);
-
-
-    }
-    public void EnableTeabagsYellow()
-    {
-        GameObject teabag2;
-        teabag2 = Instantiate(TeaBagYellow) as GameObject;
-        teabag2.transform.SetParent(GardenMainPanel.transform, false);
-
-
-    }
-    public void EnableTeabagsGreen()
-    {
-        GameObject teabag3;
-        teabag3 = Instantiate(TeaBagGreen) as GameObject;
-        teabag3.transform.SetParent(GardenMainPanel.transform, false);
-
-
-    }
-    public void EnableTeabagsBrown()
-    {
-        GameObject teabag4;
-        teabag4 = Instantiate(TeaBagBrown) as GameObject;
-        teabag4.transform.SetParent(GardenMainPanel.transform, false);
-
-
-    }
     public void DisableGachaPopup()
     {
-        Destroy(gachaCGB);
+        GachaCGB.SetActive(false);
         CGBGachaPopup.SetActive(false);
+        TeabagUseButton.SetActive(true);
+        RemainTeabags.GetComponent<Text>().text = "    x " + Teabags.ToString();
     }
 
-    public void RedTeabag()
+    //¹è°æ »Ì±â¾Ö´Ï ³¡³µÀ»¶§ ½ÇÇà
+    void EventBG(TrackEntry trackEntry, Spine.Event e)
     {
-        if (red == true && enableRedTea == true)
+        if (e.Data.Name == "cgb")
         {
-            InvokeRepeating("EnableTeabagsRed", 1, 3);
-            enableRedTea = false;
+            GachaCGB.SetActive(true);
+            RandomCGBOutfit();
+            CGBAnimation.AnimationState.SetAnimation(0, "summon", false);
+            CGBAnimation.AnimationState.AddAnimation(0, "summon_idle", true,0f);
         }
-        else if (red == false && enableRedTea == false)
+        else if (e.Data.Name == "endBG")
         {
-            CancelInvoke("EnableTeabagsRed");
-            enableRedTea = true;
+            CGBGachaPopup.SetActive(true);
+            Teabags -= 1;
         }
-
     }
-    public void GreenTeabag()
-    {
-        if (green == true && enableGreenTea == true)
-        {
-            InvokeRepeating("EnableTeabagsGreen", 1, 3);
-            enableGreenTea = false;
-        }
-        else if (green == false && enableGreenTea == false)
-        {
-            CancelInvoke("EnableTeabagsGreen");
-            enableGreenTea = true;
-        }
 
-    }
-    public void YellowTeabag()
-    {
-        if (yellow == true && enableYellowTea == true)
-        {
-            InvokeRepeating("EnableTeabagsYellow", 1, 3);
-            enableYellowTea = false;
-        }
-        else if (yellow == false && enableYellowTea == false)
-        {
-            CancelInvoke("EnableTeabagsYellow");
-            enableYellowTea = true;
-        }
-
-    }
-    public void BrownTeabag()
-    {
-        if (brown == true && enableBrownTea == true)
-        {
-            InvokeRepeating("EnableTeabagsBrown", 1, 3);
-            enableBrownTea = false;
-        }
-        else if (brown == false && enableBrownTea == false)
-        {
-            CancelInvoke("EnableTeabagsBrown");
-            enableBrownTea = true;
-        }
-
-    }
     void Start()
     {
         useTeabag.onClick.AddListener(UseTeabags);
         GachaClose.onClick.AddListener(DisableGachaPopup);
-        
+        cgbSpineUpdater = GachaCGB.GetComponent<CGBSpineSetter>();
+        bgAnimation.AnimationState.Event += EventBG;
+        //CGBAnimation.AnimationState.Event += EventCGB;
     }
 
-
-
-
-    void Update()
+    void Enabled()
     {
-        RedTeabag();
-        GreenTeabag();
-        BrownTeabag();
-        YellowTeabag();
+        
         RemainTeabags.GetComponent<Text>().text = "    x " + Teabags.ToString();
         
     }

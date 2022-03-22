@@ -166,11 +166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonAnimation: {fileID: 3932101660623157156}
-  age: 1
-  skin: 0
-  bodyColor: 2
-  mouth: 2
-  brow: 3
 --- !u!210 &7479223861608948506
 SortingGroup:
   m_ObjectHideFlags: 0
