@@ -18,6 +18,8 @@ public class CGBSpineSetter : MonoBehaviour
     Color redCheek = new Color32(243, 180, 253, 231);
     Color brownBrow = new Color32(241, 164, 86, 255);
     Color brownCheek = new Color32(228, 225, 212, 231);
+    Color blueBrow = new Color32(175, 141, 215, 255);
+    Color blueCheek = new Color32(228, 134, 255, 231);
 
     //스파인 슬롯이름
     string bodySlot = "body";
@@ -62,6 +64,10 @@ public class CGBSpineSetter : MonoBehaviour
                     skeletonAnimation.Skeleton.FindSlot(browRSlot).SetColor(brownBrow); skeletonAnimation.Skeleton.FindSlot(browLSlot).SetColor(brownBrow);
                     skeletonAnimation.Skeleton.FindSlot(cheekRSlot).SetColor(brownCheek); skeletonAnimation.Skeleton.FindSlot(cheekLSlot).SetColor(brownCheek);
                     break;
+                case CGBData.colors.blue:
+                    skeletonAnimation.Skeleton.FindSlot(browRSlot).SetColor(blueBrow); skeletonAnimation.Skeleton.FindSlot(browLSlot).SetColor(blueBrow);
+                    skeletonAnimation.Skeleton.FindSlot(cheekRSlot).SetColor(blueCheek); skeletonAnimation.Skeleton.FindSlot(cheekLSlot).SetColor(blueCheek);
+                    break;
             }
         }
         else if (skeletonGraphic != null)
@@ -96,6 +102,10 @@ public class CGBSpineSetter : MonoBehaviour
                 case CGBData.colors.brown:
                     skeletonGraphic.Skeleton.FindSlot(browRSlot).SetColor(brownBrow); skeletonGraphic.Skeleton.FindSlot(browLSlot).SetColor(brownBrow);
                     skeletonGraphic.Skeleton.FindSlot(cheekRSlot).SetColor(brownCheek); skeletonGraphic.Skeleton.FindSlot(cheekLSlot).SetColor(brownCheek);
+                    break;
+                case CGBData.colors.blue:
+                    skeletonGraphic.Skeleton.FindSlot(browRSlot).SetColor(blueBrow); skeletonGraphic.Skeleton.FindSlot(browLSlot).SetColor(blueBrow);
+                    skeletonGraphic.Skeleton.FindSlot(cheekRSlot).SetColor(blueCheek); skeletonGraphic.Skeleton.FindSlot(cheekLSlot).SetColor(blueCheek);
                     break;
             }
         }       

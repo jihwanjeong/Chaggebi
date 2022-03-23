@@ -6,9 +6,9 @@ public class CGBData
     public string name { get; set; } = "차깨비";
     public string description { get; set; }
     public int age { get; set; } = 1; //진화단계
-    public enum skins { baby, strawberry }
+    public enum skins { baby, strawberry, lemon, butterfly }
     public skins skin { get; set; } //종류
-    public enum colors { green, yellow, red, brown }
+    public enum colors { green, yellow, red, brown, blue }
     public colors bodyColor { get; set; } //몸색
 
     public int mouth { get; set; }
