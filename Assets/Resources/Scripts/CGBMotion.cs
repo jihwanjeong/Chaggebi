@@ -7,6 +7,7 @@ public class CGBMotion : MonoBehaviour
 {
     [SerializeField] int status;
     [SerializeField] bool dir = true;
+    public GameObject CGBMotionAdd;
     public int horizontal = -1;
     public int vertical = -1;
     public GameObject teabagRed, teabagBrown, teabagYellow, teabagGreen;
@@ -24,28 +25,33 @@ public class CGBMotion : MonoBehaviour
         statusActive = false;
     }
     public void Run()
-    {
-        if (dir == true)
-        {
-            vertical = Random.Range(-2, 2);
-            transform.Translate(new Vector3(horizontal, vertical, 0) * 1.0f * Time.deltaTime);
-            if (statusActive == false)
-            {
-                sk.AnimationState.SetAnimation(0, "run", true);
-                statusActive = true;
-            }
-        }
-        if (dir == false)
-        {
-            vertical = Random.Range(-2, 2);
-            transform.Translate(new Vector3(horizontal, vertical, 0) * 1.0f * Time.deltaTime);
-            if (statusActive == false)
-            {
-                sk.AnimationState.SetAnimation(0, "run", true);
-                statusActive = true;
-            }
-        }
 
+    {
+        if ((this.gameObject.transform.position.x <= -3f || this.gameObject.transform.position.x >= 5f))
+            ChangeDir();
+        else 
+            {
+            if (dir == true)
+            {
+                vertical = Random.Range(-2, 2);
+                transform.Translate(new Vector3(horizontal, vertical, 0) * 1.0f * Time.deltaTime);
+                if (statusActive == false)
+                {
+                    sk.AnimationState.SetAnimation(0, "run", true);
+                    statusActive = true;
+                }
+            }
+            if (dir == false)
+            {
+                vertical = Random.Range(-2, 2);
+                transform.Translate(new Vector3(horizontal, vertical, 0) * 1.0f * Time.deltaTime);
+                if (statusActive == false)
+                {
+                    sk.AnimationState.SetAnimation(0, "run", true);
+                    statusActive = true;
+                }
+            }
+        }
 
     }
 
@@ -103,24 +109,29 @@ public class CGBMotion : MonoBehaviour
     }
     public void Walk()
     {
-        if (dir == true)
+        if ((this.gameObject.transform.position.x <= -5f || this.gameObject.transform.position.x >= 5f))
+            ChangeDir();
+        else
         {
-            vertical = Random.Range(0, 2);
-            transform.Translate(new Vector3(horizontal, vertical, 0) * 1.0f * Time.deltaTime);
-            if (statusActive == false)
+            if (dir == true)
             {
-                sk.AnimationState.SetAnimation(0, "walk", true);
-                statusActive = true;
+                vertical = Random.Range(0, 2);
+                transform.Translate(new Vector3(horizontal, vertical, 0) * 1.0f * Time.deltaTime);
+                if (statusActive == false)
+                {
+                    sk.AnimationState.SetAnimation(0, "walk", true);
+                    statusActive = true;
+                }
             }
-        }
-        if (dir == false)
-        {
-            vertical = Random.Range(-1, 1);
-            transform.Translate(new Vector3(horizontal, vertical, 0) * 1.0f * Time.deltaTime);
-            if (statusActive == false)
+            if (dir == false)
             {
-                sk.AnimationState.SetAnimation(0, "walk", true);
-                statusActive = true;
+                vertical = Random.Range(-1, 1);
+                transform.Translate(new Vector3(horizontal, vertical, 0) * 1.0f * Time.deltaTime);
+                if (statusActive == false)
+                {
+                    sk.AnimationState.SetAnimation(0, "walk", true);
+                    statusActive = true;
+                }
             }
         }
 
@@ -193,11 +204,11 @@ public class CGBMotion : MonoBehaviour
     {
 
         if (status == 1)
-            Run();
+            ChangeDir();
         else if (status == 2)
             Idle();
         else if (status == 3)
-            ChangeDir();
+            Run();
         else if (status == 4)
             sleep();
         else if (status == 5)
