@@ -29,8 +29,32 @@ public class CGBMotion : MonoBehaviour
     {
         if ((this.gameObject.transform.position.x <= -3f || this.gameObject.transform.position.x >= 5f))
             ChangeDir();
-        else 
+
+        /*else if ((this.gameObject.transform.position.y <= -2f || this.gameObject.transform.position.x >= 2.4f))
+        {
+            if (dir == true)
             {
+                //vertical = Random.Range(-2, 2);
+                transform.Translate(new Vector3(0, 0, 0) * 1.0f * Time.deltaTime);
+                if (statusActive == false)
+                {
+                    sk.AnimationState.SetAnimation(0, "run", true);
+                    statusActive = true;
+                }
+            }
+            if (dir == false)
+            {
+                //vertical = Random.Range(-2, 2);
+                transform.Translate(new Vector3(0, 0, 0) * 1.0f * Time.deltaTime);
+                if (statusActive == false)
+                {
+                    sk.AnimationState.SetAnimation(0, "run", true);
+                    statusActive = true;
+                }
+            }
+        }*/
+        else
+        {
             if (dir == true)
             {
                 vertical = Random.Range(-2, 2);
@@ -111,6 +135,7 @@ public class CGBMotion : MonoBehaviour
     {
         if ((this.gameObject.transform.position.x <= -5f || this.gameObject.transform.position.x >= 5f))
             ChangeDir();
+     
         else
         {
             if (dir == true)
@@ -202,20 +227,24 @@ public class CGBMotion : MonoBehaviour
 
     void Update()
     {
-
-        if (status == 1)
-            ChangeDir();
-        else if (status == 2)
-            Idle();
-        else if (status == 3)
-            Run();
-        else if (status == 4)
-            sleep();
-        else if (status == 5)
-            Walk();
-        else if (status == 6)
-            Happy();
-        else if (status == 7)
-            CreateTeabag();
+        if (this.gameObject.transform.position.x >= 100f)
+            statusActive = true;
+        else
+        {
+            if (status == 1)
+                ChangeDir();
+            else if (status == 2)
+                Idle();
+            else if (status == 3)
+                Run();
+            else if (status == 4)
+                sleep();
+            else if (status == 5)
+                Walk();
+            else if (status == 6)
+                Happy();
+            else if (status == 7)
+                CreateTeabag();
+        }
     }
 }
