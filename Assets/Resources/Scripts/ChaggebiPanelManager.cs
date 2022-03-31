@@ -19,6 +19,7 @@ namespace Chaggebi
                 Inventory.SetActive(true);
 
         }
+       
         void Start()
         {
             EnableInventory.onClick.AddListener(InventoryPanelControl);

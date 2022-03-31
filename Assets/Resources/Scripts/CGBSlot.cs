@@ -27,6 +27,7 @@ public class CGBSlot : MonoBehaviour
         nametxt.text = "";
         cgbPanel.SetActive(false);
     }
+ 
 
     public void Place()
     {

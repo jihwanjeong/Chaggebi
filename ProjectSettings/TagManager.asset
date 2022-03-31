@@ -41,6 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: ButtonUI
+    uniqueID: 2058339557
+    locked: 0
+  - name: OtherUI
+    uniqueID: 1303802737
+    locked: 0
   - name: character
     uniqueID: 2331291937
     locked: 0
