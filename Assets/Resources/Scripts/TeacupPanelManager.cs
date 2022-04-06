@@ -11,8 +11,8 @@ public class TeacupPanelManager : MonoBehaviour
     public GameObject CGBGachaPopup;
     public GameObject CGBInventory;
     public GameObject GachaCGB; //»ÌÀº Â÷±úºñ
-    public GameObject GachaCGBPlace;
-    GameObject gachaCGB;
+    //public GameObject GachaCGBPlace;
+    //GameObject gachaCGB;
     public Button GachaClose;
     public Text RemainTeabags;
     public Text CGBInfo;
@@ -23,7 +23,7 @@ public class TeacupPanelManager : MonoBehaviour
     public SkeletonAnimation bgAnimation;
     public SkeletonAnimation CGBAnimation;
     CGBData cgbData = new CGBData();
-    CGBSpineSetter cgbSpineUpdater;
+    CGBSpineSetter spineSetter;
 
     public void RandomCGBOutfit() 
     {
@@ -35,71 +35,66 @@ public class TeacupPanelManager : MonoBehaviour
         {
             switch (i)
             {
+                //¸ö»ö
                 case 0:
                     System.Random rand1 = new System.Random();
-                    temp = rand1.Next(1, 3);
+                    temp = rand1.Next(1, 5);
                     arr[i] = temp;
                     break;
+                //´«½ç¸ð¾ç
                 case 1:
                     System.Random rand2 = new System.Random();
-                    temp = rand2.Next(1, 5);
+                    temp = rand2.Next(1, 4);
                     arr[i] = temp;
                     break;
+                //ÀÔ¸ð¾ç
                 case 2:
                     System.Random rand3 = new System.Random();
-                    temp = rand3.Next(1, 4);
+                    temp = rand3.Next(1, 3);
                     arr[i] = temp;
                     break;
-                case 3:
-                    System.Random rand4 = new System.Random();
-                    temp = rand4.Next(1, 3);
-                    arr[i] = temp;
-                    break;
-
-
             }
 
         }
         switch (arr[0])
         {
             case 1:
-                cgbData.skin = CGBData.skins.baby;
+                cgbData.base1 = "blue";
+                cgbData.name = "³ªºñÂ÷ Â÷±úºñ";
+                cgbData.description = "Çâ±ßÇÑ ³ªºñÂ÷ÇâÀÌ ³ª´Â Â÷±úºñ";
                 break;
             case 2:
-                cgbData.skin = CGBData.skins.baby;
-                break;
-
-
-        }
-        switch (arr[1])
-        {
-            case 1:
-                cgbData.bodyColor = CGBData.colors.brown;
-                cgbData.name = "È«Â÷ Â÷±úºñ";
-                cgbData.description = "Çâ±ßÇÑ È«Â÷ÇâÀÌ ³ª´Â Â÷±úºñ";
-                CGBInfo.text = "È«Â÷ Â÷±úºñ";
-                break;
-            case 2:
-                cgbData.bodyColor = CGBData.colors.red;
-                cgbData.name = "µþ±â Â÷±úºñ";
-                cgbData.description = "´ÞÄÞÇÑ µþ±âÇâÀÌ ³ª´Â Â÷±úºñ";
-                CGBInfo.text = "µþ±â Â÷±úºñ";
+                cgbData.base1 = "brown";
+                cgbData.name = "¿ì·ÕÂ÷ Â÷±úºñ";
+                cgbData.description = "´ÞÄÞÇÑ ¿ì·ÕÂ÷ÇâÀÌ ³ª´Â Â÷±úºñ";
                 break;
             case 3:
-                cgbData.bodyColor = CGBData.colors.green;
+                cgbData.base1 = "green";
                 cgbData.name = "³ìÂ÷ Â÷±úºñ";
                 cgbData.description = "°í¼ÒÇÑ ³ìÂ÷ÇâÀÌ ³ª´Â Â÷±úºñ";
-                CGBInfo.text = "³ìÂ÷ Â÷±úºñ";
                 break;
             case 4:
-                cgbData.bodyColor = CGBData.colors.yellow;
-                cgbData.name = "·¹¸ó Â÷±úºñ";
-                cgbData.description = "»óÅ­ÇÑ È«Â÷ÇâÀÌ ³ª´Â Â÷±úºñ";
-                CGBInfo.text = "·¹¸ó Â÷±úºñ";
+                cgbData.base1 = "milk";
+                cgbData.name = "¹ÐÅ©Æ¼ Â÷±úºñ";
+                cgbData.description = "°í¼ÒÇÑ ¿ìÀ¯ÇâÀÌ ³ª´Â Â÷±úºñ";
                 break;
-
+            case 5:
+                cgbData.base1 = "red";
+                cgbData.name = "µþ±â Â÷±úºñ";
+                cgbData.description = "´ÞÄÞÇÑ µþ±âÇâÀÌ ³ª´Â Â÷±úºñ";
+                break;
+            case 6:
+                cgbData.base1 = "skin";
+                cgbData.name = "È«Â÷ Â÷±úºñ";
+                cgbData.description = "Çâ±ßÇÑ È«Â÷ÇâÀÌ ³ª´Â Â÷±úºñ";
+                break;
+            case 7:
+                cgbData.base1 = "yellow";
+                cgbData.name = "·¹¸ó Â÷±úºñ";
+                cgbData.description = "»óÅ­ÇÑ ·¹¸óÇâÀÌ ³ª´Â Â÷±úºñ";
+                break;
         }
-        switch (arr[2])
+        switch (arr[1])
         {
             case 1:
                 cgbData.brow = 1;
@@ -110,9 +105,8 @@ public class TeacupPanelManager : MonoBehaviour
             case 3:
                 cgbData.brow = 3;
                 break;
-
         }
-        switch (arr[3])
+        switch (arr[2])
         {
             case 1:
                 cgbData.mouth = 1;
@@ -120,19 +114,23 @@ public class TeacupPanelManager : MonoBehaviour
             case 2:
                 cgbData.mouth = 2;
                 break;
-
         }
-
-        //¿ÜÇüÁ¤º¸ Àû¿ë, ÀúÀå
-        cgbSpineUpdater.SetAppearance(cgbData);
+        CGBInfo.text = cgbData.name;
+        cgbData.age = 1;
+        cgbData.base2 = "baby";
+        cgbData.flavor = 0;
+        spineSetter.SetAppearance(cgbData, CGBAnimation);
+        //¿ÜÇüÁ¤º¸ ÀúÀå
         PlayerData.instance.playerCGBs.Add(new CGBData
         {
+            age = cgbData.age,
+            base1 = cgbData.base1,
+            base2 = cgbData.base2,
+            flavor = cgbData.flavor,
             name = cgbData.name,
             description = cgbData.description,
-            bodyColor = cgbData.bodyColor,
             brow = cgbData.brow,
             mouth = cgbData.mouth,
-            skin = cgbData.skin
         });
     }
     public void UseTeabags()
@@ -186,9 +184,8 @@ public class TeacupPanelManager : MonoBehaviour
     {
         useTeabag.onClick.AddListener(UseTeabags);
         GachaClose.onClick.AddListener(DisableGachaPopup);
-        cgbSpineUpdater = GachaCGB.GetComponent<CGBSpineSetter>();
         bgAnimation.AnimationState.Event += EventBG;
-        //CGBAnimation.AnimationState.Event += EventCGB;
+        spineSetter = GameObject.Find("CGBSpineManager").GetComponent<CGBSpineSetter>();
     }
 
     void Enabled()

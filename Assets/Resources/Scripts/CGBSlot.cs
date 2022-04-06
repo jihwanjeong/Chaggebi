@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Spine.Unity;
 
 public class CGBSlot : MonoBehaviour
 {
@@ -10,12 +11,13 @@ public class CGBSlot : MonoBehaviour
     public GameObject btn_unplace;
     public GameObject prefabCgb;
     public GameObject gardenCgbs;
-    public CGBSpineSetter spineUpdater;
+    public SkeletonGraphic skeletonGraphic;
+    public CGBSpineSetter spineSetter;
     GameObject gardenCgb;
 
     public void AddCGB(CGBData newCGB)
     {
-        spineUpdater.SetAppearance(newCGB);
+        spineSetter.SetAppearance(newCGB, skeletonGraphic);
         cgbPanel.SetActive(true);
         nametxt.text = newCGB.name;
         btn_place.SetActive(!newCGB.isPlaced);
@@ -32,9 +34,10 @@ public class CGBSlot : MonoBehaviour
     public void Place()
     {
         gardenCgb = Instantiate(prefabCgb) as GameObject;
-        gardenCgb.GetComponent<CGBSpineSetter>().SetAppearance(PlayerData.instance.playerCGBs[slotNum]);
         gardenCgb.transform.SetParent(gardenCgbs.transform, false);
+        spineSetter.SetAppearance(PlayerData.instance.playerCGBs[slotNum], gardenCgb.GetComponent<SkeletonAnimation>());
         gardenCgb.transform.position = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-2.5f, 0.2f), 1);
+        gardenCgb.GetComponent<CGBMotion>().cgbdata.UpdateAppearance(PlayerData.instance.playerCGBs[slotNum]);
         btn_place.SetActive(false);
         btn_unplace.SetActive(true);
         PlayerData.instance.playerCGBs[slotNum].isPlaced = true;
@@ -46,4 +49,5 @@ public class CGBSlot : MonoBehaviour
         btn_unplace.SetActive(false);
         PlayerData.instance.playerCGBs[slotNum].isPlaced = false;
     }
+
 }
