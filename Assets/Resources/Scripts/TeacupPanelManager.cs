@@ -30,6 +30,7 @@ public class TeacupPanelManager : MonoBehaviour
         //·£´ýÁ¤º¸¼³Á¤
         int temp;
         int i;
+        int vary = Random.Range(1, 3); //¸ö»ö¹è¸®
 
         for (i = 0; i < 4; i++)
         {
@@ -57,39 +58,39 @@ public class TeacupPanelManager : MonoBehaviour
 
         }
         switch (arr[0])
-        {
+        {           
             case 1:
-                cgbData.base1 = "blue";
+                cgbData.base1 = "blue" + vary;
                 cgbData.name = "³ªºñÂ÷ Â÷±úºñ";
                 cgbData.description = "Çâ±ßÇÑ ³ªºñÂ÷ÇâÀÌ ³ª´Â Â÷±úºñ";
                 break;
             case 2:
-                cgbData.base1 = "brown";
+                cgbData.base1 = "brown" + vary;
                 cgbData.name = "¿ì·ÕÂ÷ Â÷±úºñ";
                 cgbData.description = "´ÞÄÞÇÑ ¿ì·ÕÂ÷ÇâÀÌ ³ª´Â Â÷±úºñ";
                 break;
             case 3:
-                cgbData.base1 = "green";
+                cgbData.base1 = "green" + vary;
                 cgbData.name = "³ìÂ÷ Â÷±úºñ";
                 cgbData.description = "°í¼ÒÇÑ ³ìÂ÷ÇâÀÌ ³ª´Â Â÷±úºñ";
                 break;
             case 4:
-                cgbData.base1 = "milk";
+                cgbData.base1 = "milk" + vary;
                 cgbData.name = "¹ÐÅ©Æ¼ Â÷±úºñ";
                 cgbData.description = "°í¼ÒÇÑ ¿ìÀ¯ÇâÀÌ ³ª´Â Â÷±úºñ";
                 break;
             case 5:
-                cgbData.base1 = "red";
+                cgbData.base1 = "red" + vary;
                 cgbData.name = "µþ±â Â÷±úºñ";
                 cgbData.description = "´ÞÄÞÇÑ µþ±âÇâÀÌ ³ª´Â Â÷±úºñ";
                 break;
             case 6:
-                cgbData.base1 = "skin";
+                cgbData.base1 = "skin" + vary;
                 cgbData.name = "È«Â÷ Â÷±úºñ";
                 cgbData.description = "Çâ±ßÇÑ È«Â÷ÇâÀÌ ³ª´Â Â÷±úºñ";
                 break;
             case 7:
-                cgbData.base1 = "yellow";
+                cgbData.base1 = "yellow" + vary;
                 cgbData.name = "·¹¸ó Â÷±úºñ";
                 cgbData.description = "»óÅ­ÇÑ ·¹¸óÇâÀÌ ³ª´Â Â÷±úºñ";
                 break;
