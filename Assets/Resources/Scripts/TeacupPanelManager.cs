@@ -118,7 +118,7 @@ public class TeacupPanelManager : MonoBehaviour
         CGBInfo.text = cgbData.name;
         cgbData.age = 1;
         cgbData.base2 = "baby";
-        cgbData.flavor = 0;
+        cgbData.flavor = "none";
         spineSetter.SetAppearance(cgbData, CGBAnimation);
         //외형정보 저장
         PlayerData.instance.playerCGBs.Add(new CGBData

@@ -23,7 +23,7 @@ public class CGBSpineSetter : MonoBehaviour
 
     public void SetAppearance(CGBData cgb, SkeletonAnimation skeletonAnimation) //차깨비스파인에 외형 설정하기
     {
-        skeletonAnimation.Skeleton.SetSkin(cgb.age + "_" + cgb.base2 + "_" + (int)cgb.flavor);
+        skeletonAnimation.Skeleton.SetSkin(cgb.age + "_" + cgb.base2 + "_" + cgb.flavor);
         skeletonAnimation.Skeleton.SetAttachment(bodySlot, "1/body_" + cgb.base1);
         skeletonAnimation.Skeleton.SetAttachment(leg1Slot, "1/leg_" + cgb.base1);
         skeletonAnimation.Skeleton.SetAttachment(leg2Slot, "1/leg_" + cgb.base1);
@@ -47,7 +47,7 @@ public class CGBSpineSetter : MonoBehaviour
     }
     public void SetAppearance(CGBData cgb, SkeletonGraphic skeletonGraphic) //차깨비스파인UI 외형 설정하기
     {
-        skeletonGraphic.Skeleton.SetSkin(cgb.age + "_" + cgb.base2 + "_" + (int)cgb.flavor);
+        skeletonGraphic.Skeleton.SetSkin(cgb.age + "_" + cgb.base2 + "_" + cgb.flavor);
         skeletonGraphic.Skeleton.SetAttachment(bodySlot, "1/body_" + cgb.base1);
         skeletonGraphic.Skeleton.SetAttachment(leg1Slot, "1/leg_" + cgb.base1);
         skeletonGraphic.Skeleton.SetAttachment(leg2Slot, "1/leg_" + cgb.base1);

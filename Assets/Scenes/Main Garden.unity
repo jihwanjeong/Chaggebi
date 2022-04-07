@@ -443,6 +443,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72207026}
   m_CullTransparentMesh: 1
+--- !u!1 &75885190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 75885192}
+  - component: {fileID: 75885191}
+  m_Layer: 0
+  m_Name: DataBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &75885191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75885190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29618ccd7f62da44c8de61997aaceb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cgbDB: {fileID: 4900000, guid: 992af753241a02144a1ae38ccc71498c, type: 3}
+  customerDB: {fileID: 4900000, guid: 1262d8c627152a74b87636610c314878, type: 3}
+  foodDB: {fileID: 4900000, guid: 791441dcd36da6b46a322006dd72edfd, type: 3}
+  AllCGBs: []
+  AllTeabags: []
+  AllTeabagSprites:
+  - {fileID: 21300000, guid: 80dba1843c993e04192d568e7733b73b, type: 3}
+  - {fileID: 21300000, guid: 79837cccc4f159f49a79c1fa658267e9, type: 3}
+  - {fileID: 21300000, guid: 34b5d2eae840ae249b295fc4dbecb523, type: 3}
+  - {fileID: 21300000, guid: 5e5a987d3d413bd4d9d18039b3fc38d0, type: 3}
+  - {fileID: 21300000, guid: a9b87176268b8a640b5596277873d36b, type: 3}
+  - {fileID: 21300000, guid: 10a4a7063e63e5c439f0ebddd74eea36, type: 3}
+  - {fileID: 21300000, guid: 516e0a11d02844d4db0a72f36776434c, type: 3}
+  - {fileID: 21300000, guid: 828f090823da8ec44b565bb6b22831c0, type: 3}
+  - {fileID: 21300000, guid: 23d39167634f73e488c51004085efdd4, type: 3}
+  - {fileID: 21300000, guid: 6f87db876ce760645b8551518ea302ae, type: 3}
+  - {fileID: 21300000, guid: fc50136584a485745873c75c6d805ca8, type: 3}
+  - {fileID: 21300000, guid: 76dd683cdd790fc48801e55311982b30, type: 3}
+  - {fileID: 21300000, guid: 5c4fd4ed8d0183f41a940aca42a35a00, type: 3}
+  - {fileID: 21300000, guid: 78482e04ade278b4a8c7a9e9343e10d4, type: 3}
+  - {fileID: 21300000, guid: 46f13a1922046de419db56bf21669028, type: 3}
+  - {fileID: 21300000, guid: a1ddc937fc024b0418e17c9af8cf4fe0, type: 3}
+  AllFoods: []
+  AllFoodSprites:
+  - {fileID: 21300000, guid: fe9f8e69e0cde174cb8b2cbbc07b6503, type: 3}
+  - {fileID: 21300000, guid: 48a7e7950185a6f489e65445da67cfbd, type: 3}
+  - {fileID: 21300000, guid: 7fdeccc994847ac43a5c49c0f831429b, type: 3}
+  - {fileID: 21300000, guid: dd5ad984a0391b744ad4da86d7fe2cef, type: 3}
+  - {fileID: 21300000, guid: ad6e081c8cde8d34fa357b1e9260bb98, type: 3}
+  - {fileID: 21300000, guid: 2878e82cbc2d3964dabab8c4a89da71e, type: 3}
+  AllCustomers: []
+  AllCustomerSprites: []
+--- !u!4 &75885192
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75885190}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5700135, y: 0.09456805, z: 35.20791}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &78325459
 GameObject:
   m_ObjectHideFlags: 0
@@ -4460,7 +4535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5927693410354627704, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: initialSkinName
-      value: 1_baby_0
+      value: 1_baby_none
       objectReference: {fileID: 0}
     - target: {fileID: 5927693410354627705, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: m_Name
@@ -16044,7 +16119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8535838405173436422, guid: 6b1dc693e9ae5504a8fe4f394f374bec, type: 3}
       propertyPath: initialSkinName
-      value: 1_baby_0
+      value: 1_baby_none
       objectReference: {fileID: 0}
     - target: {fileID: 8535838405173436426, guid: 6b1dc693e9ae5504a8fe4f394f374bec, type: 3}
       propertyPath: Gpanel
