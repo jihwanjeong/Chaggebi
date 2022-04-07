@@ -9,6 +9,7 @@ using UnityEngine;
     public bool isPlaced { get; set; } = false;
     public int age { get; set; } //진화단계
     public string base1 { get; set; } //몸색(1단계)
+    public int base1vary { get; set; }
     public string base2 { get; set; } //스킨(2단계)
     public string flavor { get; set; } //맛(3단계)
     public string name { get; set; } = "차깨비";
@@ -21,11 +22,12 @@ using UnityEngine;
         isPlaced = newCGB.isPlaced;
         age = newCGB.age;
         base1 = newCGB.base1;
+        base1vary = newCGB.base1vary;
         base2 = newCGB.base2;
+        flavor = newCGB.flavor;
         name = newCGB.name;
         description = newCGB.description;
-        //skin = newCGB.skin;
-        //bodyColor = newCGB.bodyColor;
+        teabag = newCGB.teabag;
         mouth = newCGB.mouth;
         brow = newCGB.brow;
     }
@@ -102,7 +104,7 @@ public class DataBase : MonoBehaviour
     public Sprite[] AllFoodSprites;
     public List<Customer> AllCustomers;
     public Sprite[] AllCustomerSprites;
-    //아이템리스트
+
     void Start()
     {
         GetAllCgbDB();

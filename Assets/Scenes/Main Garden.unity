@@ -561,47 +561,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 450542a093f867c46a92140d35ec8795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  browCount: 4
+  mouthCount: 3
+  baseVaryCount: 2
   CGBBaseColors:
-  - base1: blue1
+  - base1: Butterfly1
     brow: {r: 0.65882355, g: 0.4862745, b: 0.83137256, a: 1}
     cheek: {r: 0.8509804, g: 0.4627451, b: 0.9411765, a: 1}
-  - base1: blue2
+  - base1: Butterfly2
     brow: {r: 0.8156863, g: 0.5372549, b: 0.8862745, a: 1}
     cheek: {r: 0.9137255, g: 0.5529412, b: 0.87058824, a: 1}
-  - base1: brown1
+  - base1: Oorong1
     brow: {r: 0.9254902, g: 0.67058825, b: 0.40784314, a: 1}
     cheek: {r: 0.9372549, g: 0.5372549, b: 0.30588236, a: 1}
-  - base1: brown2
+  - base1: Oorong2
     brow: {r: 0.85882354, g: 0.53333336, b: 0.3254902, a: 1}
     cheek: {r: 0.90588236, g: 0.40392157, b: 0.23921569, a: 1}
-  - base1: green1
+  - base1: Green1
     brow: {r: 0.6862745, g: 0.8156863, b: 0.49803922, a: 1}
     cheek: {r: 0.9882353, g: 0.6039216, b: 0.30980393, a: 0.8235294}
-  - base1: green2
+  - base1: Green2
     brow: {r: 0.79607844, g: 0.85490197, b: 0.4, a: 1}
     cheek: {r: 0.9254902, g: 0.5647059, b: 0.31764707, a: 0.8235294}
-  - base1: milk1
+  - base1: Milk1
     brow: {r: 0.90588236, g: 0.75686276, b: 0.654902, a: 1}
     cheek: {r: 0.9098039, g: 0.5921569, b: 0.37254903, a: 0.74509805}
-  - base1: milk2
+  - base1: Milk2
     brow: {r: 0.9607843, g: 0.84705883, b: 0.79607844, a: 1}
     cheek: {r: 0.9411765, g: 0.61960787, b: 0.4117647, a: 0.70980394}
-  - base1: red1
+  - base1: Strawberry1
     brow: {r: 0.9372549, g: 0.5372549, b: 0.5372549, a: 1}
     cheek: {r: 0.93333334, g: 0.4745098, b: 0.4745098, a: 0.90588236}
-  - base1: red2
+  - base1: Strawberry2
     brow: {r: 0.9843137, g: 0.627451, b: 0.5294118, a: 1}
     cheek: {r: 0.99607843, g: 0.47843137, b: 0.4117647, a: 0.90588236}
-  - base1: skin1
+  - base1: Black1
     brow: {r: 0.94509804, g: 0.6666667, b: 0.41568628, a: 1}
     cheek: {r: 0.92941177, g: 0.5176471, b: 0.3529412, a: 1}
-  - base1: skin2
+  - base1: Black2
     brow: {r: 0.8235294, g: 0.3647059, b: 0.30588236, a: 1}
     cheek: {r: 0.8745098, g: 0.3372549, b: 0.27058825, a: 1}
-  - base1: yellow1
+  - base1: Lemon1
     brow: {r: 1, g: 0.69803923, b: 0.078431375, a: 1}
     cheek: {r: 1, g: 0.42745098, b: 0.18431373, a: 0.8352941}
-  - base1: yellow2
+  - base1: Lemon2
     brow: {r: 1, g: 0.8039216, b: 0.20784314, a: 1}
     cheek: {r: 1, g: 0.53333336, b: 0.28235295, a: 0.9098039}
 --- !u!1 &92690624

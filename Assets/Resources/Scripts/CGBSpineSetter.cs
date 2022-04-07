@@ -12,6 +12,9 @@ public class CGBBaseColor
 }
 public class CGBSpineSetter : MonoBehaviour
 {
+    public int browCount;
+    public int mouthCount;
+    public int baseVaryCount;
     public List<CGBBaseColor> CGBBaseColors = new List<CGBBaseColor>();
 
     //스파인 슬롯이름
@@ -24,23 +27,24 @@ public class CGBSpineSetter : MonoBehaviour
     public void SetAppearance(CGBData cgb, SkeletonAnimation skeletonAnimation) //차깨비스파인에 외형 설정하기
     {
         skeletonAnimation.Skeleton.SetSkin(cgb.age + "_" + cgb.base2 + "_" + cgb.flavor);
-        skeletonAnimation.Skeleton.SetAttachment(bodySlot, "1/body_" + cgb.base1);
-        skeletonAnimation.Skeleton.SetAttachment(leg1Slot, "1/leg_" + cgb.base1);
-        skeletonAnimation.Skeleton.SetAttachment(leg2Slot, "1/leg_" + cgb.base1);
-        skeletonAnimation.Skeleton.SetAttachment(leg3Slot, "1/leg_" + cgb.base1);
-        skeletonAnimation.Skeleton.SetAttachment(leg4Slot, "1/leg_" + cgb.base1);
+        skeletonAnimation.Skeleton.SetAttachment(bodySlot, "1/body_" + cgb.base1 + cgb.base1vary);
+        skeletonAnimation.Skeleton.SetAttachment(leg1Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
+        skeletonAnimation.Skeleton.SetAttachment(leg2Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
+        skeletonAnimation.Skeleton.SetAttachment(leg3Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
+        skeletonAnimation.Skeleton.SetAttachment(leg4Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
         skeletonAnimation.Skeleton.SetAttachment(mouthSlot, "face/mouth_" + cgb.mouth);
         skeletonAnimation.Skeleton.SetAttachment(browRSlot, "face/brow_" + cgb.brow);
         skeletonAnimation.Skeleton.SetAttachment(browLSlot, "face/brow_" + cgb.brow);
-        //눈썹, 볼 색 변경
+
         foreach (CGBBaseColor cgbBaseColor in CGBBaseColors)
         {
-            if (cgb.base1 == cgbBaseColor.base1)
+            if (cgb.base1 + cgb.base1vary == cgbBaseColor.base1)
             {
                 skeletonAnimation.Skeleton.FindSlot(browRSlot).SetColor(cgbBaseColor.brow);
                 skeletonAnimation.Skeleton.FindSlot(browLSlot).SetColor(cgbBaseColor.brow);
                 skeletonAnimation.Skeleton.FindSlot(cheekRSlot).SetColor(cgbBaseColor.cheek);
                 skeletonAnimation.Skeleton.FindSlot(cheekLSlot).SetColor(cgbBaseColor.cheek);
+                break;
             }
         }
 
@@ -48,17 +52,17 @@ public class CGBSpineSetter : MonoBehaviour
     public void SetAppearance(CGBData cgb, SkeletonGraphic skeletonGraphic) //차깨비스파인UI 외형 설정하기
     {
         skeletonGraphic.Skeleton.SetSkin(cgb.age + "_" + cgb.base2 + "_" + cgb.flavor);
-        skeletonGraphic.Skeleton.SetAttachment(bodySlot, "1/body_" + cgb.base1);
-        skeletonGraphic.Skeleton.SetAttachment(leg1Slot, "1/leg_" + cgb.base1);
-        skeletonGraphic.Skeleton.SetAttachment(leg2Slot, "1/leg_" + cgb.base1);
-        skeletonGraphic.Skeleton.SetAttachment(leg3Slot, "1/leg_" + cgb.base1);
-        skeletonGraphic.Skeleton.SetAttachment(leg4Slot, "1/leg_" + cgb.base1);
+        skeletonGraphic.Skeleton.SetAttachment(bodySlot, "1/body_" + cgb.base1 + cgb.base1vary);
+        skeletonGraphic.Skeleton.SetAttachment(leg1Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
+        skeletonGraphic.Skeleton.SetAttachment(leg2Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
+        skeletonGraphic.Skeleton.SetAttachment(leg3Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
+        skeletonGraphic.Skeleton.SetAttachment(leg4Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
         skeletonGraphic.Skeleton.SetAttachment(mouthSlot, "face/mouth_" + cgb.mouth);
         skeletonGraphic.Skeleton.SetAttachment(browRSlot, "face/brow_" + cgb.brow);
         skeletonGraphic.Skeleton.SetAttachment(browLSlot, "face/brow_" + cgb.brow);
         foreach (CGBBaseColor cgbBaseColor in CGBBaseColors)
         {
-            if (cgb.base1 == cgbBaseColor.base1)
+            if (cgb.base1 + cgb.base1vary == cgbBaseColor.base1)
             {
                 skeletonGraphic.Skeleton.FindSlot(browRSlot).SetColor(cgbBaseColor.brow);
                 skeletonGraphic.Skeleton.FindSlot(browLSlot).SetColor(cgbBaseColor.brow);
