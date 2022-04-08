@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
+using UnityEngine.UI;
 
 public class CGBMotion : MonoBehaviour
 {
@@ -10,13 +11,13 @@ public class CGBMotion : MonoBehaviour
     //public GameObject CGBMotionAdd;
     public int horizontal = -1;
     public int vertical = -1;
-    public GameObject teabagRed, teabagBrown, teabagYellow, teabagGreen;
+    public GameObject teabag;
+    //public GameObject teabagRed, teabagBrown, teabagYellow, teabagGreen;
     private bool statusActive = false;
     [SerializeField] int actionCooltime = 2;
     private SkeletonAnimation sk;
     public CGBData cgbdata = new CGBData();
     private Vector3 currentpos;
-    GameObject Gpanel;
 
     public void GetRandom()
     {
@@ -29,29 +30,6 @@ public class CGBMotion : MonoBehaviour
         if ((this.gameObject.transform.position.x <= -3f || this.gameObject.transform.position.x >= 5f))
             ChangeDir();
 
-        /*else if ((this.gameObject.transform.position.y <= -2f || this.gameObject.transform.position.x >= 2.4f))
-        {
-            if (dir == true)
-            {
-                //vertical = Random.Range(-2, 2);
-                transform.Translate(new Vector3(0, 0, 0) * 1.0f * Time.deltaTime);
-                if (statusActive == false)
-                {
-                    sk.AnimationState.SetAnimation(0, "run", true);
-                    statusActive = true;
-                }
-            }
-            if (dir == false)
-            {
-                //vertical = Random.Range(-2, 2);
-                transform.Translate(new Vector3(0, 0, 0) * 1.0f * Time.deltaTime);
-                if (statusActive == false)
-                {
-                    sk.AnimationState.SetAnimation(0, "run", true);
-                    statusActive = true;
-                }
-            }
-        }*/
         else
         {
             if (dir == true)
@@ -174,34 +152,38 @@ public class CGBMotion : MonoBehaviour
     
     public void CreateTeabag()
     {
-        if (Gpanel == null) Gpanel = GameObject.Find("Garden Main Panel");
         if (statusActive == false)
         {
             sk.AnimationState.SetAnimation(0, "idle", true);
-            if (this.cgbdata.base1=="red")
-            {
-                currentpos = this.gameObject.transform.position;
-                GameObject tea = Instantiate(teabagRed, currentpos, Quaternion.identity);
-                tea.transform.SetParent(Gpanel.transform);
-            }
-            else if (this.cgbdata.base1 == "brown")
-            {
-                currentpos = this.gameObject.transform.position;
-                GameObject tea = Instantiate(teabagBrown, currentpos, Quaternion.identity);
-                tea.transform.SetParent(Gpanel.transform);
-            }
-            else if (this.cgbdata.base1 == "yellow")
-            {
-                currentpos = this.gameObject.transform.position;
-                GameObject tea = Instantiate(teabagYellow, currentpos, Quaternion.identity);
-                tea.transform.SetParent(Gpanel.transform);
-            }
-            else if (this.cgbdata.base1 == "green")
-            {
-                currentpos = this.gameObject.transform.position;
-                GameObject tea = Instantiate(teabagGreen, currentpos, Quaternion.identity);
-                tea.transform.SetParent(Gpanel.transform);
-            }
+            currentpos = new Vector3(this.gameObject.transform.position.x + Random.Range(-0.9f, 0.9f), this.gameObject.transform.position.y, 1);          
+            GameObject tea = Instantiate(teabag, currentpos, Quaternion.identity);
+            tea.GetComponent<TeabagHandler>().SetTeabagInfo(DataBase.instance.FindTeabag(cgbdata.teabagID));
+            tea.transform.SetParent(this.transform.parent);
+
+            //if (this.cgbdata.base1=="red")
+            //{
+            //    currentpos = this.gameObject.transform.position;
+            //    GameObject tea = Instantiate(teabagRed, currentpos, Quaternion.identity);
+            //    tea.transform.SetParent(Gpanel.transform);
+            //}
+            //else if (this.cgbdata.base1 == "brown")
+            //{
+            //    currentpos = this.gameObject.transform.position;
+            //    GameObject tea = Instantiate(teabagBrown, currentpos, Quaternion.identity);
+            //    tea.transform.SetParent(Gpanel.transform);
+            //}
+            //else if (this.cgbdata.base1 == "yellow")
+            //{
+            //    currentpos = this.gameObject.transform.position;
+            //    GameObject tea = Instantiate(teabagYellow, currentpos, Quaternion.identity);
+            //    tea.transform.SetParent(Gpanel.transform);
+            //}
+            //else if (this.cgbdata.base1 == "green")
+            //{
+            //    currentpos = this.gameObject.transform.position;
+            //    GameObject tea = Instantiate(teabagGreen, currentpos, Quaternion.identity);
+            //    tea.transform.SetParent(Gpanel.transform);
+            //}
             statusActive = true;
         }
 
@@ -218,7 +200,6 @@ public class CGBMotion : MonoBehaviour
 
     void Awake()
     {
-        Gpanel = GameObject.Find("Garden Main Panel");
         sk = GetComponent<SkeletonAnimation>();
         actionCooltime = Random.Range(2, 5);
         InvokeRepeating("GetRandom", 0, actionCooltime);

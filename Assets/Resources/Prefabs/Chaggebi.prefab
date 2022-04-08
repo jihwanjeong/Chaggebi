@@ -137,6 +137,7 @@ MonoBehaviour:
   dir: 1
   horizontal: -1
   vertical: -1
+  teabag: {fileID: 672856899184913045, guid: 1d7d5197b1bb87e4db0b0b44c5bad5eb, type: 3}
   teabagRed: {fileID: 2652646964527133997, guid: af8f463672729414fa677a3344b13763, type: 3}
   teabagBrown: {fileID: 1213876807524600208, guid: 1101f452d8925e24fa279b9b558c42d1, type: 3}
   teabagYellow: {fileID: 3505574729050287514, guid: b3e9f887e92b2bb40bc68fe65a9599b2, type: 3}

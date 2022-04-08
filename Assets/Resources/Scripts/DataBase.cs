@@ -14,23 +14,23 @@ using UnityEngine;
     public string flavor { get; set; } //¸À(3´Ü°è)
     public string name { get; set; } = "Â÷±úºñ";
     public string description { get; set; }
-    public string teabag { get; set; }
+    public string teabagID { get; set; }
     public int mouth { get; set; }
     public int brow { get; set; }
-    public void UpdateAppearance(CGBData newCGB)
-    {
-        isPlaced = newCGB.isPlaced;
-        age = newCGB.age;
-        base1 = newCGB.base1;
-        base1vary = newCGB.base1vary;
-        base2 = newCGB.base2;
-        flavor = newCGB.flavor;
-        name = newCGB.name;
-        description = newCGB.description;
-        teabag = newCGB.teabag;
-        mouth = newCGB.mouth;
-        brow = newCGB.brow;
-    }
+    //public void UpdateAppearance(CGBData newCGB)
+    //{
+    //    isPlaced = newCGB.isPlaced;
+    //    age = newCGB.age;
+    //    base1 = newCGB.base1;
+    //    base1vary = newCGB.base1vary;
+    //    base2 = newCGB.base2;
+    //    flavor = newCGB.flavor;
+    //    name = newCGB.name;
+    //    description = newCGB.description;
+    //    teabag = newCGB.teabag;
+    //    mouth = newCGB.mouth;
+    //    brow = newCGB.brow;
+    //}
 }
 
 [System.Serializable] public class Teabag
@@ -112,13 +112,18 @@ public class DataBase : MonoBehaviour
         GetAllCustomerDB();
     }
 
+    public Teabag FindTeabag(string _id)
+    {
+        return AllTeabags[AllTeabags.FindIndex(x => x.id == _id)];
+    }
+
     void GetAllCgbDB()
     {
         string[] line = cgbDB.text.Substring(0, cgbDB.text.Length).Split('\n');
         for (int i = 0; i < line.Length; i++)
         {
             string[] row = line[i].Split('\t');
-            AllCGBs.Add(new CGBData { age = Int16.Parse(row[0]), base1 = row[1], base2 = row[2], flavor = row[3], name = row[4], description = row[5], teabag = row[7] });
+            AllCGBs.Add(new CGBData { age = Int16.Parse(row[0]), base1 = row[1], base2 = row[2], flavor = row[3], name = row[4], description = row[5], teabagID = row[6] });
             AllTeabags.Add(new Teabag { id = row[6], name = row[7], description = row[8], scent = Int16.Parse(row[9]), earthy = Int16.Parse(row[10]), sweet = Int16.Parse(row[11]), sour = Int16.Parse(row[12]) });
             for (int j = 0; j < AllTeabagSprites.Length; j++)
             {
