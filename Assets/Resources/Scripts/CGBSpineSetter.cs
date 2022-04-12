@@ -22,7 +22,7 @@ public class CGBSpineSetter : MonoBehaviour
     string mouthSlot = "mouth";
     string browRSlot = "brow_R"; string browLSlot = "brow_L";
     string cheekRSlot = "cheek_R"; string cheekLSlot = "cheek_L";
-    string leg1Slot = "leg_F1"; string leg2Slot = "leg_F2"; string leg3Slot = "leg_B1"; string leg4Slot = "leg_B2";
+    string leg1Slot = "leg_F1"; string leg2Slot = "leg_F2"; string leg3Slot = "leg_B1"; string leg4Slot = "leg_B2"; string leg3Slot_f = "leg_B1_front";
 
     public void SetAppearance(CGBData cgb, SkeletonAnimation skeletonAnimation) //차깨비스파인에 외형 설정하기
     {
@@ -31,6 +31,7 @@ public class CGBSpineSetter : MonoBehaviour
         skeletonAnimation.Skeleton.SetAttachment(leg1Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
         skeletonAnimation.Skeleton.SetAttachment(leg2Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
         skeletonAnimation.Skeleton.SetAttachment(leg3Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
+        skeletonAnimation.Skeleton.SetAttachment(leg3Slot_f, "1/leg_" + cgb.base1 + cgb.base1vary+"b");
         skeletonAnimation.Skeleton.SetAttachment(leg4Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
         skeletonAnimation.Skeleton.SetAttachment(mouthSlot, "face/mouth_" + cgb.mouth);
         skeletonAnimation.Skeleton.SetAttachment(browRSlot, "face/brow_" + cgb.brow);
