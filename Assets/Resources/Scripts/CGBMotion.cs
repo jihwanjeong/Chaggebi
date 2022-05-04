@@ -18,6 +18,9 @@ public class CGBMotion : MonoBehaviour
     private Vector3 currentpos;
     public GameObject Gpanel;
     public GameObject Camera;
+    public bool isClick = false;
+    public GameObject CGBManagePanel;
+    public GameObject CGBobject;
 
     
     
@@ -230,11 +233,25 @@ public class CGBMotion : MonoBehaviour
 
     public void CGBClick()
     {
-        CancelInvoke("GetRandom");
-        transform.Translate(new Vector3(1, 0, 0) * 0.0f * Time.deltaTime);
-        sk.AnimationState.SetAnimation(0, "idle", true);
-        statusActive = true;
-        Camera.transform.position = new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y, Camera.transform.position.z);
+        if (isClick == false)
+        {
+            CancelInvoke("GetRandom");
+            //transform.Translate(new Vector3(1, 0, 0) * 0.0f * Time.deltaTime);
+            sk.AnimationState.SetAnimation(0, "idle", true);
+            statusActive = true;
+            //Camera.transform.position = new Vector3(CGBobject.gameObject.transform.position.x, CGBobject.gameObject.transform.position.y, Camera.transform.position.z);
+            Debug.Log(CGBobject.gameObject.transform.position.x);
+            isClick = true;
+            CGBManagePanel.SetActive(true);
+        }
+        else if (isClick == true)
+        {
+            //actionCooltime = Random.Range(2, 5);
+            InvokeRepeating("GetRandom", 0, actionCooltime);
+            isClick = false;
+            CGBManagePanel.SetActive(false);
+
+        }
 
     }
   
@@ -254,180 +271,113 @@ public class CGBMotion : MonoBehaviour
         if (this.gameObject.transform.position.y > 5)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -30;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -30;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -30;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -30;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -30;
+            
 
         }
         else if (this.gameObject.transform.position.y > 4.5&& this.gameObject.transform.position.y <= 5)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -29;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -29;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -29;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -29;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -29;
-
+            
         }
         else if (this.gameObject.transform.position.y > 4 && this.gameObject.transform.position.y <= 4.5)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -28;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -28;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -28;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -28;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -28;
-
+          
         }
         else if (this.gameObject.transform.position.y > 3.5 && this.gameObject.transform.position.y <= 4)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -27;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -27;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -27;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -27;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -27;
+            
 
         }
         else if (this.gameObject.transform.position.y > 3&& this.gameObject.transform.position.y <= 3.5)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -26;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -26;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -26;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -26;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -26;
-
+          
         }
         else if (this.gameObject.transform.position.y > 2.5 && this.gameObject.transform.position.y <= 3)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -25;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -25;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -25;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -25;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -25;
-
+          
         }
         else if (this.gameObject.transform.position.y > 2 && this.gameObject.transform.position.y <= 2.5)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -24;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -24;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -24;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -24;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -24;
+         
 
         }
         else if (this.gameObject.transform.position.y > 1.5 && this.gameObject.transform.position.y <= 2)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -23;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -23;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -23;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -23;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -23;
+         
 
         }
         else if (this.gameObject.transform.position.y > 1 && this.gameObject.transform.position.y <= 1.5)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -22;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -22;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -22;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -22;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -22;
+           
 
         }
         else if (this.gameObject.transform.position.y > 0.5 && this.gameObject.transform.position.y <= 1)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -21;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -21;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -21;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -21;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -21;
-
+           
         }
         else if (this.gameObject.transform.position.y > 0 && this.gameObject.transform.position.y <= 0.5)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -20;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -20;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -20;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -20;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -20;
+         
         }
         else if (this.gameObject.transform.position.y > -0.5 && this.gameObject.transform.position.y <= 0)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -19;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -19;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -19;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -19;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -19;
-
+    
         }
         else if (this.gameObject.transform.position.y > -1 && this.gameObject.transform.position.y <= -0.5)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -18;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -18;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -18;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -18;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -18;
+      
 
         }
         else if (this.gameObject.transform.position.y > -1.5 && this.gameObject.transform.position.y <= -1)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -17;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -17;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -17;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -17;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -17;
+          
 
         }
         else if (this.gameObject.transform.position.y > -2 && this.gameObject.transform.position.y <= -1.5)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -16;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = 16;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -16;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -16;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -16;
+            
 
         }
         else if (this.gameObject.transform.position.y > -2.5 && this.gameObject.transform.position.y <= -2)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -15;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -15;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -15;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -15;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -15;
+          
 
         }
         else if (this.gameObject.transform.position.y > -3 && this.gameObject.transform.position.y <= -2.5)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -14;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -14;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -14;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -14;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -14;
-
+          
         }
         else if (this.gameObject.transform.position.y > -3.5 && this.gameObject.transform.position.y <= -3)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -13;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -13;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -13;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -13;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -13;
+          
 
         }
         else if (this.gameObject.transform.position.y > -4 && this.gameObject.transform.position.y <= -3.5)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -12;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -12;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -12;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -12;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -12;
+           
 
         }
         else if ( this.gameObject.transform.position.y <= -4)
         {
             sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -11;
-            teabagBrown.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -11;
-            teabagRed.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -11;
-            teabagGreen.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -11;
-            teabagYellow.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -11;
+         
 
         }
         if (this.gameObject.transform.position.x >= 100f)
