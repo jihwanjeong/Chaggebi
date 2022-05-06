@@ -58,7 +58,7 @@ using UnityEngine;
     public int sweet { get; set; }
     public int sour { get; set; }
     public int cost { get; set; }
-    public int count { get; set; } = 0;
+    public int count { get; set; } = 1;
     public Sprite sprite;
 }
 
@@ -115,6 +115,10 @@ public class DataBase : MonoBehaviour
     public Teabag FindTeabag(string _id)
     {
         return AllTeabags[AllTeabags.FindIndex(x => x.id == _id)];
+    }
+    public Item FindItem(string _id)
+    {
+        return AllFoods[AllFoods.FindIndex(x => x.id == _id)];
     }
 
     void GetAllCgbDB()

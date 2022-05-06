@@ -20,4 +20,18 @@ public class PlayerData : MonoBehaviour
     #endregion
 
     public List<CGBData> playerCGBs = new List<CGBData>();
+    public List<Item> playerItems = new List<Item>();
+
+    public void AddItem(string _id, int _count)
+    {
+        for (int i = 0; i < playerItems.Count; i++)
+        {
+            if (playerItems[i].id == _id)
+            {
+                playerItems[i].count += _count;
+                return;
+            }
+        }
+        playerItems.Add(DataBase.instance.FindItem(_id));
+    }
 }
