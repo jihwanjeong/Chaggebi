@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    public static Vector2 DefaultPos;
+    public static Vector3 DefaultPos;
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
@@ -14,7 +14,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
-        Vector2 currentPos = eventData.position;
+        Vector3 currentPos = eventData.position;
         this.transform.position = currentPos;
 
 
@@ -22,7 +22,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         this.transform.position = mousePos;
 
     }
