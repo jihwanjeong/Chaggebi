@@ -18,6 +18,9 @@ public class CGBMotion : MonoBehaviour
     private SkeletonAnimation sk;
     public CGBData cgbdata = new CGBData();
     private Vector3 currentpos;
+    public bool isClick = false;
+    public GameObject CGBManagePanel;
+    public GameObject CGBobject;
 
     public void GetRandom()
     {
@@ -197,8 +200,31 @@ public class CGBMotion : MonoBehaviour
         InvokeRepeating("GetRandom", 0, actionCooltime);
 
     }
+    public void CGBClick()
+    {
+        if (isClick == false)
+        {
+            CancelInvoke("GetRandom");
+            //transform.Translate(new Vector3(1, 0, 0) * 0.0f * Time.deltaTime);
+            sk.AnimationState.SetAnimation(0, "idle", true);
+            statusActive = true;
+            //Camera.transform.position = new Vector3(CGBobject.gameObject.transform.position.x, CGBobject.gameObject.transform.position.y, Camera.transform.position.z);
+            Debug.Log(CGBobject.gameObject.transform.position.x);
+            isClick = true;
+            CGBManagePanel.SetActive(true);
+        }
+        else if (isClick == true)
+        {
+            //actionCooltime = Random.Range(2, 5);
+            InvokeRepeating("GetRandom", 0, actionCooltime);
+            isClick = false;
+            CGBManagePanel.SetActive(false);
 
-    void Awake()
+        }
+    }
+
+
+        void Awake()
     {
         sk = GetComponent<SkeletonAnimation>();
         actionCooltime = Random.Range(2, 5);
