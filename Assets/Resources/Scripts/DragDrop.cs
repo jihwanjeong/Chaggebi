@@ -2,11 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Spine.Unity;
 
 public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    private SkeletonAnimation sk;
+    public int status;
     public static Vector3 DefaultPos;
-
+    public bool drag = false;
+    public void GetRandom()
+    {
+        status = Random.Range(1, 3);
+        
+    }
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
         DefaultPos = this.transform.position;
@@ -14,16 +22,35 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
-        Vector3 currentPos = eventData.position;
-        this.transform.position = currentPos;
+        //Vector3 currentPos = eventData.position;
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // this.transform.position = new Vector3(currentPos.x, currentPos.y, 33f);
+        this.transform.position = new Vector3(mousePos.x, mousePos.y, 27f);
+        drag = true;
+        if(status==1&&drag==true)
+            sk.AnimationState.SetAnimation(0, "hang1", true);
+        else if (status == 2&&drag==true)
+            sk.AnimationState.SetAnimation(0, "hang2", true);
 
 
     }
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        this.transform.position = mousePos;
+        sk.AnimationState.SetAnimation(0, "idle", true);
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        this.transform.position = new Vector3(mousePos.x, mousePos.y, 27f);
+        drag = false;
+    }
 
+    void Awake()
+    {
+        sk = GetComponent<SkeletonAnimation>();
+        
+    }
+    void Update() 
+    { 
+        if(drag==false)
+        GetRandom();
     }
 }

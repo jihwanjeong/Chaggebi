@@ -8,11 +8,9 @@ public class CGBMotion : MonoBehaviour
 {
     [SerializeField] int status;
     [SerializeField] bool dir = true;
-    //public GameObject CGBMotionAdd;
     public int horizontal = -1;
     public int vertical = -1;
     public GameObject teabag;
-    //public GameObject teabagRed, teabagBrown, teabagYellow, teabagGreen;
     private bool statusActive = false;
     [SerializeField] int actionCooltime = 2;
     private SkeletonAnimation sk;
@@ -165,31 +163,6 @@ public class CGBMotion : MonoBehaviour
             GameObject tea = Instantiate(teabag, currentpos, Quaternion.identity);
             tea.GetComponent<TeabagHandler>().SetTeabagInfo(DataBase.instance.FindTeabag(cgbdata.teabagID));
             tea.transform.SetParent(this.transform.parent);
-
-            //if (this.cgbdata.base1=="red")
-            //{
-            //    currentpos = this.gameObject.transform.position;
-            //    GameObject tea = Instantiate(teabagRed, currentpos, Quaternion.identity);
-            //    tea.transform.SetParent(Gpanel.transform);
-            //}
-            //else if (this.cgbdata.base1 == "brown")
-            //{
-            //    currentpos = this.gameObject.transform.position;
-            //    GameObject tea = Instantiate(teabagBrown, currentpos, Quaternion.identity);
-            //    tea.transform.SetParent(Gpanel.transform);
-            //}
-            //else if (this.cgbdata.base1 == "yellow")
-            //{
-            //    currentpos = this.gameObject.transform.position;
-            //    GameObject tea = Instantiate(teabagYellow, currentpos, Quaternion.identity);
-            //    tea.transform.SetParent(Gpanel.transform);
-            //}
-            //else if (this.cgbdata.base1 == "green")
-            //{
-            //    currentpos = this.gameObject.transform.position;
-            //    GameObject tea = Instantiate(teabagGreen, currentpos, Quaternion.identity);
-            //    tea.transform.SetParent(Gpanel.transform);
-            //}
             statusActive = true;
         }
 
@@ -208,10 +181,8 @@ public class CGBMotion : MonoBehaviour
         if (isClick == false)
         {
             CancelInvoke("GetRandom");
-            //transform.Translate(new Vector3(1, 0, 0) * 0.0f * Time.deltaTime);
             sk.AnimationState.SetAnimation(0, "idle", true);
             statusActive = true;
-            //Camera.transform.position = new Vector3(CGBobject.gameObject.transform.position.x, CGBobject.gameObject.transform.position.y, Camera.transform.position.z);
             Debug.Log(CGBobject.gameObject.transform.position.x);
             CGBManagePanel.SetActive(true);
             UI.SetActive(false);
@@ -219,7 +190,7 @@ public class CGBMotion : MonoBehaviour
         }
         else if (isClick == true)
         {
-            //actionCooltime = Random.Range(2, 5);
+            
             InvokeRepeating("GetRandom", 0, actionCooltime);
             CGBManagePanel.SetActive(false);
             Vector3 originVector = new Vector3(0f, 0f, 0f);
