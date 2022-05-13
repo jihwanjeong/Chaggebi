@@ -21,6 +21,9 @@ public class CGBMotion : MonoBehaviour
     public bool isClick = false;
     public GameObject CGBManagePanel;
     public GameObject CGBobject;
+    public float cameraSpeed = 5.0f;
+    public GameObject Camera;
+    public GameObject UI;
 
     public void GetRandom()
     {
@@ -210,19 +213,22 @@ public class CGBMotion : MonoBehaviour
             statusActive = true;
             //Camera.transform.position = new Vector3(CGBobject.gameObject.transform.position.x, CGBobject.gameObject.transform.position.y, Camera.transform.position.z);
             Debug.Log(CGBobject.gameObject.transform.position.x);
-            isClick = true;
             CGBManagePanel.SetActive(true);
+            UI.SetActive(false);
+            isClick = true;
         }
         else if (isClick == true)
         {
             //actionCooltime = Random.Range(2, 5);
             InvokeRepeating("GetRandom", 0, actionCooltime);
-            isClick = false;
             CGBManagePanel.SetActive(false);
-
+            Vector3 originVector = new Vector3(0f, 0f, 0f);
+            Camera.transform.position =  originVector;
+            UI.SetActive(true);
+            isClick = false;
         }
     }
-
+    
 
         void Awake()
     {
@@ -253,5 +259,13 @@ public class CGBMotion : MonoBehaviour
             else if (status == 7)
                 CreateTeabag();
         }
+        if (isClick != false)
+        {
+            Vector3 dir = CGBobject.transform.position - Camera.transform.position;
+            Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.deltaTime, dir.y * cameraSpeed * Time.deltaTime, 0.0f);
+            Camera.transform.Translate(moveVector);
+            CGBManagePanel.transform.Translate(moveVector.x, moveVector.y,0f);
+        }
     }
+
 }
