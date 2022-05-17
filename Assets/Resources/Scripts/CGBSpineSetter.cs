@@ -58,6 +58,7 @@ public class CGBSpineSetter : MonoBehaviour
         skeletonGraphic.Skeleton.SetAttachment(leg2Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
         skeletonGraphic.Skeleton.SetAttachment(leg3Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
         skeletonGraphic.Skeleton.SetAttachment(leg4Slot, "1/leg_" + cgb.base1 + cgb.base1vary);
+        skeletonGraphic.Skeleton.SetAttachment(leg3Slot_f, "1/leg_" + cgb.base1 + cgb.base1vary + "b");
         skeletonGraphic.Skeleton.SetAttachment(mouthSlot, "face/mouth_" + cgb.mouth);
         skeletonGraphic.Skeleton.SetAttachment(browRSlot, "face/brow_" + cgb.brow);
         skeletonGraphic.Skeleton.SetAttachment(browLSlot, "face/brow_" + cgb.brow);

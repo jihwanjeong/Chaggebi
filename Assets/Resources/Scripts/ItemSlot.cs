@@ -6,6 +6,7 @@ public class ItemSlot : MonoBehaviour
     public Image itemImage;
     public Text itemName;
     public Text itemCount;
+    public GameObject selectedImg;
     [HideInInspector] public Item item;
 
     public void AddItem(Item _item)
@@ -22,5 +23,10 @@ public class ItemSlot : MonoBehaviour
         itemCount.text = "";
         itemImage.sprite = null;
         this.gameObject.SetActive(false);
+    }
+
+    public void SelectActive(bool _b)
+    {
+        selectedImg.SetActive(_b);
     }
 }

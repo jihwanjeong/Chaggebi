@@ -31,12 +31,12 @@ public class InventoryManager : MonoBehaviour
     }
     void UpdateInven()
     {
-        int itemCount = PlayerData.instance.playerItems.Count;
+        int itemCount = PlayerData.instance.playerFoods.Count;
         for (int i = 0; i < slots.Length; i++)
         {
             if (i < itemCount)
             {
-                slots[i].AddItem(PlayerData.instance.playerItems[i]);
+                slots[i].AddItem(PlayerData.instance.playerFoods[i]);
             }
             else
             {

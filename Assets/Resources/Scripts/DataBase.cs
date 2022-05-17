@@ -17,20 +17,14 @@ using UnityEngine;
     public string teabagID { get; set; }
     public int mouth { get; set; }
     public int brow { get; set; }
-    //public void UpdateAppearance(CGBData newCGB)
-    //{
-    //    isPlaced = newCGB.isPlaced;
-    //    age = newCGB.age;
-    //    base1 = newCGB.base1;
-    //    base1vary = newCGB.base1vary;
-    //    base2 = newCGB.base2;
-    //    flavor = newCGB.flavor;
-    //    name = newCGB.name;
-    //    description = newCGB.description;
-    //    teabag = newCGB.teabag;
-    //    mouth = newCGB.mouth;
-    //    brow = newCGB.brow;
-    //}
+    //½ºÅÈ
+    public int fullRate { get; set; }
+    public int cleanRate { get; set; }
+    public int happyRate { get; set; }
+    public int scent { get; set; }
+    public int earthy { get; set; }
+    public int sweet { get; set; }
+    public int sour { get; set; }
 }
 
 [System.Serializable] public class Teabag
@@ -116,7 +110,7 @@ public class DataBase : MonoBehaviour
     {
         return AllTeabags[AllTeabags.FindIndex(x => x.id == _id)];
     }
-    public Item FindItem(string _id)
+    public Item FindFood(string _id)
     {
         return AllFoods[AllFoods.FindIndex(x => x.id == _id)];
     }

@@ -18,7 +18,7 @@ public class CGBMotion : MonoBehaviour
     private Vector3 currentpos;
     public bool isClick = false;
     public GameObject CGBManagePanel;
-    public GameObject CGBobject;
+    //public GameObject CGBobject;
     public float cameraSpeed = 5.0f;
     public GameObject Camera;
     public GameObject UI;
@@ -183,10 +183,12 @@ public class CGBMotion : MonoBehaviour
             CancelInvoke("GetRandom");
             sk.AnimationState.SetAnimation(0, "idle", true);
             statusActive = true;
-            Debug.Log(CGBobject.gameObject.transform.position.x);
+            Debug.Log(transform.position.x);
             CGBManagePanel.SetActive(true);
             UI.SetActive(false);
             isClick = true;
+            PlayerData.instance.interactingCGB = cgbdata;
+            PlayerData.instance.interactingSk = sk;
         }
         else if (isClick == true)
         {
@@ -232,7 +234,7 @@ public class CGBMotion : MonoBehaviour
         }
         if (isClick != false)
         {
-            Vector3 dir = CGBobject.transform.position - Camera.transform.position;
+            Vector3 dir = transform.position - Camera.transform.position;
             Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.deltaTime, dir.y * cameraSpeed * Time.deltaTime, 0.0f);
             Camera.transform.Translate(moveVector);
             CGBManagePanel.transform.Translate(moveVector.x, moveVector.y,0f);
