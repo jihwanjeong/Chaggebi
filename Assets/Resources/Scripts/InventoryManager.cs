@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour
     public Image detailImage;
     public Text detailName;
     public Text detailDescription;
+    public Text detailStat;
 
     ItemSlot[] slots;
     Button[] slotBtns;
@@ -50,6 +51,7 @@ public class InventoryManager : MonoBehaviour
         detailImage.sprite = slots[i].item.sprite;
         detailName.text = slots[i].item.name;
         detailDescription.text = slots[i].item.description;
+        detailStat.text = "달콤함 " + slots[i].item.scent + "   고소함 " + slots[i].item.earthy + "   달콤함 " + slots[i].item.sweet + "   상큼함 " + slots[i].item.sour;
         itemDetailPanel.SetActive(true);
     }
 }

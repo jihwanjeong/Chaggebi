@@ -7,12 +7,13 @@ using UnityEngine;
 {
     //차깨비 외형 정보
     public bool isPlaced { get; set; } = false;
-    public int age { get; set; } //진화단계
+    public int age { get; set; } = 1; //진화단계
     public string base1 { get; set; } //몸색(1단계)
     public int base1vary { get; set; }
     public string base2 { get; set; } //스킨(2단계)
     public string flavor { get; set; } //맛(3단계)
     public string name { get; set; } = "차깨비";
+    public string customName { get; set; } = "내 차깨비";
     public string description { get; set; }
     public string teabagID { get; set; }
     public int mouth { get; set; }
