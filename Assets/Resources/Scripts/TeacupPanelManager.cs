@@ -13,6 +13,7 @@ public class TeacupPanelManager : MonoBehaviour
     public GameObject GachaCGB; //»ÌÀº Â÷±úºñ
     //public GameObject GachaCGBPlace;
     //GameObject gachaCGB;
+    public Button PanelOpenBtn;
     public Button GachaClose;
     public Text RemainTeabags;
     public Text CGBInfo;
@@ -70,7 +71,7 @@ public class TeacupPanelManager : MonoBehaviour
         GachaCGB.SetActive(false);
         CGBGachaPopup.SetActive(false);
         TeabagUseButton.SetActive(true);
-        RemainTeabags.GetComponent<Text>().text = "    x " + Teabags.ToString();
+        UpdateTeabag();
     }
 
     //¹è°æ »Ì±â¾Ö´Ï ³¡³µÀ»¶§ ½ÇÇà
@@ -94,12 +95,13 @@ public class TeacupPanelManager : MonoBehaviour
     {
         useTeabag.onClick.AddListener(UseTeabags);
         GachaClose.onClick.AddListener(DisableGachaPopup);
+        PanelOpenBtn.onClick.AddListener(UpdateTeabag);
         bgAnimation.AnimationState.Event += EventBG;
         spineSetter = GameObject.Find("CGBSpineManager").GetComponent<CGBSpineSetter>();
         ListUpBabies();
     }
 
-    void Enabled()
+    void UpdateTeabag()
     {
         
         RemainTeabags.GetComponent<Text>().text = "    x " + Teabags.ToString();

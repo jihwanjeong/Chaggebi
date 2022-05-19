@@ -19,7 +19,8 @@ public class UseInvenManager : MonoBehaviour
     Item selectedItem;
     void Start()
     {
-        invenBtn.onClick.AddListener(UpdateInven);
+        invenPanel.SetActive(false);
+        invenBtn.onClick.AddListener(OpenPanel);
         slots = slotsParent.GetComponentsInChildren<ItemSlot>();
         slotBtns = new Button[slots.Length];
         for (int i = 0; i < slots.Length; i++)
@@ -31,6 +32,19 @@ public class UseInvenManager : MonoBehaviour
         flyingFood_img = flyingFood.GetComponent<Image>();
     }
 
+    void OpenPanel()
+    {
+        if (PlayerData.instance.interactingCGB.fullRate < 85)
+        {
+            UpdateInven();
+            invenPanel.SetActive(true);
+        }
+        else
+        {
+            PlayerData.instance.interactingSk.AnimationState.SetAnimation(0, "no", false);
+            PlayerData.instance.interactingSk.AnimationState.AddAnimation(0, "idle", false, 0);
+        }
+    }
     void UpdateInven()
     {
         useBtn.SetActive(false);
@@ -47,7 +61,6 @@ public class UseInvenManager : MonoBehaviour
                 slots[i].RemoveItem();
             }
         }
-        invenPanel.SetActive(true);
     }
 
     void SelectItem(int _i)
@@ -62,6 +75,7 @@ public class UseInvenManager : MonoBehaviour
 
     public void UseItem()
     {
+        invenPanel.SetActive(false);
         if (PlayerData.instance.interactingCGB.fullRate < 85)
         {
             StopAllCoroutines();
@@ -73,12 +87,11 @@ public class UseInvenManager : MonoBehaviour
             PlayerData.instance.interactingCGB.fullRate += 20;
             StartCoroutine(Eat());
         }
-        else Debug.Log("차깨비 배부름");
+        else PlayerData.instance.interactingSk.AnimationState.SetAnimation(0, "no", false);
     }
 
     IEnumerator Eat()
     {
-        invenPanel.SetActive(false);
         flyingFood_img.sprite = selectedItem.sprite;
         flyingFood.SetActive(true);
         PlayerData.instance.interactingSk.AnimationState.SetAnimation(0, "eat", true);

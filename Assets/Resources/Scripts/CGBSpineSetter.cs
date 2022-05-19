@@ -48,7 +48,7 @@ public class CGBSpineSetter : MonoBehaviour
                 break;
             }
         }
-
+        skeletonAnimation.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, 1 - (cgb.cleanRate / 100f)));
     }
     public void SetAppearance(CGBData cgb, SkeletonGraphic skeletonGraphic) //차깨비스파인UI 외형 설정하기
     {

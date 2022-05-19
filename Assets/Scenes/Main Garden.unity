@@ -8666,9 +8666,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35f0c174f178364cb42f32cd99c2da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cleanPanel: {fileID: 1626783342}
   particle: {fileID: 185706511}
   areaSize: 300
-  washTimeSec: 0.5
+  washSpeed: 0.2
 --- !u!114 &365019977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21269,10 +21270,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1626783342}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 365019976}
+        m_TargetAssemblyTypeName: BrushHandler, Assembly-CSharp
+        m_MethodName: OpenPanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -22944,6 +22945,7 @@ MonoBehaviour:
   CGBGachaPopup: {fileID: 1935248060}
   CGBInventory: {fileID: 2042415853}
   GachaCGB: {fileID: 4684916811000326118}
+  PanelOpenBtn: {fileID: 1596276339}
   GachaClose: {fileID: 1573546780}
   RemainTeabags: {fileID: 345650605}
   CGBInfo: {fileID: 1181864820}
