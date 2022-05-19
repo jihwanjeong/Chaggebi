@@ -14,6 +14,7 @@ public class MiniGame : MonoBehaviour
     public GameObject CupPanel;
     public GameObject TeabagPanel;
     public GameObject CupinTeabag;
+    public GameObject OrderPanel;
     public Image Cupimage;
 
     public int CupSel = 0;
@@ -48,6 +49,14 @@ public class MiniGame : MonoBehaviour
         }
         else
             Selected.text = "컵을 고르시오";
+
+    }
+    public void OrderPanelControl()
+    {
+        if (OrderPanel.activeSelf == true)
+            OrderPanel.SetActive(false);
+        else
+            OrderPanel.SetActive(true);
 
     }
 
