@@ -38,7 +38,7 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
         if(!isClean)
         {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = new Vector3(mousePos.x, mousePos.y, 27f);
+            transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
             if (Mathf.Abs(transform.position.x) < areaSize && Mathf.Abs(transform.position.y) < areaSize)
             {
                 if (particle.particleCount > 10)
