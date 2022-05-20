@@ -8669,7 +8669,7 @@ MonoBehaviour:
   cleanPanel: {fileID: 1626783342}
   particle: {fileID: 185706511}
   areaSize: 300
-  washSpeed: 0.2
+  washSpeed: 0.15
 --- !u!114 &365019977
 MonoBehaviour:
   m_ObjectHideFlags: 0
