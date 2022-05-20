@@ -13,9 +13,10 @@ public class MiniGame : MonoBehaviour
     public Text Selected;
     public GameObject CupPanel;
     public GameObject TeabagPanel;
-    public GameObject CupinTeabag;
+    //public GameObject CupinTeabag;
     public GameObject OrderPanel;
     public Image Cupimage;
+    public Image Cupimage2;
 
     public int CupSel = 0;
     public int CupResult = 0;
@@ -62,17 +63,28 @@ public class MiniGame : MonoBehaviour
 
     public void TeabagCupSel()
     {
-        if(CupResult == 0)
+        if (CupResult == 0)
+        {
             Cupimage.sprite = Resources.Load<Sprite>("Images/cup1") as Sprite;
-
+            Cupimage2.sprite = Resources.Load<Sprite>("Images/cup1") as Sprite;
+        }
         else if (CupResult == 1)
+            
+        {
             Cupimage.sprite = Resources.Load<Sprite>("Images/cup1") as Sprite;
-        
+            Cupimage2.sprite = Resources.Load<Sprite>("Images/cup1") as Sprite;
+        }
         else if (CupResult == 2)
+        {
             Cupimage.sprite = Resources.Load<Sprite>("Images/cup2") as Sprite;
-        
+            Cupimage2.sprite = Resources.Load<Sprite>("Images/cup2") as Sprite;
+        }
+
         else if (CupResult == 3)
+        {
             Cupimage.sprite = Resources.Load<Sprite>("Images/cup3") as Sprite;
+            Cupimage2.sprite = Resources.Load<Sprite>("Images/cup3") as Sprite;
+        }
 
 
     }
