@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Spine.Unity;
@@ -7,9 +5,11 @@ using Spine.Unity;
 public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public GameObject cleanPanel;
+    public Transform CGBManagePanel;
     Vector3 defaultPos;
     Vector2 mousePos;
-    public ParticleSystem particle;
+    public ParticleSystem particleBubble;
+    public ParticleController particleBling;
     float cleanTime;
     [Header("영역, 소요시간 설정")]
     public int areaSize = 300;
@@ -17,9 +17,20 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     bool isClean;
     SkeletonAnimation sk;
 
-    public void OpenPanel()
+    public void Test()
     {
-        if (PlayerData.instance.interactingCGB.cleanRate < 100) cleanPanel.SetActive(true);
+        PlayerData.instance.interactingCGB.cleanRate = 0;
+        sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, (100 - PlayerData.instance.interactingCGB.cleanRate) / 100f));
+    }
+    public void OpenPanel() //@Clean_btn
+    {
+        sk = PlayerData.instance.interactingSk;
+        if (PlayerData.instance.interactingCGB.cleanRate < 100)
+        {
+            cleanPanel.SetActive(true);
+            sk.AnimationState.SetAnimation(0, "wash_start", false);
+            sk.AnimationState.AddAnimation(0, "wash_idle", false, 0);
+        }
         else
         {
             sk.AnimationState.SetAnimation(0, "no", false);
@@ -31,7 +42,6 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
         defaultPos = transform.position;
         if (PlayerData.instance.interactingCGB.cleanRate < 100) isClean = false;
         else isClean = true;
-        sk = PlayerData.instance.interactingSk;
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -41,7 +51,7 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
             transform.position = new Vector3(mousePos.x, mousePos.y, transform.position.z);
             if (Mathf.Abs(transform.position.x) < areaSize && Mathf.Abs(transform.position.y) < areaSize)
             {
-                if (particle.particleCount > 10)
+                if (particleBubble.particleCount > 10)
                 {
                     cleanTime += Time.deltaTime;
                     if (cleanTime > washSpeed)
@@ -49,7 +59,9 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
                         if (PlayerData.instance.interactingCGB.cleanRate == 100)
                         {
                             transform.position = defaultPos;
-                            sk.AnimationState.SetAnimation(0, "happy", false);
+                            sk.AnimationState.SetAnimation(0, "wash_end", false);
+                            particleBling.Play(0, 1.5f, CGBManagePanel.position);
+                            sk.AnimationState.AddAnimation(0, "happy", false,0);
                             sk.AnimationState.AddAnimation(0, "idle", true, 0f);
                             isClean = true;
                             cleanPanel.SetActive(false);
