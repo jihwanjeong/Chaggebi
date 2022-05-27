@@ -31,7 +31,7 @@ public class StatManager : MonoBehaviour
         cgb = _cgb;
         spineSetter.SetAppearance(cgb, skeletonGraphic);
         UpdateStatUI();
-        makingTeabag.SetTeabagInfo(DataBase.instance.FindTeabag(cgb.teabagID));
+        makingTeabag.SetTeabagInfo(cgb.teabagID,0);
         name.text = cgb.name.ToString();
         customName.text = cgb.customName.ToString();
         age.text = "성장 " + cgb.age.ToString() + "단계";

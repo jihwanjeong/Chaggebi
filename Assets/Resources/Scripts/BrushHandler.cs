@@ -60,7 +60,7 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
                         {
                             transform.position = defaultPos;
                             sk.AnimationState.SetAnimation(0, "wash_end", false);
-                            particleBling.Play(0, 1.5f, CGBManagePanel.position);
+                            particleBling.Play(1, 1.5f, CGBManagePanel.position);
                             sk.AnimationState.AddAnimation(0, "happy", false,0);
                             sk.AnimationState.AddAnimation(0, "idle", true, 0f);
                             isClean = true;
