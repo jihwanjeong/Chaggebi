@@ -143,6 +143,7 @@ MonoBehaviour:
   actionCooltime: 0
   isClick: 0
   CGBManagePanel: {fileID: 0}
+  CGBobject: {fileID: 5927693410354627705}
   cameraSpeed: 5
   Camera: {fileID: 0}
   UI: {fileID: 0}

@@ -18,6 +18,7 @@ public class CGBMotion : MonoBehaviour
     private Vector3 currentpos;
     public bool isClick = false;
     public GameObject CGBManagePanel;
+    public GameObject CGBobject;
     //public GameObject CGBobject;
     public float cameraSpeed = 5.0f;
     public GameObject Camera;

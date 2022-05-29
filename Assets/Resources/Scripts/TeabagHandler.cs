@@ -14,22 +14,30 @@ public class TeabagHandler : MonoBehaviour
     public void SetTeabagInfo(string _id, int _starTier)
     {
         resourceAnimator = GameObject.Find("collectItem").GetComponent<ResourceAnimator>();
-        star1.SetActive(false); star2.SetActive(false); star3.SetActive(false);
         teabag = DataBase.instance.FindTeabag(_id);
-        if(_starTier == 1)
+        if(star1!=null)
         {
-            teabag.count_star1 = count;
-            star1.SetActive(true);
-        }
-        if (_starTier == 2)
-        {
-            teabag.count_star2 = count;
-            star2.SetActive(true);
-        }
-        if (_starTier == 3)
-        {
-            teabag.count_star3 = count;
-            star3.SetActive(true);
+            if (_starTier == 1)
+            {
+                teabag.count_star1 = count;
+                star1.SetActive(true);
+                star2.SetActive(false);
+                star3.SetActive(false);
+            }
+            else if (_starTier == 2)
+            {
+                teabag.count_star2 = count;
+                star2.SetActive(true);
+                star1.SetActive(false);
+                star3.SetActive(false);
+            }
+            else if (_starTier == 3)
+            {
+                teabag.count_star3 = count;
+                star3.SetActive(true);
+                star1.SetActive(false);
+                star2.SetActive(false);
+            }
         }
         image.sprite = teabag.sprite;
     }
