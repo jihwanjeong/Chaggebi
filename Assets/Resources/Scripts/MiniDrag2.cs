@@ -9,7 +9,7 @@ public class MiniDrag2 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 {
 
     RectTransform rectTransform;
-    CanvasGroup canvasGroup;
+    //CanvasGroup canvasGroup;
     [SerializeField] Canvas canvas;
     public GameObject TC1;
     public GameObject TC2;
@@ -22,14 +22,14 @@ public class MiniDrag2 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
+        //canvasGroup = GetComponent<CanvasGroup>();
     }
 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = .6f;
-        canvasGroup.blocksRaycasts = false;
+        //canvasGroup.alpha = .6f;
+       // canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -39,8 +39,8 @@ public class MiniDrag2 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = 1f;
-        canvasGroup.blocksRaycasts = true;
+        //canvasGroup.alpha = 1f;
+        //canvasGroup.blocksRaycasts = true;
 
     }
 
@@ -64,11 +64,11 @@ public class MiniDrag2 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     {
         if (TC1.activeSelf == true && TC2.activeSelf == false)
             Ttext.text = "³ì»öÂ÷";
-         if (TC1.activeSelf == false && TC2.activeSelf == true)
+         else if (TC1.activeSelf == false && TC2.activeSelf == true)
             Ttext.text = "»¡°­Â÷";
-         if (TC1.activeSelf == true && TC2.activeSelf == true)
+         else if (TC1.activeSelf == true && TC2.activeSelf == true)
             Ttext.text = "»¡°­³ì»öÂ÷";
-         if (TC1.activeSelf == false && TC2.activeSelf == false)
+         else if (TC1.activeSelf == false && TC2.activeSelf == false)
             Ttext.text = "ºóÄÅ";
 
 

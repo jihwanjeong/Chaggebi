@@ -17,6 +17,8 @@ public class MiniGame : MonoBehaviour
     public GameObject OrderPanel;
     public Image Cupimage;
     public Image Cupimage2;
+    public GameObject B1, B2, B3;
+    
 
     public int CupSel = 0;
     public int CupResult = 0;
@@ -88,7 +90,24 @@ public class MiniGame : MonoBehaviour
 
 
     }
-
+    public void EnableB1()
+    {
+        B1.SetActive(true);
+        B2.SetActive(false);
+        B3.SetActive(false);
+    }
+    public void EnableB2()
+    {
+        B1.SetActive(false);
+        B2.SetActive(true);
+        B3.SetActive(false);
+    }
+    public void EnableB3()
+    {
+        B1.SetActive(false);
+        B2.SetActive(false);
+        B3.SetActive(true);
+    }
 
 
     void Start()

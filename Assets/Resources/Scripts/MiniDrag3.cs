@@ -9,7 +9,7 @@ public class MiniDrag3 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 {
 
     RectTransform rectTransform;
-    CanvasGroup canvasGroup;
+    //CanvasGroup canvasGroup;
     [SerializeField] Canvas canvas;
     public GameObject TC1;
     public GameObject TC2;
@@ -22,14 +22,14 @@ public class MiniDrag3 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
+        //canvasGroup = GetComponent<CanvasGroup>();
     }
 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = .6f;
-        canvasGroup.blocksRaycasts = false;
+        //canvasGroup.alpha = .6f;
+       // canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -39,8 +39,8 @@ public class MiniDrag3 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = 1f;
-        canvasGroup.blocksRaycasts = true;
+       // canvasGroup.alpha = 1f;
+        //canvasGroup.blocksRaycasts = true;
 
     }
 
