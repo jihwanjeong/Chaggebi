@@ -38,8 +38,7 @@ public class PlayerData : MonoBehaviour
             }
         }
         playerFoods.Add(DataBase.instance.FindFood(_id));
-        int j = playerFoods.Count;
-        playerFoods[j].count = _count;
+        playerFoods[playerFoods.Count-1].count = _count;
     }
 
     public void RemoveItem(string _id, int _count)
