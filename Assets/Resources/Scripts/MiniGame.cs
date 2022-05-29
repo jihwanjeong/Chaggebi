@@ -18,7 +18,8 @@ public class MiniGame : MonoBehaviour
     public Image Cupimage;
     public Image Cupimage2;
     public GameObject B1, B2, B3;
-    
+    public GameObject if1, if2, if3;
+
 
     public int CupSel = 0;
     public int CupResult = 0;
@@ -122,5 +123,27 @@ public class MiniGame : MonoBehaviour
     void Update()
     {
         TeabagCupSel();
+        if (B1.activeSelf == true)
+        {
+            if1.SetActive(true);
+            if2.SetActive(false);
+            if3.SetActive(false);
+
+        }
+        else if (B2.activeSelf == true)
+        {
+            if1.SetActive(false);
+            if2.SetActive(true);
+            if3.SetActive(false);
+
+        }
+        else if (B3.activeSelf == true)
+        {
+            if1.SetActive(false);
+            if2.SetActive(false);
+            if3.SetActive(true);
+
+        }
+
     }
 }
