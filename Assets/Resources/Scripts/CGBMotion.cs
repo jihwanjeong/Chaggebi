@@ -211,6 +211,7 @@ public class CGBMotion : MonoBehaviour
 
     void Update()
     {
+        
         if (this.gameObject.transform.position.x >= 100f)
             statusActive = true;
         else
@@ -227,16 +228,18 @@ public class CGBMotion : MonoBehaviour
                 Walk();
             else if (status == 6)
                 Happy();
-            else if (status == 7)
-                CreateTeabag();
+            //else if (status == 7)
+               // CreateTeabag();
         }
         if (isClick != false)
         {
             Vector3 dir = CGBobject.transform.position - Camera.transform.position;
             Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.deltaTime, dir.y * cameraSpeed * Time.deltaTime, 0.0f);
             Camera.transform.Translate(moveVector);
-            CGBManagePanel.transform.Translate(moveVector.x, moveVector.y,0f);
+            
+
         }
+       
     }
 
 }
