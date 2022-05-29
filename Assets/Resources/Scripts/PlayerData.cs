@@ -20,6 +20,8 @@ public class PlayerData : MonoBehaviour
     }
     #endregion
 
+    public int gold;
+
     public List<CGBData> playerCGBs = new List<CGBData>();
     public List<Item> playerFoods = new List<Item>();
     public List<Teabag> playerTeabags = new List<Teabag>();
