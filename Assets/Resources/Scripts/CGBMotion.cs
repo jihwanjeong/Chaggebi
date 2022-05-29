@@ -18,7 +18,6 @@ public class CGBMotion : MonoBehaviour
     private Vector3 currentpos;
     public bool isClick = false;
     public GameObject CGBManagePanel;
-    public GameObject CGBobject;
     //public GameObject CGBobject;
     public float cameraSpeed = 5.0f;
     public GameObject Camera;
@@ -182,7 +181,7 @@ public class CGBMotion : MonoBehaviour
             CancelInvoke("GetRandom");
             sk.AnimationState.SetAnimation(0, "idle", true);
             statusActive = true;
-            Debug.Log(CGBobject.gameObject.transform.position.x);
+            Debug.Log(gameObject.transform.position.x);
             CGBManagePanel.SetActive(true);
             UI.SetActive(false);
             isClick = true;
@@ -229,16 +228,14 @@ public class CGBMotion : MonoBehaviour
                 Walk();
             else if (status == 6)
                 Happy();
-            //else if (status == 7)
-               // CreateTeabag();
+            else if (status == 7)
+                CreateTeabag();
         }
         if (isClick != false)
         {
-            Vector3 dir = CGBobject.transform.position - Camera.transform.position;
+            Vector3 dir = transform.position - Camera.transform.position;
             Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.deltaTime, dir.y * cameraSpeed * Time.deltaTime, 0.0f);
-            Camera.transform.Translate(moveVector);
-            
-
+            Camera.transform.Translate(moveVector);          
         }
        
     }
