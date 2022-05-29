@@ -11,10 +11,15 @@ public class ResourceAnimator : MonoBehaviour
     public Transform goldBtn;
     public Image[] images;
     public ParticleController particleController;
+    //public Camera cam;
   
     void Start()
     {
         foreach (Image image in images) image.enabled = false;
+        //if (cam == null) 
+        //{
+        //    cam = Camera.main;
+        //}
     }
 
     public void Test(GameObject _teabag)
@@ -32,6 +37,7 @@ public class ResourceAnimator : MonoBehaviour
                 images[i].transform.localScale = new Vector3(1, 1, 1);
                 images[i].sprite = _sprite;
                 images[i].enabled = true;
+                //Vector3 targetPos = cam.ScreenToWorldPoint(new Vector3(cgbInvenBtn.position.x, cgbInvenBtn.position.y, cam.transform.position.z * -1));
                 StartCoroutine(MoveItem(images[i].transform, _startPos.position, cgbInvenBtn.position));
                 break;
             }

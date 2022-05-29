@@ -4,12 +4,14 @@ using UnityEngine.UI;
 public class InventoryManager : MonoBehaviour
 {
     public Button invenBtn;
+    public Button teabagBtn, foodBtn, toyBtn;
     public Transform slotsParent;
     public GameObject itemDetailPanel;
     public Image detailImage;
     public Text detailName;
     public Text detailDescription;
     public Text detailStat;
+    enum category { teabag, food, toy};
 
     ItemSlot[] slots;
     Button[] slotBtns;
@@ -20,7 +22,10 @@ public class InventoryManager : MonoBehaviour
     }
     void Start()
     {
-        invenBtn.onClick.AddListener(UpdateInven);
+        invenBtn.onClick.AddListener(() => UpdateInven(category.teabag));
+        teabagBtn.onClick.AddListener(() => UpdateInven(category.teabag));
+        foodBtn.onClick.AddListener(() => UpdateInven(category.food));
+        toyBtn.onClick.AddListener(() => UpdateInven(category.toy));
         slots = slotsParent.GetComponentsInChildren<ItemSlot>();
         slotBtns = new Button[slots.Length];
         for (int i = 0; i < slots.Length; i++)
@@ -30,20 +35,46 @@ public class InventoryManager : MonoBehaviour
             slotBtns[i].onClick.AddListener(() => ViewItemDetail(index));
         }
     }
-    void UpdateInven()
+    void UpdateInven(category _category)
     {
-        int itemCount = PlayerData.instance.playerFoods.Count;
-        for (int i = 0; i < slots.Length; i++)
+        if(_category==category.teabag)
         {
-            if (i < itemCount)
+            int itemCount = PlayerData.instance.playerTeabags.Count;
+            for (int i = 0; i < slots.Length; i++)
             {
-                slots[i].AddItem(PlayerData.instance.playerFoods[i]);
+                if (i < itemCount)
+                {
+                    slots[i].AddItem(PlayerData.instance.playerTeabags[i]);
+                }
+                else
+                {
+                    slots[i].RemoveItem();
+                }
             }
-            else
+        }
+        if (_category == category.food)
+        {
+            int itemCount = PlayerData.instance.playerFoods.Count;
+            for (int i = 0; i < slots.Length; i++)
+            {
+                if (i < itemCount)
+                {
+                    slots[i].AddItem(PlayerData.instance.playerFoods[i]);
+                }
+                else
+                {
+                    slots[i].RemoveItem();
+                }
+            }
+        }
+        if (_category == category.toy) //임시.장난감만들면 작성
+        {
+            for (int i = 0; i < slots.Length; i++)
             {
                 slots[i].RemoveItem();
             }
         }
+
     }
 
     void ViewItemDetail(int i)

@@ -109,11 +109,36 @@ public class DataBase : MonoBehaviour
 
     public Teabag FindTeabag(string _id)
     {
-        return AllTeabags[AllTeabags.FindIndex(x => x.id == _id)];
+        int i = AllTeabags.FindIndex(x => x.id == _id);
+        Teabag teabag = new Teabag
+        {
+            id = AllTeabags[i].id,
+            name = AllTeabags[i].name,
+            description = AllTeabags[i].description,
+            scent = AllTeabags[i].scent,
+            earthy = AllTeabags[i].earthy,
+            sweet = AllTeabags[i].sweet,
+            sour = AllTeabags[i].sour,
+            sprite = AllTeabags[i].sprite
+        };
+        return teabag;
     }
     public Item FindFood(string _id)
     {
-        return AllFoods[AllFoods.FindIndex(x => x.id == _id)];
+        int i = AllFoods.FindIndex(x => x.id == _id);
+        Item item = new Item
+        {
+            id = AllFoods[i].id,
+            name = AllFoods[i].name,
+            description = AllFoods[i].description,
+            scent = AllFoods[i].scent,
+            earthy = AllFoods[i].earthy,
+            sweet = AllFoods[i].sweet,
+            sour = AllFoods[i].sour,
+            cost = AllFoods[i].cost,
+            sprite = AllFoods[i].sprite
+        };
+        return item;
     }
 
     void GetAllCgbDB()

@@ -92,6 +92,7 @@ namespace Chaggebi
         }
         void Start()
         {
+            ChaggebiSelectPanel.SetActive(false);
             ChaggebiPanelEnable.onClick.AddListener(ChaggebiPanelControl);
             ChaggebiPanelExit.onClick.AddListener(ChaggebiPanelControl);
             ShopPanelEnable.onClick.AddListener(ShopPanelControl);

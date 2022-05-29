@@ -28,7 +28,8 @@ public class TeabagHandler : MonoBehaviour
         }
         if (_starTier == 3)
         {
-            teabag.count_star3 = count;            star3.SetActive(true);
+            teabag.count_star3 = count;
+            star3.SetActive(true);
         }
         image.sprite = teabag.sprite;
     }
@@ -37,5 +38,6 @@ public class TeabagHandler : MonoBehaviour
     {
         PlayerData.instance.AddTeabag(teabag.id, teabag.count_star1, teabag.count_star2, teabag.count_star3);
         resourceAnimator.GetItem(teabag.sprite, transform);
+        Destroy(gameObject);
     }
 }
