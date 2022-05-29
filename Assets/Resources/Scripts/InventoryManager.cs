@@ -11,6 +11,7 @@ public class InventoryManager : MonoBehaviour
     public Text detailName;
     public Text detailDescription;
     public Text detailStat;
+    category selectedCategory;
     enum category { teabag, food, toy};
 
     ItemSlot[] slots;
@@ -39,6 +40,7 @@ public class InventoryManager : MonoBehaviour
     {
         if(_category==category.teabag)
         {
+            selectedCategory = category.teabag;
             int itemCount = PlayerData.instance.playerTeabags.Count;
             for (int i = 0; i < slots.Length; i++)
             {
@@ -54,6 +56,7 @@ public class InventoryManager : MonoBehaviour
         }
         if (_category == category.food)
         {
+            selectedCategory = category.food;
             int itemCount = PlayerData.instance.playerFoods.Count;
             for (int i = 0; i < slots.Length; i++)
             {
@@ -69,6 +72,7 @@ public class InventoryManager : MonoBehaviour
         }
         if (_category == category.toy) //임시.장난감만들면 작성
         {
+            selectedCategory = category.toy;
             for (int i = 0; i < slots.Length; i++)
             {
                 slots[i].RemoveItem();
@@ -79,10 +83,20 @@ public class InventoryManager : MonoBehaviour
 
     void ViewItemDetail(int i)
     {
-        detailImage.sprite = slots[i].item.sprite;
-        detailName.text = slots[i].item.name;
-        detailDescription.text = slots[i].item.description;
-        detailStat.text = "달콤함 " + slots[i].item.scent + "   고소함 " + slots[i].item.earthy + "   달콤함 " + slots[i].item.sweet + "   상큼함 " + slots[i].item.sour;
+        if(selectedCategory==category.teabag)
+        {
+            detailImage.sprite = slots[i].teabag.sprite;
+            detailName.text = slots[i].teabag.name;
+            detailDescription.text = slots[i].teabag.description;
+            detailStat.text = "달콤함 " + slots[i].teabag.scent + "   고소함 " + slots[i].teabag.earthy + "   달콤함 " + slots[i].teabag.sweet + "   상큼함 " + slots[i].teabag.sour;
+        }
+        else
+        {
+            detailImage.sprite = slots[i].item.sprite;
+            detailName.text = slots[i].item.name;
+            detailDescription.text = slots[i].item.description;
+            detailStat.text = "달콤함 " + slots[i].item.scent + "   고소함 " + slots[i].item.earthy + "   달콤함 " + slots[i].item.sweet + "   상큼함 " + slots[i].item.sour;
+        }
         itemDetailPanel.SetActive(true);
     }
 }

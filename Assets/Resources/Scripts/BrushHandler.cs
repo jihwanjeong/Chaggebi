@@ -4,6 +4,7 @@ using Spine.Unity;
 
 public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    public GameObject mainBtns;
     public GameObject cleanPanel;
     public Transform CGBManagePanel;
     Vector3 defaultPos;
@@ -27,6 +28,7 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
         sk = PlayerData.instance.interactingSk;
         if (PlayerData.instance.interactingCGB.cleanRate < 100)
         {
+            mainBtns.SetActive(false);
             cleanPanel.SetActive(true);
             sk.AnimationState.SetAnimation(0, "wash_start", false);
             sk.AnimationState.AddAnimation(0, "wash_idle", false, 0);
@@ -36,6 +38,13 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
             sk.AnimationState.SetAnimation(0, "no", false);
             sk.AnimationState.AddAnimation(0, "idle", false, 0);
         }
+    }
+    public void ClosePanel()
+    {
+        cleanPanel.SetActive(false);
+        sk.AnimationState.SetAnimation(0, "wash_end", false);
+        sk.AnimationState.AddAnimation(0, "idle", true, 0f);
+        mainBtns.SetActive(true);
     }
     public void OnBeginDrag(PointerEventData eventData)
     {

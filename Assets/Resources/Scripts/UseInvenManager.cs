@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Spine.Unity;
 
 public class UseInvenManager : MonoBehaviour
 {
     public Button invenBtn;
+    public Button cleanBtn;
     public GameObject invenPanel;
     public Transform slotsParent;
     public GameObject useBtn;
@@ -19,6 +19,7 @@ public class UseInvenManager : MonoBehaviour
     Item selectedItem;
     void Start()
     {
+        cleanBtn.onClick.AddListener(() => StopAllCoroutines());
         invenPanel.SetActive(false);
         invenBtn.onClick.AddListener(OpenPanel);
         slots = slotsParent.GetComponentsInChildren<ItemSlot>();

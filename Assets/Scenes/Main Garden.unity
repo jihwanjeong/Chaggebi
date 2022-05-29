@@ -9546,6 +9546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35f0c174f178364cb42f32cd99c2da5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainBtns: {fileID: 456414082}
   cleanPanel: {fileID: 1626783342}
   CGBManagePanel: {fileID: 254367902}
   particleBubble: {fileID: 185706511}
@@ -10035,10 +10036,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1626783342}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 365019976}
+        m_TargetAssemblyTypeName: BrushHandler, Assembly-CSharp
+        m_MethodName: ClosePanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12306,7 +12307,7 @@ MonoBehaviour:
   detailImage: {fileID: 1297414071}
   detailName: {fileID: 1243739729}
   detailDescription: {fileID: 137006106}
-  detailStat: {fileID: 0}
+  detailStat: {fileID: 2131832574}
 --- !u!114 &597449763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12320,6 +12321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invenBtn: {fileID: 524929259}
+  cleanBtn: {fileID: 1569691773}
   invenPanel: {fileID: 610518303}
   slotsParent: {fileID: 1602536632}
   useBtn: {fileID: 1911220898}
