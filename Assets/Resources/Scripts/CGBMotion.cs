@@ -181,7 +181,7 @@ public class CGBMotion : MonoBehaviour
             CancelInvoke("GetRandom");
             sk.AnimationState.SetAnimation(0, "idle", true);
             statusActive = true;
-            Debug.Log(transform.position.x);
+            Debug.Log(CGBobject.gameObject.transform.position.x);
             CGBManagePanel.SetActive(true);
             UI.SetActive(false);
             isClick = true;
@@ -211,36 +211,35 @@ public class CGBMotion : MonoBehaviour
 
     void Update()
     {
-
-        if (isClick != false)
-        {
-            Vector3 dir = transform.position - Camera.transform.position;
-            Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.deltaTime, dir.y * cameraSpeed * Time.deltaTime, 0.0f);
-            Camera.transform.Translate(moveVector);
-            CGBManagePanel.transform.Translate(moveVector.x, moveVector.y,0f);
-        }
+        
+        if (this.gameObject.transform.position.x >= 100f)
+            statusActive = true;
         else
         {
-            if (this.gameObject.transform.position.x >= 100f)
-                statusActive = true;
-            else
-            {
-                if (status == 1)
-                    ChangeDir();
-                else if (status == 2)
-                    Idle();
-                else if (status == 3)
-                    Run();
-                else if (status == 4)
-                    sleep();
-                else if (status == 5)
-                    Walk();
-                else if (status == 6)
-                    Happy();
-                else if (status == 7)
-                    CreateTeabag();
-            }
+            if (status == 1)
+                ChangeDir();
+            else if (status == 2)
+                Idle();
+            else if (status == 3)
+                Run();
+            else if (status == 4)
+                sleep();
+            else if (status == 5)
+                Walk();
+            else if (status == 6)
+                Happy();
+            //else if (status == 7)
+               // CreateTeabag();
         }
+        if (isClick != false)
+        {
+            Vector3 dir = CGBobject.transform.position - Camera.transform.position;
+            Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.deltaTime, dir.y * cameraSpeed * Time.deltaTime, 0.0f);
+            Camera.transform.Translate(moveVector);
+            
+
+        }
+       
     }
 
 }
