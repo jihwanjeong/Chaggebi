@@ -80,7 +80,7 @@ public class UseInvenManager : MonoBehaviour
         if (PlayerData.instance.interactingCGB.fullRate < 85)
         {
             StopAllCoroutines();
-            PlayerData.instance.RemoveItem(selectedItem.id, 1);
+            PlayerData.instance.RemoveFood(selectedItem.id, 1);
             PlayerData.instance.interactingCGB.scent += selectedItem.scent;
             PlayerData.instance.interactingCGB.earthy += selectedItem.earthy;
             PlayerData.instance.interactingCGB.sweet += selectedItem.sweet;

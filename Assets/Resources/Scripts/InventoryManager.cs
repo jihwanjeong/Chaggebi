@@ -19,7 +19,7 @@ public class InventoryManager : MonoBehaviour
 
     public void Test_GiveItem(string id)
     {
-        PlayerData.instance.AddItem(id, 3);
+        PlayerData.instance.AddFood(id, 3);
     }
     void Start()
     {

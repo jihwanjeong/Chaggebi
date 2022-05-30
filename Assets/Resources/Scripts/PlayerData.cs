@@ -20,7 +20,7 @@ public class PlayerData : MonoBehaviour
     }
     #endregion
 
-    public int gold;
+    public int gold, dia;
 
     public List<CGBData> playerCGBs = new List<CGBData>();
     public List<Item> playerFoods = new List<Item>();
@@ -29,7 +29,7 @@ public class PlayerData : MonoBehaviour
     public CGBData interactingCGB = new CGBData();
     public SkeletonAnimation interactingSk;
     [HideInInspector] public bool isRemoved;
-    public void AddItem(string _id, int _count)
+    public void AddFood(string _id, int _count)
     {
         for (int i = 0; i < playerFoods.Count; i++)
         {
@@ -43,7 +43,7 @@ public class PlayerData : MonoBehaviour
         playerFoods[playerFoods.Count-1].count = _count;
     }
 
-    public void RemoveItem(string _id, int _count)
+    public void RemoveFood(string _id, int _count)
     {
         for (int i = 0; i < playerFoods.Count; i++)
         {

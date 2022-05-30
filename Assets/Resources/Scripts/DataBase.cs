@@ -91,6 +91,7 @@ public class DataBase : MonoBehaviour
         else Destroy(gameObject);
     }
     #endregion
+    public string diaName, goldName;
     public TextAsset cgbDB, customerDB, foodDB;
     public List<CGBData> AllCGBs;
     public List<Teabag> AllTeabags;
