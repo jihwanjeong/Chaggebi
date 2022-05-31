@@ -20,6 +20,7 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     public void Test()
     {
+        sk = PlayerData.instance.interactingSk;
         PlayerData.instance.interactingCGB.cleanRate = 0;
         sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, (100 - PlayerData.instance.interactingCGB.cleanRate) / 100f));
     }
@@ -74,6 +75,7 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
                             sk.AnimationState.AddAnimation(0, "idle", true, 0f);
                             isClean = true;
                             cleanPanel.SetActive(false);
+                            mainBtns.SetActive(true);
                         }
                         else
                         {
