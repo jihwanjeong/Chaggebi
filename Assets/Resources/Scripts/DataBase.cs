@@ -20,7 +20,7 @@ using UnityEngine;
     public int brow { get; set; }
     //½ºÅÈ
     public int fullRate { get; set; }
-    public int cleanRate { get; set; }
+    public int cleanRate { get; set; } = 100;
     public int happyRate { get; set; }
     public int scent { get; set; }
     public int earthy { get; set; }
