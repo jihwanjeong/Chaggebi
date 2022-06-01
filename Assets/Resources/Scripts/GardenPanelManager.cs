@@ -18,8 +18,6 @@ namespace Chaggebi
         public Button TeacupPanelEnable;
         public Button TeacupPanelExit;
         public Button MoveToCafeScene;
-        public Text TotalGold;
-        GoldManager Gmanager;
         public GameObject ButtonUIPanel;
         public GameObject GardenPanel;
         public Transform slotsParent;
@@ -100,15 +98,8 @@ namespace Chaggebi
             TeacupPanelEnable.onClick.AddListener(TeacupPanelControl);
             TeacupPanelExit.onClick.AddListener(TeacupPanelControl);
             MoveToCafeScene.onClick.AddListener(MoveToCafe);
-            Gmanager = GameObject.Find("Gold Manager").GetComponent<GoldManager>();
             slots = slotsParent.GetComponentsInChildren<CGBSlot>();
         }
 
-
-        void Update()
-        {
-            TotalGold.GetComponent<Text>().text = Gmanager.gold.ToString();
-
-        }
     }
 }

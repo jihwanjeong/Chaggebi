@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
+using UnityEngine.UI;
 
 public class PlayerData : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class PlayerData : MonoBehaviour
     }
     #endregion
 
+    public Text goldTxt, diaTxt;
+
     public int gold, dia;
 
     public List<CGBData> playerCGBs = new List<CGBData>();
@@ -29,6 +32,22 @@ public class PlayerData : MonoBehaviour
     public CGBData interactingCGB = new CGBData();
     public SkeletonAnimation interactingSk;
     [HideInInspector] public bool isRemoved;
+
+    void Start()
+    {
+        goldTxt.text = gold.ToString();
+        diaTxt.text = dia.ToString();
+    }
+    public void SetGold(int _count)
+    {
+        gold += _count;
+        goldTxt.text = gold.ToString();
+    }
+    public void SetDia(int _count)
+    {
+        dia += _count;
+        diaTxt.text = dia.ToString();
+    }
     public void AddFood(string _id, int _count)
     {
         for (int i = 0; i < playerFoods.Count; i++)
