@@ -37,7 +37,8 @@ public class CGBSlot : MonoBehaviour
         gardenCgb.transform.SetParent(gardenCgbs.transform, false);
         spineSetter.SetAppearance(PlayerData.instance.playerCGBs[slotNum], gardenCgb.GetComponent<SkeletonAnimation>());
         gardenCgb.transform.position = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-2.5f, 0.2f), 1);
-        gardenCgb.GetComponent<CGBMotion>().cgbdata = PlayerData.instance.playerCGBs[slotNum];
+        //gardenCgb.GetComponent<CGBMotion>().cgbdatad = PlayerData.instance.playerCGBs[slotNum];
+        gardenCgb.GetComponent<CGBStatHandler>().cgb = PlayerData.instance.playerCGBs[slotNum];
         btn_place.SetActive(false);
         btn_unplace.SetActive(true);
         PlayerData.instance.playerCGBs[slotNum].isPlaced = true;

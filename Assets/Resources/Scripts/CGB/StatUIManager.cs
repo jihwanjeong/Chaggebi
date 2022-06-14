@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Spine.Unity;
 
-public class StatManager : MonoBehaviour
+public class StatUIManager : MonoBehaviour
 {
     public GameObject statPanel;
     public Button statBtn;
