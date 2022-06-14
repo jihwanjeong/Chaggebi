@@ -5,13 +5,16 @@ using UnityEngine.UI;
 
 public class AlarmController : MonoBehaviour
 {
+    public Sprite gold;
+    public Sprite dia;
     public GameObject alarmPanel;
     public Text mainTxt;
     public Text subTxt;
     public GameObject subTxt_obj;
     public GameObject activeBtn;
-    public GameObject cost;
+    public Image resourceIcon;
     public Text costTxt;
+    public Text confirmTxt;
     public Button closeBtn;
     public Button confirmBtn;
     Action confirmClicked;
@@ -27,7 +30,9 @@ public class AlarmController : MonoBehaviour
         activeBtn.SetActive(true);
         mainTxt.text = _main;
         subTxt_obj.SetActive(false);
-        cost.SetActive(false);
+        resourceIcon.enabled = false;
+        costTxt.enabled = false;
+        confirmTxt.enabled = true;
         closeBtn.gameObject.SetActive(false);
         alarmPanel.SetActive(true);
     }
@@ -42,11 +47,13 @@ public class AlarmController : MonoBehaviour
             subTxt_obj.SetActive(true);
         }
         else subTxt_obj.SetActive(false);
-        cost.SetActive(false);
+        resourceIcon.enabled = false;
+        costTxt.enabled = false;
+        confirmTxt.enabled = true;
         closeBtn.gameObject.SetActive(true);
         alarmPanel.SetActive(true);
     }
-    public void OpenAlarm(string _main, string _sub, int _cost, Action _onClick)
+    public void OpenAlarm(int resourceType, string _main, string _sub, int _cost, Action _onClick)
     {
         confirmClicked = _onClick;
         mainTxt.text = _main;
@@ -56,13 +63,28 @@ public class AlarmController : MonoBehaviour
             subTxt_obj.SetActive(true);
         }
         else subTxt_obj.SetActive(false);
-        if (_cost > PlayerData.instance.gold)
+        switch(resourceType)
         {
-            activeBtn.SetActive(false);
+            case 0:
+                resourceIcon.sprite = gold;
+                if (_cost > PlayerData.instance.gold)
+                {
+                    activeBtn.SetActive(false);
+                }
+                else activeBtn.SetActive(true);
+                break;
+            case 1:
+                resourceIcon.sprite = dia;
+                if (_cost > PlayerData.instance.dia)
+                {
+                    activeBtn.SetActive(false);
+                }
+                else activeBtn.SetActive(true);
+                break;
         }
-        else activeBtn.SetActive(true);
+        resourceIcon.enabled = true;
         costTxt.text = _cost.ToString();
-        cost.SetActive(true);
+        confirmTxt.enabled = false;
         closeBtn.gameObject.SetActive(true);
         alarmPanel.SetActive(true);
     }

@@ -9,11 +9,13 @@ public class DailySlot : MonoBehaviour
     public Text itemPrice;
     public Text itemAmount;
     public Button buyBtn;
+    public GameObject soldoutPanel;
     [HideInInspector] public ShopItem shopItem;
     Item item;
 
     public void SetItem(ShopItem _item)
     {
+        soldoutPanel.SetActive(false);
         shopItem = _item;
         switch (shopItem.itemList[0].itemType)
         {
@@ -35,5 +37,9 @@ public class DailySlot : MonoBehaviour
         }
         if (shopItem.price > 0) itemPrice.text = shopItem.price.ToString();
         itemAmount.text = "x" + shopItem.itemList[0].amount.ToString();
+    }
+    public void SoldOut()
+    {
+        soldoutPanel.SetActive(true);
     }
 }
