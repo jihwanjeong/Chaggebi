@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Spine.Unity;
+using UnityEngine.UI;
 
-public class CGBStatHandler : MonoBehaviour
+public class CGBHandler : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     public int teabagCicleSec;
     public int fullDecreaseRate;
@@ -11,6 +13,7 @@ public class CGBStatHandler : MonoBehaviour
     public int happyDecreaseRate;
     public CGBData cgb;
     public GameObject teabagPrefab;
+    public Button cgbBtn;
     SkeletonAnimation sk;
     bool isHungry;
     bool isDirty;
@@ -20,22 +23,20 @@ public class CGBStatHandler : MonoBehaviour
     int vertical = -1;
     IEnumerator moveCoroutine;
     bool isCooltime;
-    //float time = 0;
-    //int duration;
-    //Vector3 startPos, endPos;
 
     void Awake()
     {
         sk = GetComponent<SkeletonAnimation>();
+        sk.AnimationState.SetAnimation(0, "placed", true);
         StartCoroutine(StartCicle());
+        cgbBtn.onClick.AddListener(CGBClick);
     }
     public IEnumerator StartCicle()
     {
-        sk.AnimationState.SetAnimation(0, "placed", true);
         sk.AnimationState.AddAnimation(0, "idle", true, 0);
         yield return new WaitForSecondsRealtime(10);
         StartCoroutine(RandomMove());
-        while(true)
+        while (true)
         {
             yield return new WaitForSecondsRealtime(teabagCicleSec);
             CreateTeabag();
@@ -85,55 +86,34 @@ public class CGBStatHandler : MonoBehaviour
 
     IEnumerator RandomMove()
     {
-        while(true)
+        while (true)
         {
-            int r = Random.Range(0, 4);
-            //if (r < 40)
-            //{
-            //    Idle();
-            //    yield return new WaitForSecondsRealtime(Random.Range(2, 10));
-            //}
-            //else if(r < 70)
-            //{
-            //    moveCoroutine = Walk();
-            //    StartCoroutine(moveCoroutine);
-            //    yield return new WaitForSecondsRealtime(Random.Range(1, 6));
-            //    StopCoroutine(moveCoroutine);
-            //}
-            //else if (r < 90)
-            //{
-            //    moveCoroutine = Run();
-            //    StartCoroutine(moveCoroutine);
-            //    yield return new WaitForSecondsRealtime(Random.Range(2, 6));
-            //    StopCoroutine(moveCoroutine);
-            //}
-            //else if (r < 100)
-            //{
-            //    Sleep();
-            //    yield return new WaitForSecondsRealtime(Random.Range(10, 20));
-            //}
-            switch (r)
+            Idle();
+            yield return new WaitForSecondsRealtime(Random.Range(5, 20));
+            int r = Random.Range(0, 100);
+            if (r < 30)
             {
-                case 0:
-                    Idle();
-                    yield return new WaitForSecondsRealtime(Random.Range(5, 20));
-                    break;
-                case 1:
-                    moveCoroutine = Walk();
-                    StartCoroutine(moveCoroutine);
-                    yield return new WaitForSecondsRealtime(Random.Range(3, 8));
-                    StopCoroutine(moveCoroutine);
-                    break;
-                case 2:
-                    moveCoroutine = Run();
-                    StartCoroutine(moveCoroutine);
-                    yield return new WaitForSecondsRealtime(Random.Range(3, 6));
-                    StopCoroutine(moveCoroutine);
-                    break;
-                case 3:
-                    Sleep();
-                    yield return new WaitForSecondsRealtime(Random.Range(10, 20));
-                    break;
+                Idle();
+                yield return new WaitForSecondsRealtime(Random.Range(2, 10));
+            }
+            else if (r < 70)
+            {
+                moveCoroutine = Walk();
+                StartCoroutine(moveCoroutine);
+                yield return new WaitForSecondsRealtime(Random.Range(1, 6));
+                StopCoroutine(moveCoroutine);
+            }
+            else if (r < 90)
+            {
+                moveCoroutine = Run();
+                StartCoroutine(moveCoroutine);
+                yield return new WaitForSecondsRealtime(Random.Range(2, 6));
+                StopCoroutine(moveCoroutine);
+            }
+            else if (r < 100)
+            {
+                Sleep();
+                yield return new WaitForSecondsRealtime(Random.Range(10, 20));
             }
         }
     }
@@ -148,7 +128,8 @@ public class CGBStatHandler : MonoBehaviour
     {
         int r = Random.Range(0, 2);
         if (r == 0) ChangeDir();
-        sk.AnimationState.SetAnimation(0, "idle", true);
+        if(isHungry) sk.AnimationState.SetAnimation(0, "idle_hungry", true);
+        else sk.AnimationState.SetAnimation(0, "idle", true);
     }
     public void Sleep()
     {
@@ -156,13 +137,14 @@ public class CGBStatHandler : MonoBehaviour
     }
     IEnumerator Walk()
     {
-        sk.AnimationState.SetAnimation(0, "walk", true);
+        if (isHungry) sk.AnimationState.SetAnimation(0, "walk_hungry", true);
+        else sk.AnimationState.SetAnimation(0, "walk", true);
         isCooltime = false;
         while (true)
         {
             if ((this.gameObject.transform.position.x <= -12f || this.gameObject.transform.position.x >= 12f))
             {
-                if(!isCooltime) ChangeDir();
+                if (!isCooltime) ChangeDir();
             }
             if (this.gameObject.transform.position.y > 0) vertical = -1;
             else if (this.gameObject.transform.position.y < -2) vertical = 1;
@@ -187,5 +169,35 @@ public class CGBStatHandler : MonoBehaviour
             transform.Translate(new Vector3(horizontal * 2, vertical, 0) * 1.0f * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
+    {
+        StopAllCoroutines();
+        int r = Random.Range(0, 2);
+        if (r == 0) sk.AnimationState.SetAnimation(0, "hang1", true);
+        else sk.AnimationState.SetAnimation(0, "hang2", true);
+    }
+
+    void IDragHandler.OnDrag(PointerEventData eventData)
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        this.transform.position = new Vector3(mousePos.x, mousePos.y - 1.8f, 27f);
+    }
+
+    void IEndDragHandler.OnEndDrag(PointerEventData eventData)
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        sk.AnimationState.SetAnimation(0, "idle", true);
+        this.transform.position = new Vector3(mousePos.x, mousePos.y - 2.5f, 27f);
+        StartCoroutine(StartCicle());
+    }
+
+    public void CGBClick()
+    {
+        StopAllCoroutines();
+        sk.AnimationState.SetAnimation(0, "idle", true);
+        PlayerData.instance.interactingCGB = cgb;
+        PlayerData.instance.interactingSk = sk;
     }
 }

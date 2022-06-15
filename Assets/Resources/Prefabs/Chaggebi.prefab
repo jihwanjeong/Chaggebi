@@ -103,6 +103,7 @@ MonoBehaviour:
   cleanDecreaseRate: 1
   happyDecreaseRate: 1
   teabagPrefab: {fileID: 672856899184913045, guid: 1d7d5197b1bb87e4db0b0b44c5bad5eb, type: 3}
+  cgbBtn: {fileID: 5425966299872563034}
 --- !u!114 &5927693410354627704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +172,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5927693410354627705}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93dfa90616dd55d4e879863dce522eba, type: 3}
   m_Name: 
@@ -297,16 +298,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 272766675996527117}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5927693410354627700}
-        m_TargetAssemblyTypeName: CGBMotion, Assembly-CSharp
-        m_MethodName: CGBClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

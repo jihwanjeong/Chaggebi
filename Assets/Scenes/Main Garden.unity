@@ -12244,6 +12244,11 @@ MonoBehaviour:
   EnableInventory: {fileID: 775941103}
   ExitInventory: {fileID: 423096500}
   Inventory: {fileID: 442676839}
+  CGBManagePanel: {fileID: 254367901}
+  cameraSpeed: 5
+  Camera: {fileID: 421082075}
+  UI: {fileID: 2062377556}
+  exitCgbManage: {fileID: 1898342795}
 --- !u!114 &597449762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12727,6 +12732,10 @@ PrefabInstance:
       propertyPath: spineSetter
       value: 
       objectReference: {fileID: 78325461}
+    - target: {fileID: 6258306570888452118, guid: ae8e943eba9c06646977786b612e234d, type: 3}
+      propertyPath: cgbPanelManager
+      value: 
+      objectReference: {fileID: 597449761}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8e943eba9c06646977786b612e234d, type: 3}
 --- !u!114 &630187899 stripped
@@ -14262,6 +14271,10 @@ PrefabInstance:
       propertyPath: spineSetter
       value: 
       objectReference: {fileID: 78325461}
+    - target: {fileID: 6258306570888452118, guid: ae8e943eba9c06646977786b612e234d, type: 3}
+      propertyPath: cgbPanelManager
+      value: 
+      objectReference: {fileID: 597449761}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8e943eba9c06646977786b612e234d, type: 3}
 --- !u!1 &772951337
@@ -16283,6 +16296,10 @@ PrefabInstance:
       propertyPath: spineSetter
       value: 
       objectReference: {fileID: 78325461}
+    - target: {fileID: 6258306570888452118, guid: ae8e943eba9c06646977786b612e234d, type: 3}
+      propertyPath: cgbPanelManager
+      value: 
+      objectReference: {fileID: 597449761}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8e943eba9c06646977786b612e234d, type: 3}
 --- !u!1001 &919997816
@@ -16610,6 +16627,10 @@ PrefabInstance:
       propertyPath: spineSetter
       value: 
       objectReference: {fileID: 78325461}
+    - target: {fileID: 6258306570888452118, guid: ae8e943eba9c06646977786b612e234d, type: 3}
+      propertyPath: cgbPanelManager
+      value: 
+      objectReference: {fileID: 597449761}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8e943eba9c06646977786b612e234d, type: 3}
 --- !u!1 &940018459
@@ -22450,6 +22471,10 @@ PrefabInstance:
       propertyPath: spineSetter
       value: 
       objectReference: {fileID: 78325461}
+    - target: {fileID: 6258306570888452118, guid: ae8e943eba9c06646977786b612e234d, type: 3}
+      propertyPath: cgbPanelManager
+      value: 
+      objectReference: {fileID: 597449761}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8e943eba9c06646977786b612e234d, type: 3}
 --- !u!1 &1450994906
@@ -23590,6 +23615,10 @@ PrefabInstance:
       propertyPath: spineSetter
       value: 
       objectReference: {fileID: 78325461}
+    - target: {fileID: 6258306570888452118, guid: ae8e943eba9c06646977786b612e234d, type: 3}
+      propertyPath: cgbPanelManager
+      value: 
+      objectReference: {fileID: 597449761}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8e943eba9c06646977786b612e234d, type: 3}
 --- !u!1 &1513748718
@@ -25560,6 +25589,10 @@ PrefabInstance:
       propertyPath: spineSetter
       value: 
       objectReference: {fileID: 78325461}
+    - target: {fileID: 6258306570888452118, guid: ae8e943eba9c06646977786b612e234d, type: 3}
+      propertyPath: cgbPanelManager
+      value: 
+      objectReference: {fileID: 597449761}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8e943eba9c06646977786b612e234d, type: 3}
 --- !u!1 &1614450661
@@ -27418,6 +27451,10 @@ PrefabInstance:
       propertyPath: spineSetter
       value: 
       objectReference: {fileID: 78325461}
+    - target: {fileID: 6258306570888452118, guid: ae8e943eba9c06646977786b612e234d, type: 3}
+      propertyPath: cgbPanelManager
+      value: 
+      objectReference: {fileID: 597449761}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8e943eba9c06646977786b612e234d, type: 3}
 --- !u!1 &1837170121
@@ -30889,6 +30926,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 421082075}
     - target: {fileID: 5927693410354627700, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927693410354627700, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: CGBManagePanel
       value: 
       objectReference: {fileID: 254367901}
@@ -30914,7 +30955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5927693410354627709, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.51
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 5927693410354627709, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: m_LocalPosition.z
@@ -32014,6 +32055,7 @@ MonoBehaviour:
   gardenCgbs: {fileID: 1293362284}
   skeletonGraphic: {fileID: 2515728296052319185}
   spineSetter: {fileID: 78325461}
+  cgbPanelManager: {fileID: 0}
 --- !u!224 &2726163418530339042
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33267,6 +33309,10 @@ PrefabInstance:
       propertyPath: spineSetter
       value: 
       objectReference: {fileID: 78325461}
+    - target: {fileID: 6258306570888452118, guid: ae8e943eba9c06646977786b612e234d, type: 3}
+      propertyPath: cgbPanelManager
+      value: 
+      objectReference: {fileID: 597449761}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae8e943eba9c06646977786b612e234d, type: 3}
 --- !u!222 &8992864450014785530
