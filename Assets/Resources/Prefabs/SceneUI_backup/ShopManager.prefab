@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025d19524e94a10428cd5dc56230d977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  refreshCost: 10
   goldImg: {fileID: 21300000, guid: 56f27801fcdf2e2469af4936621fb8b1, type: 3}
   diaImg: {fileID: 21300000, guid: 400beb1456aac694b9b07abaec263592, type: 3}
   alarm: {fileID: 0}
@@ -79,9 +80,9 @@ MonoBehaviour:
   - moneyType: 0
     price: 0
     itemList:
-    - itemType: 2
-      id: food_005
-      amount: 3
+    - itemType: 0
+      id: 
+      amount: 100
   daily_List:
   - moneyType: 0
     price: 100
@@ -148,4 +149,46 @@ MonoBehaviour:
     itemList:
     - itemType: 2
       id: food_043
+      amount: 3
+  - moneyType: 0
+    price: 300
+    itemList:
+    - itemType: 2
+      id: food_044
+      amount: 3
+  - moneyType: 0
+    price: 300
+    itemList:
+    - itemType: 2
+      id: food_045
+      amount: 3
+  - moneyType: 0
+    price: 300
+    itemList:
+    - itemType: 2
+      id: food_046
+      amount: 3
+  - moneyType: 0
+    price: 300
+    itemList:
+    - itemType: 2
+      id: food_047
+      amount: 3
+  - moneyType: 0
+    price: 300
+    itemList:
+    - itemType: 2
+      id: food_048
+      amount: 3
+  - moneyType: 0
+    price: 300
+    itemList:
+    - itemType: 2
+      id: food_049
+      amount: 3
+  - moneyType: 0
+    price: 300
+    itemList:
+    - itemType: 2
+      id: food_050
       amount: 3

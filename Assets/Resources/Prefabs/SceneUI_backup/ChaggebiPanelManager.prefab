@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7674039958493085908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7674039958493085931}
+  - component: {fileID: 7674039958493085930}
+  - component: {fileID: 7674039958493085929}
+  - component: {fileID: 7674039958493085928}
+  - component: {fileID: 7674039958493085935}
+  m_Layer: 0
+  m_Name: ChaggebiPanelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7674039958493085931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7674039958493085908}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7674039958493085930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7674039958493085908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31fa6e491ef245144bf5ee4e17a315f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnableInventory: {fileID: 0}
+  ExitInventory: {fileID: 0}
+  Inventory: {fileID: 0}
+  CGBManagePanel: {fileID: 0}
+  cameraSpeed: 5
+  Camera: {fileID: 0}
+  UI: {fileID: 0}
+  exitCgbManage: {fileID: 0}
+--- !u!114 &7674039958493085929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7674039958493085908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef6b3984ad129d42b48aeecbd95a91c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invenBtn: {fileID: 0}
+  teabagBtn: {fileID: 0}
+  foodBtn: {fileID: 0}
+  toyBtn: {fileID: 0}
+  slotsParent: {fileID: 0}
+  itemDetailPanel: {fileID: 0}
+  detailImage: {fileID: 0}
+  detailName: {fileID: 0}
+  detailDescription: {fileID: 0}
+  detailStat: {fileID: 0}
+--- !u!114 &7674039958493085928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7674039958493085908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc7b3fd841312b84db10caeed03caf11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invenBtn: {fileID: 0}
+  cleanBtn: {fileID: 0}
+  invenPanel: {fileID: 0}
+  slotsParent: {fileID: 0}
+  useBtn: {fileID: 0}
+  flyingFood: {fileID: 0}
+  upTxt:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &7674039958493085935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7674039958493085908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3e7f079d5d2f9243bba9c4e852b87cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statPanel: {fileID: 0}
+  statBtn: {fileID: 0}
+  makingTeabag: {fileID: 0}
+  teabagBtn: {fileID: 0}
+  skeletonGraphic: {fileID: 0}
+  slider_full: {fileID: 0}
+  slider_clean: {fileID: 0}
+  slider_happy: {fileID: 0}
+  txt_full: {fileID: 0}
+  txt_clean: {fileID: 0}
+  txt_happy: {fileID: 0}
+  txt_scent: {fileID: 0}
+  txt_earthy: {fileID: 0}
+  txt_sweet: {fileID: 0}
+  txt_sour: {fileID: 0}
+  name: {fileID: 0}
+  customName: {fileID: 0}
+  age: {fileID: 0}
+  spineSetter: {fileID: 0}
+  itemDetailPanel: {fileID: 0}
+  detailImage: {fileID: 0}
+  detailName: {fileID: 0}
+  detailDescription: {fileID: 0}
+  detailStat: {fileID: 0}
