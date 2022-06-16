@@ -15,7 +15,13 @@ public class MiniDrag3 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     public GameObject TC2;
     public GameObject T1;
     public GameObject T2;
-   
+    public GameObject T1pos;
+    public GameObject T2pos;
+    public GameObject TC3;
+    public GameObject TC4;
+    public GameObject TC5;
+    public GameObject TC6;
+
 
 
 
@@ -51,10 +57,26 @@ public class MiniDrag3 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (this.transform.localPosition.x > -126 && this.transform.localPosition.x < 126)
+        if ((this.transform.localPosition.x > -186 && this.transform.localPosition.x < -86) && (this.transform.localPosition.y > -50 && this.transform.localPosition.y < 50))
         {
             TC2.SetActive(true);
-            T2.SetActive(false);
+            //T2.SetActive(false);
+            //T2.transform.localPosition = T2pos.transform.position;
+
+
+        }
+        if ((this.transform.localPosition.x > -50 && this.transform.localPosition.x < 50) && (this.transform.localPosition.y > -50 && this.transform.localPosition.y < 50))
+        {
+            TC4.SetActive(true);
+            //T1.SetActive(false);
+
+
+
+        }
+        if ((this.transform.localPosition.x > 86 && this.transform.localPosition.x < 186) && (this.transform.localPosition.y > -50 && this.transform.localPosition.y < 50))
+        {
+            TC6.SetActive(true);
+            //T1.SetActive(false);
 
 
 
