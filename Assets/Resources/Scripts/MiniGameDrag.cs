@@ -13,7 +13,8 @@ public class MiniGameDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandle
     public GameObject enableTea;
     public GameObject teaPanel;
     public GameObject FinalPanel;
-    public GameObject next;
+    public GameObject EnableTea;
+    public GameObject middleTea;
 
 
     private void Awake()
@@ -48,11 +49,13 @@ public class MiniGameDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandle
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (this.transform.localPosition.x > -126 && this.transform.localPosition.x < 126)
+        if ((this.transform.localPosition.x > -43 && this.transform.localPosition.x < 47)&& (this.transform.localPosition.y > -439 && this.transform.localPosition.y < 54))
         {
             enableTea.SetActive(true);
 
-            next.SetActive(true);
+            EnableTea.SetActive(true);
+            this.gameObject.SetActive(false);
+            middleTea.SetActive(true);
         }
     }
 

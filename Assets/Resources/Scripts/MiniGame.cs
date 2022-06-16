@@ -22,6 +22,7 @@ public class MiniGame : MonoBehaviour
     public Text Selected;
     public GameObject CupPanel;
     public GameObject TeabagPanel;
+    public GameObject ToppingPanel;
     //public GameObject CupinTeabag;
     public GameObject OrderPanel;
     public Image Cupimage;
@@ -285,7 +286,12 @@ public class MiniGame : MonoBehaviour
         B2.SetActive(false);
         B3.SetActive(true);
     }
-
+    public void EnableTopping()
+    {
+        TeabagPanel.SetActive(false);
+        ToppingPanel.SetActive(true);
+       
+    }
 
     void Start()
     {
