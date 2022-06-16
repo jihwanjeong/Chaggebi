@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5927693410354627709}
   - component: {fileID: 5927693410354627706}
   - component: {fileID: 5927693410354627707}
+  - component: {fileID: 296775225130881134}
   - component: {fileID: 5927693410354627704}
   - component: {fileID: 5927693410354627700}
   - component: {fileID: 2954345287067318831}
@@ -85,6 +86,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &296775225130881134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5927693410354627705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa4434d5a22c624c9ff02664d4734d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teabagCicleSec: 10
+  fullDecreaseRate: 1
+  cleanDecreaseRate: 1
+  happyDecreaseRate: 1
+  teabagPrefab: {fileID: 672856899184913045, guid: 1d7d5197b1bb87e4db0b0b44c5bad5eb, type: 3}
+  cgbBtn: {fileID: 5425966299872563034}
 --- !u!114 &5927693410354627704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +149,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5927693410354627705}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6660f5523eb68b4388e82413136bc53, type: 3}
   m_Name: 
@@ -143,7 +162,6 @@ MonoBehaviour:
   actionCooltime: 0
   isClick: 0
   CGBManagePanel: {fileID: 0}
-  CGBobject: {fileID: 5927693410354627705}
   cameraSpeed: 5
   Camera: {fileID: 0}
   UI: {fileID: 0}
@@ -154,7 +172,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5927693410354627705}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93dfa90616dd55d4e879863dce522eba, type: 3}
   m_Name: 
@@ -280,16 +298,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 272766675996527117}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5927693410354627700}
-        m_TargetAssemblyTypeName: CGBMotion, Assembly-CSharp
-        m_MethodName: CGBClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

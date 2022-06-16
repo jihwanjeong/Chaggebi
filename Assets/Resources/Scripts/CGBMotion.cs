@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Spine.Unity;
-using UnityEngine.UI;
 
 public class CGBMotion : MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class CGBMotion : MonoBehaviour
     private bool statusActive = false;
     [SerializeField] int actionCooltime = 2;
     private SkeletonAnimation sk;
-    public CGBData cgbdata = new CGBData();
+    public CGBData cgbdatad = new CGBData();
     private Vector3 currentpos;
     public bool isClick = false;
     public GameObject CGBManagePanel;
@@ -161,7 +160,7 @@ public class CGBMotion : MonoBehaviour
             sk.AnimationState.SetAnimation(0, "idle", true);
             currentpos = new Vector3(this.gameObject.transform.position.x + Random.Range(-0.9f, 0.9f), this.gameObject.transform.position.y, 1);          
             GameObject tea = Instantiate(teabag, currentpos, Quaternion.identity);
-            tea.GetComponent<TeabagHandler>().SetTeabagInfo(cgbdata.teabagID,1);
+            tea.GetComponent<TeabagHandler>().SetTeabagInfo(cgbdatad.teabagID,1);
             tea.transform.SetParent(this.transform.parent);
             statusActive = true;
         }
@@ -184,7 +183,7 @@ public class CGBMotion : MonoBehaviour
             Debug.Log(gameObject.transform.position.x);
             CGBManagePanel.SetActive(true);
             UI.SetActive(false);
-            PlayerData.instance.interactingCGB = cgbdata;
+            PlayerData.instance.interactingCGB = cgbdatad;
             PlayerData.instance.interactingSk = sk;
             CGBManagePanel.transform.position = new Vector3(transform.position.x, transform.position.y, 100);
             isClick = true;

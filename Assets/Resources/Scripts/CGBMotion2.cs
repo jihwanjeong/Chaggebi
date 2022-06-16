@@ -162,7 +162,7 @@ public class CGBMotion2 : MonoBehaviour
             CGBMotionAdd.GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "idle", true);
             currentpos = new Vector3(this.gameObject.transform.position.x + Random.Range(-0.9f, 0.9f), this.gameObject.transform.position.y, 1);
             GameObject tea = Instantiate(teabag, currentpos, Quaternion.identity);
-            tea.GetComponent<TeabagHandler>().SetTeabagInfo(DataBase.instance.FindTeabag(cgbdata.teabagID));
+            tea.GetComponent<TeabagHandler>().SetTeabagInfo(cgbdata.teabagID, 1);
             tea.transform.SetParent(this.transform.parent);
             statusActive = true;
         }

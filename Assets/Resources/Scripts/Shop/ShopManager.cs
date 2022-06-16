@@ -20,6 +20,7 @@ public class ShopItem
 }
 public class ShopManager : MonoBehaviour
 {
+    public int refreshCost;
     public Sprite goldImg, diaImg;
     public AlarmController alarm;
     public ResourceAnimator resourceAnimator;
@@ -50,11 +51,15 @@ public class ShopManager : MonoBehaviour
 
     void RefreshDaily()
     {
-        dailySlots[0].SetItem(daily_freeList[Random.Range(0, daily_freeList.Count)]);
-        for (int i = 1; i < dailySlots.Length; i++)
-        {
-            dailySlots[i].SetItem(daily_List[Random.Range(0, daily_List.Count)]);
-        }
+        alarm.OpenAlarm(1, "상점 새로고침", "일일상점 물품을 새로고침하겠습니까?", refreshCost, () =>
+            {
+                PlayerData.instance.SetDia(-refreshCost);
+                dailySlots[0].SetItem(daily_freeList[Random.Range(0, daily_freeList.Count)]);
+                for (int i = 1; i < dailySlots.Length; i++)
+                {
+                    dailySlots[i].SetItem(daily_List[Random.Range(0, daily_List.Count)]);
+                }
+            });
     }  
     
     void ClickBuy(DailySlot _slot)
@@ -101,6 +106,7 @@ public class ShopManager : MonoBehaviour
     }
     void Buy(DailySlot _slot)
     {
+        _slot.SoldOut();
         foreach(ShopItem.ItemStack item in _slot.shopItem.itemList)
         {
             switch (item.itemType)
