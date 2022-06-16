@@ -65,7 +65,8 @@ namespace Chaggebi
             CGBManagePanel.SetActive(false);
             Camera.transform.position = new Vector3(0f, 0f, 0f);
             UI.SetActive(true);
-            handler.StartCoroutine(handler.StartCicle());
+            handler.StartCicle();
+            //handler.StartCoroutine(handler.RandomMove());
         }
     }
 }

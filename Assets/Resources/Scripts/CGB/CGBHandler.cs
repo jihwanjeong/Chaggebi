@@ -28,32 +28,30 @@ public class CGBHandler : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
     {
         sk = GetComponent<SkeletonAnimation>();
         sk.AnimationState.SetAnimation(0, "placed", true);
-        StartCoroutine(StartCicle());
+        StartCicle();
         cgbBtn.onClick.AddListener(CGBClick);
     }
-    public IEnumerator StartCicle()
+    public void StartCicle()
     {
-        sk.AnimationState.AddAnimation(0, "idle", true, 0);
-        yield return new WaitForSecondsRealtime(10);
         StartCoroutine(RandomMove());
-        while (true)
+        StartCoroutine(CreateTeabag());
+    }
+    IEnumerator CreateTeabag()
+    {
+        while(true)
         {
             yield return new WaitForSecondsRealtime(teabagCicleSec);
-            CreateTeabag();
+            Vector3 currentpos = new Vector3(this.gameObject.transform.position.x + Random.Range(-0.9f, 0.9f), this.gameObject.transform.position.y, 1);
+            GameObject tea = Instantiate(teabagPrefab, currentpos, Quaternion.identity);
+            tea.GetComponent<TeabagHandler>().SetTeabagInfo(cgb.teabagID, 1);
+            tea.transform.SetParent(this.transform.parent);
+            SetFull(-fullDecreaseRate);
+            SetClean(-cleanDecreaseRate);
+            SetHappy(-happyDecreaseRate);
+            if (isHungry) SetHappy(-2);
+            if (isDirty) SetHappy(-2);
+            if (isUnhappy) SetFull(-3);
         }
-    }
-    void CreateTeabag()
-    {
-        Vector3 currentpos = new Vector3(this.gameObject.transform.position.x + Random.Range(-0.9f, 0.9f), this.gameObject.transform.position.y, 1);
-        GameObject tea = Instantiate(teabagPrefab, currentpos, Quaternion.identity);
-        tea.GetComponent<TeabagHandler>().SetTeabagInfo(cgb.teabagID, 1);
-        tea.transform.SetParent(this.transform.parent);
-        SetFull(-fullDecreaseRate);
-        SetClean(-cleanDecreaseRate);
-        SetHappy(-happyDecreaseRate);
-        if (isHungry) SetHappy(-2);
-        if (isDirty) SetHappy(-2);
-        if (isUnhappy) SetFull(-3);
     }
 
     void SetFull(int _rate)
@@ -84,8 +82,10 @@ public class CGBHandler : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
         else isUnhappy = false;
     }
 
-    IEnumerator RandomMove()
+    public IEnumerator RandomMove()
     {
+        sk.AnimationState.AddAnimation(0, "idle", true, 0);
+        yield return new WaitForSecondsRealtime(10);
         while (true)
         {
             Idle();
@@ -190,7 +190,8 @@ public class CGBHandler : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         sk.AnimationState.SetAnimation(0, "idle", true);
         this.transform.position = new Vector3(mousePos.x, mousePos.y - 2.5f, 27f);
-        StartCoroutine(StartCicle());
+        StartCoroutine(RandomMove());
+        StartCoroutine(CreateTeabag());
     }
 
     public void CGBClick()
