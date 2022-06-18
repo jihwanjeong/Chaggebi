@@ -20,6 +20,7 @@ public class CGBMotion2 : MonoBehaviour
     public bool isClick = false;
     public GameObject CGBManagePanel;
     public GameObject CGBobject;
+    public Button CGBClickButton;
     public float cameraSpeed = 5.0f;
     public GameObject Camera;
     public GameObject UI;
@@ -207,6 +208,7 @@ public class CGBMotion2 : MonoBehaviour
         sk = GetComponent<SkeletonAnimation>();
         actionCooltime = Random.Range(2, 5);
         InvokeRepeating("GetRandom", 0, actionCooltime);
+        CGBClickButton.onClick.AddListener(CGBClick);
     }
 
 
@@ -240,6 +242,7 @@ public class CGBMotion2 : MonoBehaviour
 
 
         }
+
 
     }
 }
