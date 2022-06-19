@@ -26,6 +26,19 @@ using UnityEngine;
     public int earthy { get; set; }
     public int sweet { get; set; }
     public int sour { get; set; }
+
+    public CGBData GetCGB()
+    {
+        CGBData newCGB = new CGBData();
+        newCGB.base1 = this.base1;
+        newCGB.base1vary = this.base1vary;
+        newCGB.base2 = this.base2;
+        newCGB.flavor = this.flavor;
+        newCGB.name = this.name;
+        newCGB.description = this.description;
+        newCGB.teabagID = this.teabagID;
+        return newCGB;
+    }
 }
 
 [System.Serializable] public class Teabag

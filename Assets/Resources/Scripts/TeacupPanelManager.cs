@@ -35,8 +35,7 @@ public class TeacupPanelManager : MonoBehaviour
     }
     public void RandomCGBOutfit() 
     {
-        CGBData newCgb = new CGBData();
-        newCgb = babyCGBs[Random.Range(0, babyCGBs.Count)];
+        CGBData newCgb = babyCGBs[Random.Range(0, babyCGBs.Count)].GetCGB();
         newCgb.brow = Random.Range(1, spineSetter.browCount + 1);
         newCgb.mouth = Random.Range(1, spineSetter.mouthCount + 1);
         newCgb.base1vary = Random.Range(1, spineSetter.baseVaryCount + 1);

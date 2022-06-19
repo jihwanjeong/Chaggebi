@@ -15,7 +15,7 @@ namespace Chaggebi
         public GameObject Camera;
         public GameObject UI;
         public Button exitCgbManage;
-        CGBHandler handler;
+        CGBMotionController controller;
 
         public void InventoryPanelControl()
         {
@@ -34,11 +34,15 @@ namespace Chaggebi
             Inventory.SetActive(false);
         }
 
-        public void ClickCGB(CGBHandler _handler)
+        public void ClickCGB(CGBMotionController _controller)
         {
-            handler = _handler;
-            UI.SetActive(false);
-            StartCoroutine(MoveCamToCgb(handler.transform.position));
+            if (PlayerData.instance.interactingCGB == null || PlayerData.instance.interactingCGB == _controller.cgb)
+            {
+                controller = _controller;
+                UI.SetActive(false);
+                StartCoroutine(MoveCamToCgb(controller.transform.position));
+            }
+            else Debug.Log(PlayerData.instance.interactingCGB.name);
         }
 
         IEnumerator MoveCamToCgb(Vector3 _position)
@@ -65,8 +69,8 @@ namespace Chaggebi
             CGBManagePanel.SetActive(false);
             Camera.transform.position = new Vector3(0f, 0f, 0f);
             UI.SetActive(true);
-            //handler.StartCicle();
-            //handler.StartCoroutine(handler.RandomMove());
+            PlayerData.instance.interactingCGB = null;
+            controller.StartCoroutine(controller.RandomMove());
         }
     }
 }

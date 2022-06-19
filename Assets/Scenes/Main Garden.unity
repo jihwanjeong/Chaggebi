@@ -17923,7 +17923,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &597449760
 Transform:
   m_ObjectHideFlags: 0
@@ -31253,7 +31253,7 @@ MonoBehaviour:
   nametxt: {fileID: 629121941}
   btn_place: {fileID: 511868516}
   btn_unplace: {fileID: 1865029945}
-  prefabCgb: {fileID: 1952965965}
+  prefabCgb: {fileID: 5927693410354627705, guid: 0101a6728aa6762459cb9dccb93f7be6, type: 3}
   gardenCgbs: {fileID: 1293362284}
   skeletonGraphic: {fileID: 521554033555365106}
   spineSetter: {fileID: 78325461}
@@ -48305,7 +48305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5927693410354627705, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5927693410354627706, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: m_Mesh
@@ -48317,7 +48317,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 695d1acc90d0c49458174183f284d866, type: 2}
     - target: {fileID: 5927693410354627709, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5927693410354627709, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: m_LocalPosition.x
@@ -68035,7 +68035,7 @@ MonoBehaviour:
   nametxt: {fileID: 6258306571854558169}
   btn_place: {fileID: 6258306572496137768}
   btn_unplace: {fileID: 6258306570610248053}
-  prefabCgb: {fileID: 1952965965}
+  prefabCgb: {fileID: 5927693410354627705, guid: 0101a6728aa6762459cb9dccb93f7be6, type: 3}
   gardenCgbs: {fileID: 1293362284}
   skeletonGraphic: {fileID: 5901147119995112638}
   spineSetter: {fileID: 78325461}
@@ -68258,7 +68258,7 @@ MonoBehaviour:
   nametxt: {fileID: 6258306571864125330}
   btn_place: {fileID: 6258306572486308451}
   btn_unplace: {fileID: 6258306570617197886}
-  prefabCgb: {fileID: 5927693410354627705, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
+  prefabCgb: {fileID: 5927693410354627705, guid: 0101a6728aa6762459cb9dccb93f7be6, type: 3}
   gardenCgbs: {fileID: 1293362284}
   skeletonGraphic: {fileID: 5901147120004944117}
   spineSetter: {fileID: 78325461}
@@ -68926,7 +68926,7 @@ MonoBehaviour:
   nametxt: {fileID: 6258306572084971727}
   btn_place: {fileID: 6258306572265706814}
   btn_unplace: {fileID: 6258306570913559139}
-  prefabCgb: {fileID: 5927693410354627705, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
+  prefabCgb: {fileID: 5927693410354627705, guid: 0101a6728aa6762459cb9dccb93f7be6, type: 3}
   gardenCgbs: {fileID: 1293362284}
   skeletonGraphic: {fileID: 5901147119697065896}
   spineSetter: {fileID: 78325461}
@@ -69063,7 +69063,7 @@ MonoBehaviour:
   nametxt: {fileID: 6258306571943915346}
   btn_place: {fileID: 6258306572406518435}
   btn_unplace: {fileID: 6258306571040724478}
-  prefabCgb: {fileID: 5927693410354627705, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
+  prefabCgb: {fileID: 5927693410354627705, guid: 0101a6728aa6762459cb9dccb93f7be6, type: 3}
   gardenCgbs: {fileID: 1293362284}
   skeletonGraphic: {fileID: 5901147119556186165}
   spineSetter: {fileID: 78325461}
@@ -69171,7 +69171,7 @@ MonoBehaviour:
   nametxt: {fileID: 6258306571333487769}
   btn_place: {fileID: 6258306570869707112}
   btn_unplace: {fileID: 6258306572234454581}
-  prefabCgb: {fileID: 5927693410354627705, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
+  prefabCgb: {fileID: 5927693410354627705, guid: 0101a6728aa6762459cb9dccb93f7be6, type: 3}
   gardenCgbs: {fileID: 1293362284}
   skeletonGraphic: {fileID: 5901147120547771390}
   spineSetter: {fileID: 78325461}
@@ -69498,7 +69498,7 @@ MonoBehaviour:
   nametxt: {fileID: 6258306571130540946}
   btn_place: {fileID: 6258306570938437219}
   btn_unplace: {fileID: 6258306572308392254}
-  prefabCgb: {fileID: 5927693410354627705, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
+  prefabCgb: {fileID: 5927693410354627705, guid: 0101a6728aa6762459cb9dccb93f7be6, type: 3}
   gardenCgbs: {fileID: 1293362284}
   skeletonGraphic: {fileID: 5901147120353176821}
   spineSetter: {fileID: 78325461}
@@ -71214,7 +71214,7 @@ MonoBehaviour:
   nametxt: {fileID: 6258306570962514546}
   btn_place: {fileID: 6258306571106480003}
   btn_unplace: {fileID: 6258306571938498782}
-  prefabCgb: {fileID: 5927693410354627705, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
+  prefabCgb: {fileID: 5927693410354627705, guid: 0101a6728aa6762459cb9dccb93f7be6, type: 3}
   gardenCgbs: {fileID: 1293362284}
   skeletonGraphic: {fileID: 5901147120722005269}
   spineSetter: {fileID: 78325461}
@@ -71305,7 +71305,7 @@ MonoBehaviour:
   nametxt: {fileID: 6258306570875931502}
   btn_place: {fileID: 6258306571327002271}
   btn_unplace: {fileID: 6258306572122337730}
-  prefabCgb: {fileID: 5927693410354627705, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
+  prefabCgb: {fileID: 5927693410354627705, guid: 0101a6728aa6762459cb9dccb93f7be6, type: 3}
   gardenCgbs: {fileID: 1293362284}
   skeletonGraphic: {fileID: 5901147120635704329}
   spineSetter: {fileID: 78325461}

@@ -29,7 +29,7 @@ public class PlayerData : MonoBehaviour
     public List<Item> playerFoods = new List<Item>();
     public List<Teabag> playerTeabags = new List<Teabag>();
 
-    public CGBData interactingCGB = new CGBData();
+    public CGBData interactingCGB;
     public SkeletonAnimation interactingSk;
     [HideInInspector] public bool isRemoved;
 
@@ -37,6 +37,7 @@ public class PlayerData : MonoBehaviour
     {
         goldTxt.text = gold.ToString();
         diaTxt.text = dia.ToString();
+        interactingCGB = null;
     }
     public void SetGold(int _count)
     {
