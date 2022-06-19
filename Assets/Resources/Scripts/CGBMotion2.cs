@@ -20,7 +20,7 @@ public class CGBMotion2 : MonoBehaviour
     public bool isClick = false;
     public GameObject CGBManagePanel;
     public GameObject CGBobject;
-    public Button CGBClickButton;
+    //public Button CGBClickButton;
     public float cameraSpeed = 5.0f;
     public GameObject Camera;
     public GameObject UI;
@@ -178,7 +178,7 @@ public class CGBMotion2 : MonoBehaviour
         InvokeRepeating("GetRandom", 0, actionCooltime);
 
     }
-    public void CGBClick()
+    /*public void CGBClick()
     {
         if (isClick == false)
         {
@@ -200,7 +200,7 @@ public class CGBMotion2 : MonoBehaviour
             UI.SetActive(true);
             isClick = false;
         }
-    }
+    }*/
 
 
     void Awake()
@@ -208,7 +208,7 @@ public class CGBMotion2 : MonoBehaviour
         sk = GetComponent<SkeletonAnimation>();
         actionCooltime = Random.Range(2, 5);
         InvokeRepeating("GetRandom", 0, actionCooltime);
-        CGBClickButton.onClick.AddListener(CGBClick);
+        //CGBClickButton.onClick.AddListener(CGBClick);
     }
 
 
@@ -234,14 +234,14 @@ public class CGBMotion2 : MonoBehaviour
             //else if (status == 7)
             // CreateTeabag();
         }
-        if (isClick != false)
+        /*if (isClick != false)
         {
             Vector3 dir = CGBobject.transform.position - Camera.transform.position;
             Vector3 moveVector = new Vector3(dir.x * cameraSpeed * Time.deltaTime, dir.y * cameraSpeed * Time.deltaTime, 0.0f);
             Camera.transform.Translate(moveVector);
 
 
-        }
+        }*/
 
 
     }
