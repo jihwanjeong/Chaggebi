@@ -7,6 +7,7 @@ namespace Chaggebi
 {
     public class ChaggebiPanelManager : MonoBehaviour
     {
+        public Button TestBtn;
         public Button EnableInventory;
         public Button ExitInventory;
         public GameObject Inventory;
@@ -16,6 +17,7 @@ namespace Chaggebi
         public GameObject UI;
         public Button exitCgbManage;
         CGBMotionController controller;
+        Coroutine testCor;
 
         public void InventoryPanelControl()
         {
@@ -33,16 +35,34 @@ namespace Chaggebi
             exitCgbManage.onClick.AddListener(CloseCGBManagePanel);
             Inventory.SetActive(false);
         }
-
+        public void ClickTest()
+        {
+            if (testCor == null)
+                testCor = StartCoroutine(Test());
+            else StopCoroutine(testCor);
+        }
+        IEnumerator Test()
+        {           
+            int i = 0;
+            Debug.Log(i);
+            while (true)
+            {
+                yield return new WaitForSeconds(3);
+                i++;
+                Debug.Log(i);
+            }
+        }
         public void ClickCGB(CGBMotionController _controller)
         {
-            if (PlayerData.instance.interactingCGB == null || PlayerData.instance.interactingCGB == _controller.cgb)
+            if(_controller.isPlaced)
             {
-                controller = _controller;
-                UI.SetActive(false);
-                StartCoroutine(MoveCamToCgb(controller.transform.position));
+                if (PlayerData.instance.interactingCGB == null || PlayerData.instance.interactingCGB == _controller.cgb)
+                {
+                    controller = _controller;
+                    UI.SetActive(false);
+                    StartCoroutine(MoveCamToCgb(controller.transform.position));
+                }
             }
-            else Debug.Log(PlayerData.instance.interactingCGB.name);
         }
 
         IEnumerator MoveCamToCgb(Vector3 _position)
@@ -70,7 +90,7 @@ namespace Chaggebi
             Camera.transform.position = new Vector3(0f, 0f, 0f);
             UI.SetActive(true);
             PlayerData.instance.interactingCGB = null;
-            controller.StartCoroutine(controller.RandomMove());
+            controller.moveCor = StartCoroutine(controller.RandomMove());
         }
     }
 }

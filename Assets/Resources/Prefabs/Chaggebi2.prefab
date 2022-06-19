@@ -53,6 +53,7 @@ MonoBehaviour:
   happyDecreaseSec: 5
   teabagPrefab: {fileID: 672856899184913045, guid: 1d7d5197b1bb87e4db0b0b44c5bad5eb, type: 3}
   cgbBtn: {fileID: 5425966299872563034}
+  sk: {fileID: 5927693410354627704}
 --- !u!33 &5927693410354627706
 MeshFilter:
   m_ObjectHideFlags: 0
