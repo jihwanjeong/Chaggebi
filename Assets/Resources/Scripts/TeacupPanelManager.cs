@@ -24,7 +24,6 @@ public class TeacupPanelManager : MonoBehaviour
     public SkeletonAnimation bgAnimation;
     public SkeletonAnimation CGBAnimation;
     List<CGBData> babyCGBs = new List<CGBData>();
-    CGBData newCgb = new CGBData();
     CGBSpineSetter spineSetter;
 
     void ListUpBabies()
@@ -36,6 +35,7 @@ public class TeacupPanelManager : MonoBehaviour
     }
     public void RandomCGBOutfit() 
     {
+        CGBData newCgb = new CGBData();
         newCgb = babyCGBs[Random.Range(0, babyCGBs.Count)];
         newCgb.brow = Random.Range(1, spineSetter.browCount + 1);
         newCgb.mouth = Random.Range(1, spineSetter.mouthCount + 1);
