@@ -41663,7 +41663,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5425966299872563034, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
   m_PrefabInstance: {fileID: 2083831809}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1908248562}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -44704,6 +44704,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903474994}
   m_CullTransparentMesh: 1
+--- !u!1 &1908248562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6048135669626747579, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
+  m_PrefabInstance: {fileID: 2083831809}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1908248566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908248562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8bd6ad1692cb5147908575ae56e7d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: 0
+  CGBMotionAdd: {fileID: 1952965965}
+  actionCooltime: 2
+  isClick: 0
+  CGBManagePanel: {fileID: 254367901}
+  CGBobject: {fileID: 1952965965}
+  CGBClickButton: {fileID: 1767969660}
+  cameraSpeed: 5
+  Camera: {fileID: 421082075}
+  UI: {fileID: 2062377556}
 --- !u!1 &1908927289
 GameObject:
   m_ObjectHideFlags: 0
@@ -47735,7 +47762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2061520554
 Transform:
   m_ObjectHideFlags: 0
@@ -48230,7 +48257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5425966299872563034, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5425966299872563034, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -48239,7 +48266,7 @@ PrefabInstance:
     - target: {fileID: 5425966299872563034, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1908248566}
     - target: {fileID: 5425966299872563034, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -48250,7 +48277,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5425966299872563034, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CGBMotion2, Assembly-CSharp
+      value: CGBClickManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5425966299872563034, guid: 7916d8e1320e48549960bdefff6ab622, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

@@ -69,7 +69,7 @@ public class CGBClickManager : MonoBehaviour
     {
         sk = GetComponent<SkeletonAnimation>();
         actionCooltime = Random.Range(2, 5);
-        CGBClickButton.onClick.AddListener(CGBClick);
+        //CGBClickButton.onClick.AddListener(CGBClick);
 
     }
 
