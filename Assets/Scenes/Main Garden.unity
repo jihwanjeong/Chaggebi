@@ -24513,7 +24513,7 @@ Transform:
   - {fileID: 1433141642}
   - {fileID: 1208594871}
   - {fileID: 1545492120}
-  - {fileID: 953564243}
+  - {fileID: 2061520554}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25509,52 +25509,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943107473}
   m_CullTransparentMesh: 1
---- !u!1 &953564242
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 953564243}
-  - component: {fileID: 953564244}
-  m_Layer: 0
-  m_Name: DragdropManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &953564243
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953564242}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 888695588}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &953564244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 953564242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172b35d013c2eb54da51eb2dc690f0fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CGBMotionAdd: {fileID: 1952965965}
-  status: 0
-  drag: 0
 --- !u!1 &969838320
 GameObject:
   m_ObjectHideFlags: 0
@@ -47798,6 +47752,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14dada21886bb854cb79c8154f3492c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2061520553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2061520554}
+  - component: {fileID: 2061520555}
+  m_Layer: 0
+  m_Name: CGBClickManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2061520554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061520553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 888695588}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2061520555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061520553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8bd6ad1692cb5147908575ae56e7d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  status: 0
+  CGBMotionAdd: {fileID: 1952965965}
+  actionCooltime: 2
+  isClick: 0
+  CGBManagePanel: {fileID: 254367901}
+  CGBobject: {fileID: 1952965965}
+  CGBClickButton: {fileID: 1767969660}
+  cameraSpeed: 5
+  Camera: {fileID: 421082075}
+  UI: {fileID: 2062377556}
 --- !u!1 &2062377556
 GameObject:
   m_ObjectHideFlags: 0
