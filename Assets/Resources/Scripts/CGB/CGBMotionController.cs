@@ -174,15 +174,15 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
         if (isHungry) sk.AnimationState.SetAnimation(0, "walk_hungry", true);
         else sk.AnimationState.SetAnimation(0, "walk", true);
         isCooltime = false;
+        vertical = Random.Range(-2, 2);
         while (true)
         {
             if ((this.gameObject.transform.position.x <= -12f || this.gameObject.transform.position.x >= 12f))
             {
                 if (!isCooltime) ChangeDir();
             }
-            if (this.gameObject.transform.position.y > 0) vertical = -1;
-            else if (this.gameObject.transform.position.y < -2) vertical = 1;
-            else vertical = Random.Range(-2, 2);
+            if (this.gameObject.transform.localPosition.y > 0) vertical = -1;
+            else if (this.gameObject.transform.localPosition.y < -2) vertical = 1;
             transform.Translate(new Vector3(horizontal * 0.5f, vertical, 0) * 1.0f * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
@@ -191,15 +191,15 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
     {
         sk.AnimationState.SetAnimation(0, "run", true);
         isCooltime = false;
+        vertical = Random.Range(-2, 2);
         while (true)
         {
             if ((this.gameObject.transform.position.x <= -12f || this.gameObject.transform.position.x >= 12f))
             {
                 if (!isCooltime) ChangeDir();
             }
-            if (this.gameObject.transform.position.y > 0) vertical = -1;
-            else if (this.gameObject.transform.position.y < -2) vertical = 1;
-            else vertical = Random.Range(-2, 2);
+            if (this.gameObject.transform.localPosition.y > 0) vertical = -1;
+            else if (this.gameObject.transform.localPosition.y < -2) vertical = 1;
             transform.Translate(new Vector3(horizontal * 2, vertical, 0) * 1.0f * Time.deltaTime);
             yield return new WaitForEndOfFrame();
         }
@@ -210,6 +210,7 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
         if(isPlaced && PlayerData.instance.interactingCGB == null)
         {
             StopCoroutine(moveCor);
+            if (moveCor2 != null) StopCoroutine(moveCor2);
             StopCoroutine(teabagCor);
             int r = Random.Range(0, 2);
             if (r == 0) sk.AnimationState.SetAnimation(0, "hang1", true);
@@ -232,7 +233,11 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             sk.AnimationState.SetAnimation(0, "idle", true);
-            this.transform.position = new Vector3(mousePos.x, mousePos.y - 2.5f, 27f);
+            float yPos;
+            if (mousePos.y - 2.5f > 0) yPos = 2;
+            else if (mousePos.y - 2.5f < -2) yPos = 1;
+            else yPos = mousePos.y;
+            this.transform.localPosition = new Vector3(mousePos.x, yPos - 2.5f, 27f);
             moveCor = StartCoroutine(RandomMove());
             teabagCor = StartCoroutine(CreateTeabag());
         }

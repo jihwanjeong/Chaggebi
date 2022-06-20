@@ -37,7 +37,7 @@ public class CGBSlot : MonoBehaviour
         gardenCgb = Instantiate(prefabCgb) as GameObject;
         gardenCgb.transform.SetParent(gardenCgbs.transform, false);
         spineSetter.SetAppearance(PlayerData.instance.playerCGBs[slotNum], gardenCgb.GetComponent<SkeletonAnimation>());
-        gardenCgb.transform.position = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-3.5f, -0.5f), 1);
+        gardenCgb.transform.localPosition = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-3.5f, -0.1f), 1);
         CGBMotionController controller = gardenCgb.GetComponent<CGBMotionController>();
         controller.cgb = PlayerData.instance.playerCGBs[slotNum];
         controller.cgbBtn.onClick.AddListener(() => cgbPanelManager.ClickCGB(controller));
