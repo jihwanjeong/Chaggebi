@@ -60,6 +60,7 @@ using UnityEngine;
 {
     public string id { get; set; }
     public string name { get; set; }
+    public string type { get; set; }
     public string description { get; set; }
     public int scent { get; set; }
     public int earthy { get; set; }
@@ -144,6 +145,7 @@ public class DataBase : MonoBehaviour
         {
             id = AllFoods[i].id,
             name = AllFoods[i].name,
+            type = AllFoods[i].type,
             description = AllFoods[i].description,
             scent = AllFoods[i].scent,
             earthy = AllFoods[i].earthy,
@@ -180,7 +182,7 @@ public class DataBase : MonoBehaviour
         {
             string[] row = line[i].Split('\t');
             AllFoods.Add(new Item
-            { id = row[0], name = row[1], description = row[2], scent = Int16.Parse(row[3]), earthy = Int16.Parse(row[4]), sweet = Int16.Parse(row[5]), sour = Int16.Parse(row[6]), cost = Int16.Parse(row[7]) });
+            { id = row[0], name = row[1], type = row[2], description = row[3], scent = Int16.Parse(row[4]), earthy = Int16.Parse(row[5]), sweet = Int16.Parse(row[6]), sour = Int16.Parse(row[7]), cost = Int16.Parse(row[8]) });
             for (int j = 0; j < AllFoodSprites.Length; j++)
             {
                 if (AllFoods[i].id == AllFoodSprites[j].name)

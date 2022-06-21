@@ -47,13 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83efaeeaa24c7cf42982cfefffdb3275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teabagCicleSec: 20
-  fullDecreaseSec: 3
-  cleanDecreaseSec: 5
-  happyDecreaseSec: 5
+  teabagCicleSec: 30
+  fullDecreaseSec: 10
+  cleanDecreaseSec: 10
+  happyDecreaseSec: 10
   teabagPrefab: {fileID: 672856899184913045, guid: 1d7d5197b1bb87e4db0b0b44c5bad5eb, type: 3}
   cgbBtn: {fileID: 5425966299872563034}
   sk: {fileID: 5927693410354627704}
+  isPlaced: 0
 --- !u!33 &5927693410354627706
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -57,7 +57,7 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
         while(true)
         {
             yield return new WaitForSecondsRealtime(cleanDecreaseSec);
-            SetClean(-20);
+            SetClean(-5);
             if (isDirty) SetHappy(-2);
         }
     }
