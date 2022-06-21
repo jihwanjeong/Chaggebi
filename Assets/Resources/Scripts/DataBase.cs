@@ -8,9 +8,9 @@ using UnityEngine;
     //차깨비 외형 정보
     public bool isPlaced { get; set; } = false;
     public int age { get; set; } = 1; //진화단계
-    public string base1 { get; set; } //몸색(1단계)
-    public int base1vary { get; set; }
-    public string base2 { get; set; } //스킨(2단계)
+    public string type { get; set; } //몸색(1단계)
+    //public int base1vary { get; set; }
+    //public string base2 { get; set; } //스킨(2단계)
     public string flavor { get; set; } //맛(3단계)
     public string name { get; set; } = "차깨비";
     public string customName { get; set; } = "내 차깨비";
@@ -30,9 +30,9 @@ using UnityEngine;
     public CGBData GetCGB()
     {
         CGBData newCGB = new CGBData();
-        newCGB.base1 = this.base1;
-        newCGB.base1vary = this.base1vary;
-        newCGB.base2 = this.base2;
+        newCGB.type = this.type;
+        //newCGB.base1vary = this.base1vary;
+        //newCGB.base2 = this.base2;
         newCGB.flavor = this.flavor;
         newCGB.name = this.name;
         newCGB.description = this.description;
@@ -163,8 +163,8 @@ public class DataBase : MonoBehaviour
         for (int i = 0; i < line.Length; i++)
         {
             string[] row = line[i].Split('\t');
-            AllCGBs.Add(new CGBData { age = Int16.Parse(row[0]), base1 = row[1], base2 = row[2], flavor = row[3], name = row[4], description = row[5], teabagID = row[6] });
-            AllTeabags.Add(new Teabag { id = row[6], name = row[7], description = row[8], scent = Int16.Parse(row[9]), earthy = Int16.Parse(row[10]), sweet = Int16.Parse(row[11]), sour = Int16.Parse(row[12]) });
+            AllCGBs.Add(new CGBData { age = Int16.Parse(row[0]), type = row[1], flavor = row[2], name = row[3], description = row[4], teabagID = row[5] });
+            AllTeabags.Add(new Teabag { id = row[5], name = row[6], description = row[7], scent = Int16.Parse(row[8]), earthy = Int16.Parse(row[9]), sweet = Int16.Parse(row[10]), sour = Int16.Parse(row[11]) });
             for (int j = 0; j < AllTeabagSprites.Length; j++)
             {
                 if (AllTeabags[i].id == AllTeabagSprites[j].name)

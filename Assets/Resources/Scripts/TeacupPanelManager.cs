@@ -15,6 +15,7 @@ public class TeacupPanelManager : MonoBehaviour
     public GameObject foodInven;
     public Transform foodSlotsParent;
     public GameObject useBtn;
+    Image foodImg_img;
     ItemSlot[] slots;
     Button[] slotBtns;
     Item selectedItem;
@@ -44,6 +45,7 @@ public class TeacupPanelManager : MonoBehaviour
         //bgAnimation.AnimationState.Event += EventBG;
         spineSetter = GameObject.Find("CGBSpineManager").GetComponent<CGBSpineSetter>();
         ListUpBabies();
+        foodImg_img = foodImg.GetComponent<Image>();
         slots = foodSlotsParent.GetComponentsInChildren<ItemSlot>();
         slotBtns = new Button[slots.Length];
         for (int i = 0; i < slots.Length; i++)
@@ -99,6 +101,7 @@ public class TeacupPanelManager : MonoBehaviour
         foodAddBtnObject.SetActive(false);
         bgAnimation.AnimationState.SetAnimation(0, "summon", false);
         bgAnimation.AnimationState.AddAnimation(0, "idle", true, 0f);
+        foodImg_img.sprite = selectedItem.sprite;
         StartCoroutine(Summoning());
     }
     IEnumerator Summoning()
@@ -107,8 +110,8 @@ public class TeacupPanelManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
         foodImg.SetActive(false);
         yield return new WaitForSecondsRealtime(1f);
-        GachaCGB.SetActive(true);
         RandomCGBOutfit();
+        GachaCGB.SetActive(true);
         CGBAnimation.AnimationState.SetAnimation(0, "summon", false);
         CGBAnimation.AnimationState.AddAnimation(0, "summon_idle", true, 0f);
         yield return new WaitForSecondsRealtime(1.2f);
@@ -141,10 +144,11 @@ public class TeacupPanelManager : MonoBehaviour
     public void RandomCGBOutfit()
     {
         PlayerData.instance.RemoveFood(selectedItem.id, summonFoodCount);
-        CGBData newCgb = babyCGBs[Random.Range(0, babyCGBs.Count)].GetCGB();
+        CGBData newCgb = babyCGBs.Find(x => x.type == selectedItem.type);
+        //CGBData newCgb = babyCGBs[Random.Range(0, babyCGBs.Count)].GetCGB();
         newCgb.brow = Random.Range(1, spineSetter.browCount + 1);
         newCgb.mouth = Random.Range(1, spineSetter.mouthCount + 1);
-        newCgb.base1vary = Random.Range(1, spineSetter.baseVaryCount + 1);
+        //newCgb.base1vary = Random.Range(1, spineSetter.baseVaryCount + 1);
         CGBInfo.text = newCgb.name;
         spineSetter.SetAppearance(newCgb, CGBAnimation);
         PlayerData.instance.playerCGBs.Add(newCgb);

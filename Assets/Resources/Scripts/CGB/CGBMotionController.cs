@@ -120,7 +120,7 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
     public IEnumerator RandomMove()
     {
         sk.AnimationState.AddAnimation(0, "idle", true, 0);
-        yield return new WaitForSecondsRealtime(10);
+        yield return new WaitForSecondsRealtime(7);
         isPlaced = true;
         while (true)
         {
