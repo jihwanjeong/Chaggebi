@@ -183,7 +183,7 @@ public class CGBMotion : MonoBehaviour
             Debug.Log(gameObject.transform.position.x);
             CGBManagePanel.SetActive(true);
             UI.SetActive(false);
-            PlayerData.instance.interactingCGB = cgbdatad;
+            PlayerData.instance.interactingCGB.cgb = cgbdatad;
             PlayerData.instance.interactingSk = sk;
             CGBManagePanel.transform.position = new Vector3(transform.position.x, transform.position.y, 100);
             isClick = true;

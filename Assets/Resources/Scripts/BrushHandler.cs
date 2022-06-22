@@ -17,18 +17,21 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     public float washSpeed = 0.1f;
     bool isClean;
     SkeletonAnimation sk;
+    CGBMotionController controller;
 
     public void Test()
     {
         sk = PlayerData.instance.interactingSk;
-        PlayerData.instance.interactingCGB.cleanRate = 0;
-        sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, (100 - PlayerData.instance.interactingCGB.cleanRate) / 100f));
+        PlayerData.instance.interactingCGB.cgb.cleanRate = 0;
+        sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, (100 - controller.cgb.cleanRate) / 100f));
     }
     public void OpenPanel() //@Clean_btn
     {
         sk = PlayerData.instance.interactingSk;
-        if (PlayerData.instance.interactingCGB.cleanRate < 100)
+        controller = PlayerData.instance.interactingCGB;
+        if (controller.cgb.cleanRate < 50)
         {
+            controller.StopCoroutine(controller.cleanCor);
             mainBtns.SetActive(false);
             cleanPanel.SetActive(true);
             sk.AnimationState.SetAnimation(0, "wash_start", false);
@@ -46,11 +49,12 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
         sk.AnimationState.SetAnimation(0, "wash_end", false);
         sk.AnimationState.AddAnimation(0, "idle", true, 0f);
         mainBtns.SetActive(true);
+        controller.cleanCor = controller.StartCoroutine(controller.CleanTimer());
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
         defaultPos = transform.position;
-        if (PlayerData.instance.interactingCGB.cleanRate < 100) isClean = false;
+        if (controller.cgb.cleanRate < 100) isClean = false;
         else isClean = true;
     }
     public void OnDrag(PointerEventData eventData)
@@ -66,7 +70,7 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
                     cleanTime += Time.deltaTime;
                     if (cleanTime > washSpeed)
                     {
-                        if (PlayerData.instance.interactingCGB.cleanRate == 100)
+                        if (controller.cgb.cleanRate == 100)
                         {
                             transform.position = defaultPos;
                             sk.AnimationState.SetAnimation(0, "wash_end", false);
@@ -76,11 +80,13 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
                             isClean = true;
                             cleanPanel.SetActive(false);
                             mainBtns.SetActive(true);
+                            controller.cleanCor = controller.StartCoroutine(controller.CleanTimer());
                         }
                         else
                         {
-                            PlayerData.instance.interactingCGB.cleanRate++;
-                            sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, (100 - PlayerData.instance.interactingCGB.cleanRate) / 100f));
+                            controller.cgb.cleanRate++;
+                            if (controller.cgb.cleanRate >= 50) controller.isDirty = false;
+                            sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, (100 - controller.cgb.cleanRate) / 100f));
                         }
                         cleanTime = 0;
                     }

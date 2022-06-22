@@ -35,7 +35,7 @@ public class UseInvenManager : MonoBehaviour
 
     void OpenPanel()
     {
-        if (PlayerData.instance.interactingCGB.fullRate < 85)
+        if (PlayerData.instance.interactingCGB.cgb.fullRate < 85)
         {
             UpdateInven();
             invenPanel.SetActive(true);
@@ -77,15 +77,15 @@ public class UseInvenManager : MonoBehaviour
     public void UseItem()
     {
         invenPanel.SetActive(false);
-        if (PlayerData.instance.interactingCGB.fullRate < 85)
+        if (PlayerData.instance.interactingCGB.cgb.fullRate < 85)
         {
             StopAllCoroutines();
             PlayerData.instance.RemoveFood(selectedItem.id, 1);
-            PlayerData.instance.interactingCGB.scent += selectedItem.scent;
-            PlayerData.instance.interactingCGB.earthy += selectedItem.earthy;
-            PlayerData.instance.interactingCGB.sweet += selectedItem.sweet;
-            PlayerData.instance.interactingCGB.sour += selectedItem.sour;
-            PlayerData.instance.interactingCGB.fullRate += 20;
+            PlayerData.instance.interactingCGB.cgb.scent += selectedItem.scent;
+            PlayerData.instance.interactingCGB.cgb.earthy += selectedItem.earthy;
+            PlayerData.instance.interactingCGB.cgb.sweet += selectedItem.sweet;
+            PlayerData.instance.interactingCGB.cgb.sour += selectedItem.sour;
+            PlayerData.instance.interactingCGB.cgb.fullRate += 20;
             StartCoroutine(Eat());
         }
         else PlayerData.instance.interactingSk.AnimationState.SetAnimation(0, "no", false);

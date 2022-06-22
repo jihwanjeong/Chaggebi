@@ -144,7 +144,7 @@ public class TeacupPanelManager : MonoBehaviour
     public void RandomCGBOutfit()
     {
         PlayerData.instance.RemoveFood(selectedItem.id, summonFoodCount);
-        CGBData newCgb = babyCGBs.Find(x => x.type == selectedItem.type);
+        CGBData newCgb = babyCGBs.Find(x => x.type == selectedItem.type).GetCGB();
         //CGBData newCgb = babyCGBs[Random.Range(0, babyCGBs.Count)].GetCGB();
         newCgb.brow = Random.Range(1, spineSetter.browCount + 1);
         newCgb.mouth = Random.Range(1, spineSetter.mouthCount + 1);

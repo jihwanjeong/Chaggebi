@@ -47,13 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83efaeeaa24c7cf42982cfefffdb3275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teabagCicleSec: 30
+  teabagCicleSec: 20
   fullDecreaseSec: 10
   cleanDecreaseSec: 10
   happyDecreaseSec: 10
   teabagPrefab: {fileID: 672856899184913045, guid: 1d7d5197b1bb87e4db0b0b44c5bad5eb, type: 3}
   cgbBtn: {fileID: 5425966299872563034}
   sk: {fileID: 5927693410354627704}
+  teaParent: {fileID: 0}
   isPlaced: 0
 --- !u!33 &5927693410354627706
 MeshFilter:
@@ -117,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: 24184fe2af87ada419bd02f3de476046, type: 2}
-  initialSkinName: 
+  initialSkinName: 1_Butterfly_none
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
   initialFlipY: 0

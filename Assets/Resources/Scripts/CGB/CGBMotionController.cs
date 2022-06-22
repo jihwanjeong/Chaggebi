@@ -14,8 +14,9 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
     public GameObject teabagPrefab;
     public Button cgbBtn;
     public SkeletonAnimation sk;
+    public Transform teaParent;
     bool isHungry;
-    bool isDirty;
+    public bool isDirty;
     bool isUnhappy;
     //move
     int horizontal = -1;
@@ -24,7 +25,7 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
     Coroutine moveCor2;
     Coroutine teabagCor;
     Coroutine fullCor;
-    Coroutine cleanCor;
+    public Coroutine cleanCor;
     Coroutine happyCor;
     bool isCooltime;
     [HideInInspector] public bool isPlaced;
@@ -52,7 +53,7 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
             if (isHungry) SetHappy(-2);
         }
     }
-    IEnumerator CleanTimer()
+    public IEnumerator CleanTimer()
     {
         while(true)
         {
@@ -78,7 +79,8 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
             Vector3 currentpos = new Vector3(this.gameObject.transform.position.x + Random.Range(-0.9f, 0.9f), this.gameObject.transform.position.y, 1);
             GameObject tea = Instantiate(teabagPrefab, currentpos, Quaternion.identity);
             tea.GetComponent<TeabagHandler>().SetTeabagInfo(cgb.teabagID, 1);
-            tea.transform.SetParent(this.transform.parent);
+            tea.transform.SetParent(teaParent);
+            //tea.transform.SetParent(this.transform.parent);
         }
     }
 
@@ -101,9 +103,14 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
         if (cgb.cleanRate < 50)
         {
             isDirty = true;
+            sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, (100 - cgb.cleanRate) / 100f));
         }
-        else isDirty = false;
-        sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, (100 - cgb.cleanRate) / 100f));
+        else
+        {
+            isDirty = false;
+            sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, 0));
+        }
+        //sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, (100 - cgb.cleanRate) / 100f));
     }
     void SetHappy(int _rate)
     {
@@ -119,7 +126,7 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     public IEnumerator RandomMove()
     {
-        sk.AnimationState.AddAnimation(0, "idle", true, 0);
+        //sk.AnimationState.AddAnimation(0, "idle", true, 0);
         yield return new WaitForSecondsRealtime(7);
         isPlaced = true;
         while (true)
@@ -234,10 +241,10 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             sk.AnimationState.SetAnimation(0, "idle", true);
             float yPos;
-            if (mousePos.y - 2.5f > 0) yPos = 2;
-            else if (mousePos.y - 2.5f < -2) yPos = 1;
+            if (mousePos.y - 1.5f > 0) yPos = 1;
+            else if (mousePos.y - 1.5f < -3) yPos = -1;
             else yPos = mousePos.y;
-            this.transform.localPosition = new Vector3(mousePos.x, yPos - 2.5f, 27f);
+            this.transform.localPosition = new Vector3(mousePos.x, yPos - 1.5f, 27f);
             moveCor = StartCoroutine(RandomMove());
             teabagCor = StartCoroutine(CreateTeabag());
         }
@@ -250,7 +257,7 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
             StopCoroutine(moveCor);
             if (moveCor2 != null) StopCoroutine(moveCor2);
             sk.AnimationState.SetAnimation(0, "idle", true);
-            PlayerData.instance.interactingCGB = cgb;
+            PlayerData.instance.interactingCGB = this;
             PlayerData.instance.interactingSk = sk;
         }
     }

@@ -16,8 +16,8 @@ namespace Chaggebi
         public GameObject Camera;
         public GameObject UI;
         public Button exitCgbManage;
+        public GameObject teabagParent;
         CGBMotionController controller;
-        Coroutine testCor;
 
         public void InventoryPanelControl()
         {
@@ -35,31 +35,16 @@ namespace Chaggebi
             exitCgbManage.onClick.AddListener(CloseCGBManagePanel);
             Inventory.SetActive(false);
         }
-        public void ClickTest()
-        {
-            if (testCor == null)
-                testCor = StartCoroutine(Test());
-            else StopCoroutine(testCor);
-        }
-        IEnumerator Test()
-        {           
-            int i = 0;
-            Debug.Log(i);
-            while (true)
-            {
-                yield return new WaitForSeconds(3);
-                i++;
-                Debug.Log(i);
-            }
-        }
+
         public void ClickCGB(CGBMotionController _controller)
         {
             if(_controller.isPlaced)
             {
-                if (PlayerData.instance.interactingCGB == null || PlayerData.instance.interactingCGB == _controller.cgb)
+                if (PlayerData.instance.interactingCGB == null || PlayerData.instance.interactingCGB == _controller)
                 {
                     controller = _controller;
                     UI.SetActive(false);
+                    teabagParent.SetActive(false);
                     StartCoroutine(MoveCamToCgb(controller.transform.position));
                 }
             }
@@ -89,6 +74,7 @@ namespace Chaggebi
             CGBManagePanel.SetActive(false);
             Camera.transform.position = new Vector3(0f, 0f, 0f);
             UI.SetActive(true);
+            teabagParent.SetActive(true);
             PlayerData.instance.interactingCGB = null;
             controller.moveCor = StartCoroutine(controller.RandomMove());
         }

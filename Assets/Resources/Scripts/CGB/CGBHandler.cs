@@ -198,7 +198,7 @@ public class CGBHandler : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDr
     {
         StopAllCoroutines();
         sk.AnimationState.SetAnimation(0, "idle", true);
-        PlayerData.instance.interactingCGB = cgb;
+        PlayerData.instance.interactingCGB.cgb = cgb;
         PlayerData.instance.interactingSk = sk;
     }
 }

@@ -23,7 +23,7 @@ public class StatUIManager : MonoBehaviour
     public Text detailStat;
     void Start()
     {
-        statBtn.onClick.AddListener(()=> OpenStat(PlayerData.instance.interactingCGB));
+        statBtn.onClick.AddListener(()=> OpenStat(PlayerData.instance.interactingCGB.cgb));
         teabagBtn.onClick.AddListener(ViewTeabagDetail);
     }
     public void OpenStat(CGBData _cgb)

@@ -14,15 +14,20 @@ public class CGBSlot : MonoBehaviour
     public SkeletonGraphic skeletonGraphic;
     public CGBSpineSetter spineSetter;
     public Chaggebi.ChaggebiPanelManager cgbPanelManager;
+    public Transform teabagParent;
     GameObject gardenCgb;
+    CGBMotionController controller;
+    CGBData cgb;
 
     public void AddCGB(CGBData newCGB)
     {
-        spineSetter.SetAppearance(newCGB, skeletonGraphic);
+        cgb = newCGB;
+        spineSetter.SetAppearance(cgb, skeletonGraphic);
         cgbPanel.SetActive(true);
-        nametxt.text = newCGB.name;
-        btn_place.SetActive(!newCGB.isPlaced);
-        btn_unplace.SetActive(newCGB.isPlaced);
+        nametxt.text = cgb.name;
+        btn_place.SetActive(!cgb.isPlaced);
+        btn_unplace.SetActive(cgb.isPlaced);
+        //prefabCgb.GetComponent<CGBMotionController>().cgb = cgb;
     }
 
     public void RemoveCGB()
@@ -36,21 +41,23 @@ public class CGBSlot : MonoBehaviour
     {
         gardenCgb = Instantiate(prefabCgb) as GameObject;
         gardenCgb.transform.SetParent(gardenCgbs.transform, false);
-        spineSetter.SetAppearance(PlayerData.instance.playerCGBs[slotNum], gardenCgb.GetComponent<SkeletonAnimation>());
+        spineSetter.SetAppearance(cgb, gardenCgb.GetComponent<SkeletonAnimation>());
         gardenCgb.transform.localPosition = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-3.5f, -0.1f), 1);
-        CGBMotionController controller = gardenCgb.GetComponent<CGBMotionController>();
-        controller.cgb = PlayerData.instance.playerCGBs[slotNum];
+        controller = gardenCgb.GetComponent<CGBMotionController>();
+        controller.cgb = cgb;
         controller.cgbBtn.onClick.AddListener(() => cgbPanelManager.ClickCGB(controller));
+        controller.teaParent = teabagParent;
         btn_place.SetActive(false);
         btn_unplace.SetActive(true);
-        PlayerData.instance.playerCGBs[slotNum].isPlaced = true;
+        cgb.isPlaced = true;
     }
     public void Unplace()
     {
+        controller.StopAllCoroutines();
+        cgb.isPlaced = false;
         Destroy(gardenCgb);
         btn_place.SetActive(true);
         btn_unplace.SetActive(false);
-        PlayerData.instance.playerCGBs[slotNum].isPlaced = false;
     }
 
 }

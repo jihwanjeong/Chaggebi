@@ -29,7 +29,7 @@ public class PlayerData : MonoBehaviour
     public List<Item> playerFoods = new List<Item>();
     public List<Teabag> playerTeabags = new List<Teabag>();
 
-    public CGBData interactingCGB;
+    public CGBMotionController interactingCGB;
     public SkeletonAnimation interactingSk;
     [HideInInspector] public bool isRemoved;
 
@@ -38,6 +38,11 @@ public class PlayerData : MonoBehaviour
         goldTxt.text = gold.ToString();
         diaTxt.text = dia.ToString();
         interactingCGB = null;
+    }
+    public void SetClean(int _cleanRate, SkeletonAnimation _sk)
+    {
+        if(_cleanRate>50) _sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, 1));
+        else _sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, 100 - _cleanRate / 100f));
     }
     public void SetGold(int _count)
     {
