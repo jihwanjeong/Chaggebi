@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    int lvUpFlavorRate = 100;
     public int teabagCicleSec;
     public int fullDecreaseSec;
     public int cleanDecreaseSec;
@@ -38,11 +39,14 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
     }
     public void StartCicle()
     {
-        moveCor = StartCoroutine(RandomMove());
-        teabagCor = StartCoroutine(CreateTeabag());
-        fullCor = StartCoroutine(FullTimer());
-        cleanCor = StartCoroutine(CleanTimer());
-        happyCor = StartCoroutine(HappyTimer());
+        if(!cgb.isGrowPrepare)
+        {
+            moveCor = StartCoroutine(RandomMove());
+            teabagCor = StartCoroutine(CreateTeabag());
+            fullCor = StartCoroutine(FullTimer());
+            cleanCor = StartCoroutine(CleanTimer());
+            happyCor = StartCoroutine(HappyTimer());
+        }
     }
     IEnumerator FullTimer()
     {
@@ -80,11 +84,10 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
             GameObject tea = Instantiate(teabagPrefab, currentpos, Quaternion.identity);
             tea.GetComponent<TeabagHandler>().SetTeabagInfo(cgb.teabagID, 1);
             tea.transform.SetParent(teaParent);
-            //tea.transform.SetParent(this.transform.parent);
         }
     }
-
-    void SetFull(int _rate)
+    
+    public void SetFull(int _rate)
     {
         cgb.fullRate += _rate;
         if (cgb.fullRate < 0) cgb.fullRate = 0;
@@ -95,7 +98,7 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
         }
         else isHungry = false;
     }
-    void SetClean(int _rate)
+    public void SetClean(int _rate)
     {
         cgb.cleanRate += _rate;
         if (cgb.cleanRate < 0) cgb.cleanRate = 0;
@@ -110,9 +113,8 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
             isDirty = false;
             sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, 0));
         }
-        //sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, (100 - cgb.cleanRate) / 100f));
     }
-    void SetHappy(int _rate)
+    public void SetHappy(int _rate)
     {
         cgb.happyRate += _rate;
         if (cgb.happyRate < 0) cgb.happyRate = 0;
@@ -123,7 +125,46 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
         }
         else isUnhappy = false;
     }
-
+    public void SetScent(int _rate)
+    {
+        cgb.scent += _rate;
+        if (cgb.age == 1 && cgb.scent >= lvUpFlavorRate)
+        {
+            cgb.flavorPrepare = "scent";
+            cgb.isGrowPrepare = true;
+            StopAllCoroutines();
+        }
+    }
+    public void SetSweet(int _rate)
+    {
+        cgb.sweet += _rate;
+        if (cgb.age == 1 && cgb.sweet >= lvUpFlavorRate)
+        {
+            cgb.flavorPrepare = "sweet";
+            cgb.isGrowPrepare = true;
+            StopAllCoroutines();
+        }
+    }
+    public void SetEarthy(int _rate)
+    {
+        cgb.earthy += _rate;
+        if (cgb.age == 1 && cgb.earthy >= lvUpFlavorRate)
+        {
+            cgb.flavorPrepare = "earthy";
+            cgb.isGrowPrepare = true;
+            StopAllCoroutines();
+        }
+    }
+    public void SetSour(int _rate)
+    {
+        cgb.sour += _rate;
+        if (cgb.age == 1 && cgb.sour >= lvUpFlavorRate)
+        {
+            cgb.flavorPrepare = "sour";
+            cgb.isGrowPrepare = true;
+            StopAllCoroutines();
+        }
+    }
     public IEnumerator RandomMove()
     {
         //sk.AnimationState.AddAnimation(0, "idle", true, 0);
@@ -214,7 +255,7 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
-        if(isPlaced && PlayerData.instance.interactingCGB == null)
+        if(isPlaced && PlayerData.instance.interactingCGB == null && !cgb.isGrowPrepare)
         {
             StopCoroutine(moveCor);
             if (moveCor2 != null) StopCoroutine(moveCor2);
@@ -227,7 +268,7 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
-        if(isPlaced && PlayerData.instance.interactingCGB == null)
+        if(isPlaced && PlayerData.instance.interactingCGB == null && !cgb.isGrowPrepare)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             this.transform.position = new Vector3(mousePos.x, mousePos.y - 1.8f, 27f);
@@ -236,7 +277,7 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
-        if(isPlaced && PlayerData.instance.interactingCGB == null)
+        if(isPlaced && PlayerData.instance.interactingCGB == null && !cgb.isGrowPrepare)
         {
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             sk.AnimationState.SetAnimation(0, "idle", true);
@@ -252,7 +293,7 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
 
     public void CGBClick()
     {
-        if (isPlaced && PlayerData.instance.interactingCGB == null)
+        if (isPlaced && PlayerData.instance.interactingCGB == null && !cgb.isGrowPrepare)
         {
             StopCoroutine(moveCor);
             if (moveCor2 != null) StopCoroutine(moveCor2);

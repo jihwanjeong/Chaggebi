@@ -7,11 +7,13 @@ using UnityEngine;
 {
     //차깨비 외형 정보
     public bool isPlaced { get; set; } = false;
-    public int age { get; set; } = 1; //진화단계
-    public string type { get; set; } //몸색(1단계)
+    public int age { get; set; } = 1; 
+    public string type { get; set; }
+    public bool isGrowPrepare { get; set; } = false;
+    public string flavorPrepare { get; set; }
     //public int base1vary { get; set; }
     //public string base2 { get; set; } //스킨(2단계)
-    public string flavor { get; set; } //맛(3단계)
+    public string flavor { get; set; } = "none";
     public string name { get; set; } = "차깨비";
     public string customName { get; set; } = "내 차깨비";
     public string description { get; set; }

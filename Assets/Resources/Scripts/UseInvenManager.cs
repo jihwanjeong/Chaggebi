@@ -13,10 +13,12 @@ public class UseInvenManager : MonoBehaviour
     public GameObject flyingFood;
     Image flyingFood_img;
     public Text[] upTxt;
+    public AlarmController alarm;
 
     ItemSlot[] slots;
     Button[] slotBtns;
     Item selectedItem;
+    CGBMotionController controller;
     void Start()
     {
         cleanBtn.onClick.AddListener(() => StopAllCoroutines());
@@ -35,7 +37,12 @@ public class UseInvenManager : MonoBehaviour
 
     void OpenPanel()
     {
-        if (PlayerData.instance.interactingCGB.cgb.fullRate < 85)
+        controller = PlayerData.instance.interactingCGB;
+        if (controller.cgb.isGrowPrepare)
+        {
+            alarm.OpenAlarm("차깨비가 할 말이 있는 것 같습니다!");
+        }
+        else if (controller.cgb.fullRate < 85)
         {
             UpdateInven();
             invenPanel.SetActive(true);
@@ -77,15 +84,15 @@ public class UseInvenManager : MonoBehaviour
     public void UseItem()
     {
         invenPanel.SetActive(false);
-        if (PlayerData.instance.interactingCGB.cgb.fullRate < 85)
+        if (controller.cgb.fullRate < 95)
         {
             StopAllCoroutines();
             PlayerData.instance.RemoveFood(selectedItem.id, 1);
-            PlayerData.instance.interactingCGB.cgb.scent += selectedItem.scent;
-            PlayerData.instance.interactingCGB.cgb.earthy += selectedItem.earthy;
-            PlayerData.instance.interactingCGB.cgb.sweet += selectedItem.sweet;
-            PlayerData.instance.interactingCGB.cgb.sour += selectedItem.sour;
-            PlayerData.instance.interactingCGB.cgb.fullRate += 20;
+            controller.SetScent(selectedItem.scent);
+            controller.SetSweet(selectedItem.sweet);
+            controller.SetEarthy(selectedItem.earthy);
+            controller.SetSour(selectedItem.sour);
+            controller.SetFull(20);
             StartCoroutine(Eat());
         }
         else PlayerData.instance.interactingSk.AnimationState.SetAnimation(0, "no", false);

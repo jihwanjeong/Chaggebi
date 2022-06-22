@@ -18,6 +18,7 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     bool isClean;
     SkeletonAnimation sk;
     CGBMotionController controller;
+    public AlarmController alarm;
 
     public void Test()
     {
@@ -27,20 +28,27 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     }
     public void OpenPanel() //@Clean_btn
     {
-        sk = PlayerData.instance.interactingSk;
         controller = PlayerData.instance.interactingCGB;
-        if (controller.cgb.cleanRate < 50)
+        if (controller.cgb.isGrowPrepare)
         {
-            controller.StopCoroutine(controller.cleanCor);
-            mainBtns.SetActive(false);
-            cleanPanel.SetActive(true);
-            sk.AnimationState.SetAnimation(0, "wash_start", false);
-            sk.AnimationState.AddAnimation(0, "wash_idle", false, 0);
+            alarm.OpenAlarm("차깨비가 할 말이 있는 것 같습니다!");
         }
         else
         {
-            sk.AnimationState.SetAnimation(0, "no", false);
-            sk.AnimationState.AddAnimation(0, "idle", false, 0);
+            sk = PlayerData.instance.interactingSk;
+            if (controller.cgb.cleanRate < 50)
+            {
+                controller.StopCoroutine(controller.cleanCor);
+                mainBtns.SetActive(false);
+                cleanPanel.SetActive(true);
+                sk.AnimationState.SetAnimation(0, "wash_start", false);
+                sk.AnimationState.AddAnimation(0, "wash_idle", false, 0);
+            }
+            else
+            {
+                sk.AnimationState.SetAnimation(0, "no", false);
+                sk.AnimationState.AddAnimation(0, "idle", false, 0);
+            }
         }
     }
     public void ClosePanel()
@@ -84,7 +92,7 @@ public class BrushHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
                         }
                         else
                         {
-                            controller.cgb.cleanRate++;
+                            controller.SetClean(1);
                             if (controller.cgb.cleanRate >= 50) controller.isDirty = false;
                             sk.Skeleton.FindSlot("dirt").SetColor(new Color(1, 1, 1, (100 - controller.cgb.cleanRate) / 100f));
                         }

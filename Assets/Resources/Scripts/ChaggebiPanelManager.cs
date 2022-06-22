@@ -17,6 +17,7 @@ namespace Chaggebi
         public GameObject UI;
         public Button exitCgbManage;
         public GameObject teabagParent;
+        public GameObject growPanel;
         CGBMotionController controller;
 
         public void InventoryPanelControl()
@@ -38,11 +39,17 @@ namespace Chaggebi
 
         public void ClickCGB(CGBMotionController _controller)
         {
-            if(_controller.isPlaced)
+            controller = _controller;
+            if(controller.cgb.isGrowPrepare)
             {
-                if (PlayerData.instance.interactingCGB == null || PlayerData.instance.interactingCGB == _controller)
+                growPanel.SetActive(true);
+                CloseCGBManagePanel();
+                UI.SetActive(false);
+            }
+            else if(controller.isPlaced)
+            {
+                if (PlayerData.instance.interactingCGB == null || PlayerData.instance.interactingCGB == controller)
                 {
-                    controller = _controller;
                     UI.SetActive(false);
                     teabagParent.SetActive(false);
                     StartCoroutine(MoveCamToCgb(controller.transform.position));
@@ -76,7 +83,7 @@ namespace Chaggebi
             UI.SetActive(true);
             teabagParent.SetActive(true);
             PlayerData.instance.interactingCGB = null;
-            controller.moveCor = StartCoroutine(controller.RandomMove());
+            if(!controller.cgb.isGrowPrepare) controller.moveCor = controller.StartCoroutine(controller.RandomMove());
         }
     }
 }
