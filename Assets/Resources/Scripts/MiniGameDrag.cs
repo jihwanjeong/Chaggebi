@@ -15,8 +15,54 @@ public class MiniGameDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandle
     public GameObject FinalPanel;
     public GameObject EnableTea;
     public GameObject middleTea;
+    public GameObject Order33;
+    public GameObject teaYellow,teaGreen,teaPink;
+
+    public void EnableY()
+    {
+        if (teaYellow.activeSelf == false)
+        {
+            teaYellow.SetActive(true);
 
 
+        }
+        else
+        {
+            teaYellow.SetActive(false);
+
+        }
+
+    }
+    public void EnableP()
+    {
+        if (teaPink.activeSelf == false)
+        {
+            teaPink.SetActive(true);
+
+
+        }
+        else
+        {
+            teaPink.SetActive(false);
+
+        }
+
+    }
+    public void EnableG()
+    {
+        if (teaGreen.activeSelf == false)
+        {
+            teaGreen.SetActive(true);
+
+
+        }
+        else
+        {
+            teaGreen.SetActive(false);
+
+        }
+
+    }
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -52,7 +98,7 @@ public class MiniGameDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandle
         if ((this.transform.localPosition.x > -43 && this.transform.localPosition.x < 47)&& (this.transform.localPosition.y > -439 && this.transform.localPosition.y < 54))
         {
             enableTea.SetActive(true);
-
+            //Order33.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/cup3_filled") as Sprite;
             EnableTea.SetActive(true);
             this.gameObject.SetActive(false);
             middleTea.SetActive(true);
@@ -65,5 +111,6 @@ public class MiniGameDrag : MonoBehaviour, IPointerDownHandler, IBeginDragHandle
         FinalPanel.SetActive(true);
 
     }
+    
 }
 

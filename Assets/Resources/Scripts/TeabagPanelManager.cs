@@ -14,6 +14,9 @@ public class TeabagPanelManager : MonoBehaviour
     public bool isClicked = false;
     float leftTime = 10.0f;
     float speed = 5.0f;
+    public GameObject Order33;
+    public GameObject Order333;
+    public GameObject teabag;
 
     void Update()
     {
@@ -41,6 +44,9 @@ public class TeabagPanelManager : MonoBehaviour
             Result.text = "¼º°ø!";
             Next.gameObject.SetActive(true);
             Extract.gameObject.SetActive(false);
+            teabag.gameObject.SetActive(false);
+            Order33.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/cup1_filled") as Sprite;
+            Order333.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/cup1_filled") as Sprite;
         }
         else
             Result.text = "";

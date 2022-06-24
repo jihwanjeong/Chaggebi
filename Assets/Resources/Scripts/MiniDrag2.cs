@@ -21,6 +21,10 @@ public class MiniDrag2 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     public GameObject T2;
     public GameObject T1pos;
     public GameObject T2pos;
+    public GameObject TCMilk;
+    public GameObject TCIce;
+    public GameObject Mix;
+    public GameObject Mixed;
     public Text Ttext;
     
 
@@ -82,6 +86,21 @@ public class MiniDrag2 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
 
         }
+        if ((this.transform.localPosition.x > -100 && this.transform.localPosition.x < 100) && (this.transform.localPosition.y > 100 && this.transform.localPosition.y < 300))
+        {
+            TCMilk.SetActive(true);
+            //T2.SetActive(false);
+
+
+
+        }
+    }
+    public void EnableMix() 
+    {
+        TCIce.SetActive(false);
+        TCMilk.SetActive(false);
+        Mixed.SetActive(true);
+
     }
     void Update()
     {

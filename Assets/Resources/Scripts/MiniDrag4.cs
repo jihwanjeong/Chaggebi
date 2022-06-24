@@ -5,15 +5,17 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-public class MiniDrag3 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+public class MiniDrag4 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
 
     RectTransform rectTransform;
     //CanvasGroup canvasGroup;
     [SerializeField] Canvas canvas;
-    public GameObject TC1;
-    public GameObject TC2;
-    public GameObject T1;
+    //public GameObject TC1;
+    //public GameObject TC2;
+    public GameObject Ordermiddle;
+    public GameObject success;
+    /*public GameObject T1;
     public GameObject T2;
     public GameObject T1pos;
     public GameObject T2pos;
@@ -21,7 +23,7 @@ public class MiniDrag3 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     public GameObject TC4;
     public GameObject TC5;
     public GameObject TC6;
-    public GameObject TCIce;
+    public GameObject TCIce;*/
 
 
 
@@ -36,7 +38,7 @@ public class MiniDrag3 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
     public void OnBeginDrag(PointerEventData eventData)
     {
         //canvasGroup.alpha = .6f;
-       // canvasGroup.blocksRaycasts = false;
+        // canvasGroup.blocksRaycasts = false;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -46,7 +48,7 @@ public class MiniDrag3 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     public void OnEndDrag(PointerEventData eventData)
     {
-       // canvasGroup.alpha = 1f;
+        // canvasGroup.alpha = 1f;
         //canvasGroup.blocksRaycasts = true;
 
     }
@@ -58,22 +60,29 @@ public class MiniDrag3 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
     public void OnDrop(PointerEventData eventData)
     {
-        if ((this.transform.localPosition.x > -186 && this.transform.localPosition.x < -86) && (this.transform.localPosition.y > -50 && this.transform.localPosition.y < 50))
+        /*if ((this.transform.localPosition.x > -186 && this.transform.localPosition.x < -86) && (this.transform.localPosition.y > -50 && this.transform.localPosition.y < 50))
         {
-            TC2.SetActive(true);
+            this.gameObject.SetActive(false);
+            Ordermiddle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/cup3") as Sprite;
+            //TC2.SetActive(true);
             //T2.SetActive(false);
             //T2.transform.localPosition = T2pos.transform.position;
 
 
-        }
+        }*/
         if ((this.transform.localPosition.x > -50 && this.transform.localPosition.x < 50) && (this.transform.localPosition.y > -50 && this.transform.localPosition.y < 50))
         {
-            TC4.SetActive(true);
+            
+            Ordermiddle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/cup1_filled2") as Sprite;
+            this.gameObject.SetActive(false);
+            success.SetActive(true);
+            //TC4.SetActive(true);
             //T1.SetActive(false);
 
 
 
         }
+        /*
         if ((this.transform.localPosition.x > 86 && this.transform.localPosition.x < 186) && (this.transform.localPosition.y > -50 && this.transform.localPosition.y < 50))
         {
             TC6.SetActive(true);
@@ -81,20 +90,10 @@ public class MiniDrag3 : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 
 
 
-        }
-        if ((this.transform.localPosition.x > -100 && this.transform.localPosition.x < 100) && (this.transform.localPosition.y > 100 && this.transform.localPosition.y < 300))
-        {
-            TCIce.SetActive(true);
-            //T1.SetActive(false);
+        }*/
 
-
-
-        }
     }
-    
-    
+
+
 
 }
-
-
-

@@ -29053,6 +29053,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chaggebi2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5927693410354627705, guid: 0101a6728aa6762459cb9dccb93f7be6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5927693410354627706, guid: 0101a6728aa6762459cb9dccb93f7be6, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -51743,6 +51747,10 @@ PrefabInstance:
     - target: {fileID: 5927693410354627705, guid: 0101a6728aa6762459cb9dccb93f7be6, type: 3}
       propertyPath: m_Name
       value: Chaggebi2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927693410354627705, guid: 0101a6728aa6762459cb9dccb93f7be6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5927693410354627706, guid: 0101a6728aa6762459cb9dccb93f7be6, type: 3}
       propertyPath: m_Mesh

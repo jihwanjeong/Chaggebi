@@ -29,6 +29,8 @@ public class MiniGame : MonoBehaviour
     public Image Cupimage2;
     public GameObject B1, B2, B3;
     public GameObject if1, if2, if3;
+    public GameObject teabaginven;
+    float time;
 
     public int order1, order2, order3;
     public int CupSel = 0;
@@ -36,19 +38,19 @@ public class MiniGame : MonoBehaviour
 
     public void SelectCup1()
     {
-        Selected.text = "1¹øÄÅ ¼±ÅÃµÊ";
+        Selected.text = "½º¹«µð ÀÜ";
         CupSel = 1;
 
     }
     public void SelectCup2()
     {
-        Selected.text = "2¹øÄÅ ¼±ÅÃµÊ";
+        Selected.text = "¸Ó±×ÄÅ";
         CupSel = 2;
 
     }
     public void SelectCup3()
     {
-        Selected.text = "3¹øÄÅ ¼±ÅÃµÊ";
+        Selected.text = "ÂþÀÜ";
         CupSel = 3;
 
     }
@@ -67,12 +69,59 @@ public class MiniGame : MonoBehaviour
     }
     public void OrderPanelControl()
     {
-        if (OrderPanel.activeSelf == true)
-            OrderPanel.SetActive(false);
-        else
+        if (OrderPanel.activeSelf == false)
+        {
             OrderPanel.SetActive(true);
+            /*if (time < 0.4f)
+            {
+                OrderPanel.transform.position = new Vector3(0, 12 - 30 * time, 0);
+            }
+            else if (time < 0.5f)
+            {
+                OrderPanel.transform.position = new Vector3(0, time - 0.4f, 0) * 4;
+            }
+            else if (time < 0.6f)
+            {
+                OrderPanel.transform.position = new Vector3(0, 0.6f - time, 0) * 4;
+            }
+            else if (time < 0.7f)
+            {
+                OrderPanel.transform.position = new Vector3(0, (time - 0.6f) / 2, 0) * 4;
+            }
+            else if (time < 0.8f)
+            {
+                OrderPanel.transform.position = new Vector3(0, 0.05f - (time - 0.7f) / 2, 0) * 4;
+            }
+            else
+            {
+                OrderPanel.transform.position = Vector3.zero;
+            }
+
+            time += Time.deltaTime;*/
+
+        }
+        else
+        {
+            OrderPanel.SetActive(false);
+           
+        }
 
     }
+    public void TeaPanelControl()
+    {
+        if (teabaginven.activeSelf == false)
+        {
+            teabaginven.SetActive(true);
+       
+        }
+        else
+        {
+            teabaginven.SetActive(false);
+
+        }
+
+    }
+
 
     public void TeabagCupSel()
     {
@@ -213,13 +262,13 @@ public class MiniGame : MonoBehaviour
         if (order2 == 0)
         {
             Order22.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/cup1") as Sprite;
-            Order222.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/cup1") as Sprite;
+            Order222.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/cup1_filled") as Sprite;
         }
         else if (order2 == 1)
 
         {
             Order22.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/cup1") as Sprite;
-            Order222.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/cup1") as Sprite;
+            Order222.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/cup1_filled") as Sprite;
 
         }
         else if (order2 == 2)
@@ -292,7 +341,7 @@ public class MiniGame : MonoBehaviour
         ToppingPanel.SetActive(true);
        
     }
-
+ 
     void Start()
     {
         Cup1.onClick.AddListener(SelectCup1);
@@ -330,6 +379,7 @@ public class MiniGame : MonoBehaviour
             if3.SetActive(true);
 
         }
-
+        
     }
+
 }
