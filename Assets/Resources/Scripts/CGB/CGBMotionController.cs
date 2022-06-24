@@ -254,4 +254,123 @@ public class CGBMotionController : MonoBehaviour, IBeginDragHandler, IEndDragHan
             PlayerData.instance.interactingSk = sk;
         }
     }
+
+    public void Update()
+    {
+        if (this.gameObject.transform.position.y > 5)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -30;
+
+
+        }
+        else if (this.gameObject.transform.position.y > 4.5 && this.gameObject.transform.position.y <= 5)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -29;
+
+        }
+        else if (this.gameObject.transform.position.y > 4 && this.gameObject.transform.position.y <= 4.5)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -28;
+
+        }
+        else if (this.gameObject.transform.position.y > 3.5 && this.gameObject.transform.position.y <= 4)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -27;
+
+
+        }
+        else if (this.gameObject.transform.position.y > 3 && this.gameObject.transform.position.y <= 3.5)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -26;
+
+        }
+        else if (this.gameObject.transform.position.y > 2.5 && this.gameObject.transform.position.y <= 3)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -25;
+
+        }
+        else if (this.gameObject.transform.position.y > 2 && this.gameObject.transform.position.y <= 2.5)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -24;
+
+
+        }
+        else if (this.gameObject.transform.position.y > 1.5 && this.gameObject.transform.position.y <= 2)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -23;
+
+
+        }
+        else if (this.gameObject.transform.position.y > 1 && this.gameObject.transform.position.y <= 1.5)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -22;
+
+
+        }
+        else if (this.gameObject.transform.position.y > 0.5 && this.gameObject.transform.position.y <= 1)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -21;
+
+        }
+        else if (this.gameObject.transform.position.y > 0 && this.gameObject.transform.position.y <= 0.5)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -20;
+
+        }
+        else if (this.gameObject.transform.position.y > -0.5 && this.gameObject.transform.position.y <= 0)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -19;
+
+        }
+        else if (this.gameObject.transform.position.y > -1 && this.gameObject.transform.position.y <= -0.5)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -18;
+
+
+        }
+        else if (this.gameObject.transform.position.y > -1.5 && this.gameObject.transform.position.y <= -1)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -17;
+
+
+        }
+        else if (this.gameObject.transform.position.y > -2 && this.gameObject.transform.position.y <= -1.5)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -16;
+
+
+        }
+        else if (this.gameObject.transform.position.y > -2.5 && this.gameObject.transform.position.y <= -2)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -15;
+
+
+        }
+        else if (this.gameObject.transform.position.y > -3 && this.gameObject.transform.position.y <= -2.5)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -14;
+
+        }
+        else if (this.gameObject.transform.position.y > -3.5 && this.gameObject.transform.position.y <= -3)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -13;
+
+
+        }
+        else if (this.gameObject.transform.position.y > -4 && this.gameObject.transform.position.y <= -3.5)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -12;
+
+
+        }
+        else if (this.gameObject.transform.position.y <= -4)
+        {
+            sk.gameObject.transform.GetComponent<MeshRenderer>().sortingOrder = -11;
+
+
+        }
+
+
+    }
+        
 }
