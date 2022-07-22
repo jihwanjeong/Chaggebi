@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
+
 
 public class MiniGame : MonoBehaviour
 {
@@ -18,11 +20,14 @@ public class MiniGame : MonoBehaviour
     public Button Order111;
     public Button Order222;
     public Button Order333;
+    public Button Mixer;
+    public GameObject ToolsPanel;
     public Button Next;
     public Text Selected;
     public GameObject CupPanel;
     public GameObject TeabagPanel;
     public GameObject ToppingPanel;
+    public GameObject PourPanel;
     //public GameObject CupinTeabag;
     public GameObject OrderPanel;
     public Image Cupimage;
@@ -54,6 +59,30 @@ public class MiniGame : MonoBehaviour
         CupSel = 3;
 
     }
+    public void ToolspanelAct()
+    {
+        if (ToolsPanel.activeSelf == true)
+            ToolsPanel.SetActive(false);
+        else
+            ToolsPanel.SetActive(true);
+    
+    }
+    public void MixerAct()
+    {
+        if (Mixer.gameObject.activeSelf == true)
+            Mixer.gameObject.SetActive(false);
+        else
+            Mixer.gameObject.SetActive(true);
+
+    }
+    public void PourAct()
+    {
+        if (PourPanel.gameObject.activeSelf == true)
+            PourPanel.gameObject.SetActive(false);
+        else
+            PourPanel.gameObject.SetActive(true);
+
+    }
 
     public void ResultCup()
     {
@@ -72,6 +101,7 @@ public class MiniGame : MonoBehaviour
         if (OrderPanel.activeSelf == false)
         {
             OrderPanel.SetActive(true);
+            OrderPanel.GetComponent<Animation>().Play("OrderPanel1");
             /*if (time < 0.4f)
             {
                 OrderPanel.transform.position = new Vector3(0, 12 - 30 * time, 0);
